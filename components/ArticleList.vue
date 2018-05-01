@@ -75,9 +75,6 @@ export default {
   },
   data () {
     return {
-      containerId: '#article-list',
-      rotateDeg: 0,
-      scale: 1,
       scrollTop: 0,
       offsetIndex: 10
     }
@@ -114,14 +111,22 @@ export default {
         })
     },
     handleScroll () {
-      this.rotateDeg = window.scrollY * 10
-      this.scale = window.scrollY * 10
       this.scrollTop = window.scrollY
+    },
+    initOffsetIndex () {
+      const t = setInterval(() => {
+        this.offsetIndex -= 0.5
+        if (this.offsetIndex <= 4) {
+          this.offsetIndex = 4
+          clearInterval(t)
+        }
+      }, 50)
     }
   },
   mounted () {
     if (process.browser) {
       window.addEventListener('scroll', this.handleScroll)
+      this.initOffsetIndex()
     }
   },
   beforeDestroy () {

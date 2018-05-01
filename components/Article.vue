@@ -56,6 +56,12 @@ import ArticleFeaturedImage from '~/components/ArticleFeaturedImage'
 import Loader from '~/components/Loader'
 
 export default {
+  props: {
+    article: Object,
+    index: Number,
+    scrollTop: Number,
+    offsetIndex: Number
+  },
   components: {
     ArticleFeaturedImage,
     Loader
@@ -110,12 +116,6 @@ export default {
         return { height: 0, width: 0 }
       }
     }
-  },
-  props: {
-    article: Object,
-    index: Number,
-    scrollTop: Number,
-    offsetIndex: Number
   },
   mixins: {
     shortTimestamp: Function

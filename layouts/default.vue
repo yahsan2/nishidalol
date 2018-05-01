@@ -1,6 +1,5 @@
 <template>
   <div id="container">
-    <TheHeader/>
     <main>
       <nuxt />
     </main>
@@ -55,7 +54,6 @@
 </style>
 
 <script>
-import TheHeader from '../components/TheHeader'
 import TheFooter from '../components/TheFooter'
 import Loader from '~/components/Loader'
 
@@ -76,7 +74,6 @@ export default {
     }
   },
   components: {
-    TheHeader,
     TheFooter,
     Loader
   },

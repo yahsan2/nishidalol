@@ -50,7 +50,8 @@
   .c-list-article::nth-child(4n+3) &
     gradient(#99f, #fff)
   border-radius: 50%
-  box-shadow 2rem 3rem 30px rgba(#999, .6)
+  +media("tablet")
+    box-shadow 1.5rem 1.5rem 30px rgba(#999, .6)
   width 10rem
   height 10rem
   display block
@@ -60,6 +61,7 @@
       transform: scale(2) translate3d(-6rem, -2rem, 0)
   h2
     opacity 0
+    transition: opacity .25s ease-out
 
 .article-thumbnail
   position absolute
@@ -111,7 +113,7 @@ export default {
       const originScale = 1.6
       const originDeg = 80
       const originRadius = 35 //
-      const originIndex = 1000 //
+      // const originIndex = 1000 //
 
       const stepDeg = 50 // 45deg
       const stepRadius = originRadius / displayLenght
@@ -138,12 +140,12 @@ export default {
       scale = (scale < 0) ? 0 : scale
 
       return {
-        'transform': `scale(${scale}) translate3d(${this.x}rem, ${this.y}rem, ${z}rem)`,
+        'transform': `scale(${scale}) translate3d(${this.x}rem, ${this.y}rem, ${z}rem)`
         // 'width': `${originWidth}rem`,
         // 'height': `${originWidth}rem`,
         // 'margin-left': `${1 * originWidth / 4}rem`,
         // 'margin-top': `${-1 * originWidth / 2}rem`,
-        'z-index': `${originIndex - this.index}`
+        // 'z-index': `${originIndex - this.index}`
       }
     },
     featuredImage () {

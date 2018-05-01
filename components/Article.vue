@@ -1,11 +1,12 @@
 <template>
-  <article class="c-list-article" :style="position">
-    <ArticleFeaturedImage
-      v-if="featuredImage"
-      :featured-image="featuredImage"
-      class="hide"
-    />
+  <article class="c-list-article" :style="position" :class="{'is-active': isActive}">
     <nuxt-link :to="`/${article.type}/${article.slug}`" class="article-body">
+      <ArticleFeaturedImage
+        v-if="featuredImage"
+        :featured-image="featuredImage"
+        class="article-thumbnail"
+        :style="{'background-image': featuredImage}"
+      />
       <h2 v-html="article.title"></h2>
     </nuxt-link>
 <!--
@@ -30,23 +31,47 @@
 
 <style lang="stylus" scoped>
 @import '~assets/style/settings'
-.c-list-article
-  overflow hidden
-  position absolute
-  gradient(#f99, #fff)
-  border-radius: 50%
-  left 50%
-  top 45%
-  -webkit-box-shadow #FFF
-  box-shadow 1rem 1rem 30px rgba(#999, .6)
-  &.is-active
-    width 10rem
-    height 10rem
-  margin-left 3 rem
-  margin-top -6rem
-  width 12rem
-  height 12rem
 
+.c-list-article
+  position absolute
+  // gradient(#f9f, #f9f)
+  left 55%
+  top 50%
+  margin-left 0rem
+  margin-top -6rem
+
+.article-body
+  .c-list-article &
+    gradient(#ff9, #fff)
+  .c-list-article::nth-child(4n+1) &
+    gradient(#f9f, #fff)
+  .c-list-article::nth-child(4n+2) &
+    gradient(#f99, #fff)
+  .c-list-article::nth-child(4n+3) &
+    gradient(#99f, #fff)
+  border-radius: 50%
+  box-shadow 2rem 3rem 30px rgba(#999, .6)
+  width 10rem
+  height 10rem
+  display block
+  overflow hidden
+  +media("tablet")
+    .is-active &
+      transform: scale(2) translate3d(-6rem, -2rem, 0)
+  h2
+    opacity 0
+
+.article-thumbnail
+  position absolute
+  top: 0
+  left: 0
+  opacity 0
+  transition: opacity .25s ease-out
+  .is-active &,
+  .article-body:hover &
+    opacity 1
+  .is-active &
+    transition-delay: .2s
 
 
 </style>
@@ -56,6 +81,12 @@ import ArticleFeaturedImage from '~/components/ArticleFeaturedImage'
 import Loader from '~/components/Loader'
 
 export default {
+  data () {
+    return {
+      x: 0,
+      y: 0
+    }
+  },
   props: {
     article: Object,
     index: Number,
@@ -67,10 +98,17 @@ export default {
     Loader
   },
   computed: {
+    isActive () {
+      // -12.9819rem, -4.21808rem
+      return this.x < -9 && this.y < -1
+    },
+    isEnded () {
+      return this.x < -9 || this.y < -1
+    },
     position () {
       const displayLenght = 10
       // const originWidth = 12 // 15rem, 240px
-      const originScale = 2
+      const originScale = 1.6
       const originDeg = 80
       const originRadius = 35 //
       const originIndex = 1000 //
@@ -79,17 +117,17 @@ export default {
       const stepRadius = originRadius / displayLenght
       const stepScale = originScale / displayLenght
 
-      const radPow = 1.1
-      const radiusPow = 1
-      const scalePow = 1.05
+      const radPow = 1
+      const radiusPow = 0.5
+      const scalePow = 0.95
       const stepScroll = this.scrollTop / 200
 
       const index = stepScroll < this.offsetIndex + this.index ? this.offsetIndex + this.index - stepScroll : 0
 
       const rad = (2 * Math.PI * originDeg / 360) - Math.pow(index, radPow) * (2 * Math.PI * stepDeg / 360)
 
-      const x = (originRadius - Math.pow(index, radiusPow) * stepRadius) * Math.cos(rad) * 0.55
-      const y = (originRadius - Math.pow(index, radiusPow) * stepRadius) * Math.sin(rad) * 0.7
+      this.x = (originRadius - Math.pow(index, radiusPow) * stepRadius) * Math.cos(rad) * 0.5
+      this.y = (originRadius - Math.pow(index, radiusPow) * stepRadius) * Math.sin(rad) * 0.5
       // const x = (originRadius - Math.pow(index, radiusPow) * stepRadius) * Math.cos(rad) * 0.5 * Math.pow(index, 1)
       // const y = (originRadius - Math.pow(index, radiusPow) * stepRadius) * Math.sin(rad) * 1.2
       const z = rad
@@ -97,10 +135,10 @@ export default {
       const scrollScale = 0
       // const scrollScale = Math.pow(stepScroll, pow) * stepScale
       let scale = originScale - Math.pow(index, scalePow) * stepScale + scrollScale
-      scale = (y > 33 || scale < 0) ? 0 : scale
+      scale = (scale < 0) ? 0 : scale
 
       return {
-        'transform': `scale(${scale}) translate3d(${x}rem, ${y}rem, ${z}rem)`,
+        'transform': `scale(${scale}) translate3d(${this.x}rem, ${this.y}rem, ${z}rem)`,
         // 'width': `${originWidth}rem`,
         // 'height': `${originWidth}rem`,
         // 'margin-left': `${1 * originWidth / 4}rem`,

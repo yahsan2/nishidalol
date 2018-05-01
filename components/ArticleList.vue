@@ -43,11 +43,11 @@
   // -webkit-overflow-scrolling: touch
 .scroll-block
   content ''
-  background #efefef
   display block
   width 100vw
 
 .articles
+  gradient(yellow, cyan)
   position fixed
   top: 0
   left: 0

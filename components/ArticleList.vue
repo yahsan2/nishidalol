@@ -1,13 +1,21 @@
 <template>
-  <div class="article-list">
-    <div class="articles columns is-multiline">
-      <Article :article="article" v-for="article in articles" :key="article.id" />
+  <div class="article-list" id="article-list">
+    <div class="articles">
+      <Article
+        v-for="(article, index) in articles"
+        :index="index"
+        :scrollTop="scrollTop"
+        :length="articles.length"
+        :key="article.id"
+        :article="article"
+        :offsetIndex="offsetIndex"
+      />
     </div>
+    <div class="scroll-block":style="{'min-height': (articles.length) * 100 + 1070 + 'px'}"></div>
     <no-ssr>
       <InfiniteLoading
         ref="infiniteLoading"
         @infinite="moreArticles"
-      >
         <span slot="spinner">
           <Loader/>
         </span>
@@ -29,13 +37,24 @@
   margin: auto
 
 .article-list
-  width: 100%
-  margin-left: auto
-  margin-right: auto
-  article + article
-    border-top: 1px dotted lighten($color-primary, 20%)
-    margin-top: 32px
-    padding-top: 32px
+  // position
+  // height 100%
+  // overflow auto
+  // -webkit-overflow-scrolling: touch
+.scroll-block
+  content ''
+  background #efefef
+  display block
+  width 100vw
+
+.articles
+  position fixed
+  top: 0
+  left: 0
+  width 100%
+  height 100%
+  transform-origin: 20rem 40%
+
 </style>
 
 <script>
@@ -54,7 +73,21 @@ export default {
     articles: Array,
     query: Object
   },
+  data () {
+    return {
+      containerId: '#article-list',
+      rotateDeg: 0,
+      scale: 1,
+      scrollTop: 0,
+      offsetIndex: 10
+    }
+  },
   computed: {
+    rotate () {
+      return {
+        transform: `scale(${this.scale}) rotate(${this.rotateDeg}deg)`
+      }
+    },
     ...mapState([
       'currentPath',
       'cachePages'
@@ -79,7 +112,23 @@ export default {
         .catch(() => {
           loadingState.complete()
         })
+    },
+    handleScroll () {
+      this.rotateDeg = window.scrollY * 10
+      this.scale = window.scrollY * 10
+      this.scrollTop = window.scrollY
     }
+  },
+  mounted () {
+    if (process.browser) {
+      window.addEventListener('scroll', this.handleScroll)
+    }
+  },
+  beforeDestroy () {
+    if (process.browser) {
+      window.addEventListener('scroll', this.handleScroll)
+    }
+    console.log('scrolling Destroyed')
   }
 }
 </script>

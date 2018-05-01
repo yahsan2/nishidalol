@@ -24,7 +24,9 @@ export default {
 <style lang="stylus" scoped>
 @import '~assets/style/settings'
 .c-footer
-  background-color: #f9f9f9
+  position fixed
+  width 100%
+  bottom 0
 
 .footer-container
   align-items: center

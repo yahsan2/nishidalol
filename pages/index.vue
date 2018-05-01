@@ -1,5 +1,5 @@
 <template>
-  <section class="home-container main-container container section">
+  <section class="home-container main-container">
     <ArticleList
       :articles="articles"
       :query="$store.state.currentQuery"
@@ -22,7 +22,7 @@ export default {
 
     const query = {
       orderby: 'date',
-      per_page: 10,
+      per_page: 100,
       page: 1,
       _embed: 1
     }

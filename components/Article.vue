@@ -79,16 +79,16 @@ export default {
       const stepRadius = originRadius / displayLenght
       const stepScale = originScale / displayLenght
 
-      const radPow = 1.2
+      const radPow = 1.1
       const radiusPow = 1
       const scalePow = 1.05
-      const stepScroll = this.scrollTop / 100
+      const stepScroll = this.scrollTop / 200
 
       const index = stepScroll < this.offsetIndex + this.index ? this.offsetIndex + this.index - stepScroll : 0
 
       const rad = (2 * Math.PI * originDeg / 360) - Math.pow(index, radPow) * (2 * Math.PI * stepDeg / 360)
 
-      const x = (originRadius - Math.pow(index, radiusPow) * stepRadius) * Math.cos(rad) * 0.45
+      const x = (originRadius - Math.pow(index, radiusPow) * stepRadius) * Math.cos(rad) * 0.55
       const y = (originRadius - Math.pow(index, radiusPow) * stepRadius) * Math.sin(rad) * 0.7
       // const x = (originRadius - Math.pow(index, radiusPow) * stepRadius) * Math.cos(rad) * 0.5 * Math.pow(index, 1)
       // const y = (originRadius - Math.pow(index, radiusPow) * stepRadius) * Math.sin(rad) * 1.2

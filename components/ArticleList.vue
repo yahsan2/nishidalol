@@ -113,14 +113,29 @@ export default {
     handleScroll () {
       this.scrollTop = window.scrollY
     },
+    easeOutCubic (t) {
+      const t1 = t - 1
+      return t1 * t1 * t1 + 1
+    },
     initOffsetIndex () {
-      const t = setInterval(() => {
-        this.offsetIndex -= 0.5
-        if (this.offsetIndex <= 4) {
-          this.offsetIndex = 4
-          clearInterval(t)
+      // let t = 0
+      // const time = 1
+      const frame = 60
+      const endIndex = 4.5
+      // const diffIndex = this.offsetIndex - endIndex
+      const timer = setInterval(() => {
+        // t += (diffIndex / (frame * time))
+        if (this.offsetIndex <= endIndex) {
+          this.offsetIndex = endIndex
+          clearInterval(timer)
         }
-      }, 50)
+        // console.log(diffIndex)
+        // console.log(diffIndex / (frame * time))
+        // console.log(this.easeOutCubic(t))
+        // this.offsetIndex = 10 - this.easeOutCubic(t)
+        this.offsetIndex = this.offsetIndex - 0.12
+        // console.log(this.offsetIndex)
+      }, 1000 / frame)
     }
   },
   mounted () {

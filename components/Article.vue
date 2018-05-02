@@ -66,8 +66,10 @@
   height 10rem
   display block
   overflow hidden
-  +media("tablet")
-    .is-active &
+  .is-active &
+    +media("mobile")
+      transform: scale(1.5) translate3d(.5rem, -1rem, 0)
+    +media("tablet")
       transform: scale(3) translate3d(-6rem, -1rem, 0)
 h2
   position fixed
@@ -88,6 +90,10 @@ h2
   +mobile()
     background rgba(#fff, 0.5)
     font-size 1.5rem
+    top 50%
+    bottom auto
+    left 50%
+    transform translate(-50%, -50%)
   .is-active &
     transition-delay: .2s
     opacity 1

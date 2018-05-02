@@ -1,14 +1,16 @@
 <template>
-  <article class="c-list-article" :style="position" :class="{'is-active': isActive}">
-    <nuxt-link :to="`/${article.type}/${article.slug}`" class="article-body">
-      <ArticleFeaturedImage
-        v-if="featuredImage"
-        :featured-image="featuredImage"
-        class="article-thumbnail"
-        :style="{'background-image': featuredImage}"
-      />
-      <h2 v-html="article.title"></h2>
-    </nuxt-link>
+  <article class="c-list-article" :class="{'is-active': isActive}">
+    <div class="article-body-container" :style="position">
+      <nuxt-link :to="`/${article.type}/${article.slug}`" class="article-body">
+        <ArticleFeaturedImage
+          v-if="featuredImage"
+          :featured-image="featuredImage"
+          class="article-thumbnail"
+          :style="{'background-image': featuredImage}"
+        />
+      </nuxt-link>
+    </div>
+    <h2 v-html="article.title"></h2>
 <!--
     <div class="article-meta">
       <span class="categories">
@@ -32,8 +34,9 @@
 <style lang="stylus" scoped>
 @import '~assets/style/settings'
 
-.c-list-article
+.article-body-container
   position absolute
+  z-index: 0
   // gradient(#f9f, #f9f)
   left 55%
   top 50%
@@ -59,9 +62,27 @@
   +media("tablet")
     .is-active &
       transform: scale(2) translate3d(-6rem, -2rem, 0)
-  h2
-    opacity 0
-    transition: opacity .25s ease-out
+h2
+  position fixed
+  top 65%
+  left 10%
+  transform translate(0, -50%)
+  opacity 0
+  z-index 1
+  margin-top 10px
+  transition: opacity .25s ease-out
+  padding 1rem 2rem
+  text-align justify
+  min-width 20rem
+  max-width 60%
+  font-size 5rem
+  +mobile()
+    background rgba(#fff, 0.5)
+    font-size 1.5rem
+  .is-active &
+    transition-delay: .2s
+    opacity 1
+
 
 .article-thumbnail
   position absolute
@@ -102,7 +123,7 @@ export default {
   computed: {
     isActive () {
       // -12.9819rem, -4.21808rem
-      return this.x < -9 && this.y < -1
+      return this.x < -9 && this.y < -1 && this.scale > 0
     },
     isEnded () {
       return this.x < -9 || this.y < -1
@@ -136,11 +157,11 @@ export default {
 
       const scrollScale = 0
       // const scrollScale = Math.pow(stepScroll, pow) * stepScale
-      let scale = originScale - Math.pow(index, scalePow) * stepScale + scrollScale
-      scale = (scale < 0) ? 0 : scale
+      this.scale = originScale - Math.pow(index, scalePow) * stepScale + scrollScale
+      this.scale = (this.scale < 0) ? 0 : this.scale
 
       return {
-        'transform': `scale(${scale}) translate3d(${this.x}rem, ${this.y}rem, ${z}rem)`
+        'transform': `scale(${this.scale}) translate3d(${this.x}rem, ${this.y}rem, ${z}rem)`
         // 'width': `${originWidth}rem`,
         // 'height': `${originWidth}rem`,
         // 'margin-left': `${1 * originWidth / 4}rem`,

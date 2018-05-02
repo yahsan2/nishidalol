@@ -34,6 +34,13 @@
 <style lang="stylus" scoped>
 @import '~assets/style/settings'
 
+.c-list-article
+  position absolute
+  top: 0
+  left: 0
+  width 100%
+  height 100%
+
 .article-body-container
   position absolute
   z-index: 0
@@ -61,12 +68,12 @@
   overflow hidden
   +media("tablet")
     .is-active &
-      transform: scale(2) translate3d(-6rem, -2rem, 0)
+      transform: scale(3) translate3d(-6rem, -1rem, 0)
 h2
   position fixed
-  top 65%
+  bottom 25%
   left 10%
-  transform translate(0, -50%)
+  transform translate(0, 50%)
   opacity 0
   z-index 1
   margin-top 10px
@@ -74,8 +81,10 @@ h2
   padding 1rem 2rem
   text-align justify
   min-width 20rem
-  max-width 60%
+  max-width 50%
+  max-width 40%
   font-size 5rem
+  font-size 3rem
   +mobile()
     background rgba(#fff, 0.5)
     font-size 1.5rem

@@ -11,7 +11,7 @@
         :offsetIndex="offsetIndex"
       />
     </div>
-    <div class="scroll-block":style="{'min-height': (articles.length) * 100 + 1070 + 'px'}"></div>
+    <div class="scroll-block":style="{'min-height': (articles.length) * 250 + 1070 + 'px'}"></div>
     <no-ssr>
       <InfiniteLoading
         ref="infiniteLoading"

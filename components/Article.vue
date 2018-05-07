@@ -5,12 +5,17 @@
     </h2>
     <div class="article-body-container" :style="position">
       <nuxt-link :to="`/${article.type}/${article.slug}`" class="article-body">
-        <ArticleFeaturedImage
+        <div
+          v-if="featuredImage"
+          :style="{'background-image': `url(${featuredImage.source_url})`}"
+          class="article-thumbnail"
+        />
+<!--         <ArticleFeaturedImage
           v-if="featuredImage"
           :featured-image="featuredImage"
-          class="article-thumbnail"
-          :style="{'background-image': featuredImage}"
-        />
+          class="article-thumbnail hide"
+          x
+        /> -->
       </nuxt-link>
     </div>
 <!--
@@ -43,6 +48,8 @@
   margin-left 0rem
   margin-top -6rem
   z-index: 0
+  &.is-active
+    z-index 1
 
 .article-body-container
   position absolute
@@ -70,6 +77,8 @@
   display block
   overflow hidden
   transition: all .25s ease-in-out
+  &:hover
+    opacity .9
   .is-active &
     +media("mobile")
       transform: scale(1.5) translate3d(.5rem, -1rem, 0)
@@ -86,14 +95,12 @@
   margin-top 10px
   transition: opacity .25s ease-out
   padding 1rem 2rem
-  text-align justify
+  // text-align justify
   min-width 20rem
   max-width 50%
   max-width 40%
   font-size 5rem
   font-size 3rem
-  a:hover,
-    color #fff
   +mobile()
     background rgba(#fff, 0.5)
     font-size 1.5rem
@@ -108,9 +115,13 @@
 
 
 .article-thumbnail
+  background no-repeat center
+  background-size cover
   position absolute
   top: 0
   left: 0
+  width 100%
+  height 100%
   opacity 0
   transition: opacity .25s ease-out
   .is-active &,
@@ -150,6 +161,11 @@ export default {
     },
     isEnded () {
       return this.x < -9 || this.y < -1
+    },
+    bg () {
+      return {
+
+      }
     },
     position () {
       const displayLenght = 10

@@ -2,13 +2,14 @@
   <section class="home-container main-container">
     <ArticleList
       :articles="articles"
+      :siteTitle="'NISHIDAKE'"
       :query="$store.state.currentQuery"
     />
   </section>
 </template>
 
 <style lang="stylus" scoped>
-
+@import '~assets/style/settings'
 </style>
 
 

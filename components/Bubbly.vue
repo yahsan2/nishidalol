@@ -84,6 +84,7 @@ export default {
       }
       this.context.globalCompositeOperation = 'source-over'
       this.context.fillStyle = this.gradient
+      // this.context.fillStyle = 'rgba(255, 255, 255, 0)'
       this.context.fillRect(0, 0, this.width, this.height)
       this.context.globalCompositeOperation = this.config.compose || 'lighter'
       this.bubbles.forEach(bubble => {

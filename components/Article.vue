@@ -48,7 +48,7 @@
   margin-left 0rem
   margin-top -6rem
   z-index: 0
-  +mobile()
+  +touch()
     left 70%
   &.is-active
     z-index 1
@@ -104,6 +104,8 @@
   max-width 40%
   font-size 5rem
   font-size 3rem
+  +touch()
+    font-size $fontsize-xxlarge
   +mobile()
     background rgba(#fff, 0.5)
     font-size 1.5rem

@@ -2,8 +2,11 @@
   <div class="article-list" id="article-list">
     <div class="articles">
       <no-ssr>
-        <Bubbly/>
+        <!-- <Bubbly/> -->
       </no-ssr>
+      <h1 class="site-title" :style="{'transform': titleTransform}">
+        <span v-html="siteTitle"></span>
+      </h1>
       <Article
         v-for="(article, index) in articles"
         :index="index"
@@ -14,7 +17,7 @@
         :offsetIndex="offsetIndex"
       />
     </div>
-    <div class="scroll-block":style="{'min-height': (articles.length + 1) * 500 + 'px'}"></div>
+    <div class="scroll-block":style="{'min-height': (articles.length + 1.5) * 500 + 'px'}"></div>
     <no-ssr>
       <InfiniteLoading
         ref="infiniteLoading"
@@ -35,6 +38,26 @@
 
 <style lang="stylus" scoped>
 @import '~assets/style/settings'
+.site-title
+  position fixed
+  left 85%
+  top 40%
+  // margin 4rem 0 0
+  padding 0
+  transform-origin 50% 50%
+  span
+    color $color-white
+    transform translate(-50%, -50%) rotate(90deg)
+    transform-origin 50% 50%
+    line-height 1
+    palt()
+  +mobile()
+    font-size 5rem
+  +tablet()
+    font-size 7.5rem
+  +desktop()
+    font-size 8rem
+
 .spinner
   position: relative
   margin: auto
@@ -50,7 +73,7 @@
   width 100vw
 
 .articles
-  gradient(yellow, cyan)
+  gradient(#fff200, #32e5e9)
   position fixed
   top: 0
   left: 0
@@ -75,6 +98,7 @@ export default {
     Loader
   },
   props: {
+    siteTitle: String,
     articles: Array,
     query: Object
   },
@@ -85,9 +109,13 @@ export default {
     }
   },
   computed: {
+    titleTransform () {
+      // return ``
+      return `scale(${1 - (0.0000005 * this.scrollTop)}) translate(0, ${-1 * this.scrollTop / 700}px)`
+    },
     rotate () {
       return {
-        transform: `scale(${this.scale}) rotate(${this.rotateDeg}deg)`
+        transform: `scale(${this.scrollTop}) rotate(${this.rotateDeg}deg)`
       }
     },
     ...mapState([

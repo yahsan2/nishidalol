@@ -1,6 +1,9 @@
 <template>
   <div class="article-list" id="article-list">
     <div class="articles">
+      <no-ssr>
+        <Bubbly/>
+      </no-ssr>
       <Article
         v-for="(article, index) in articles"
         :index="index"
@@ -61,11 +64,13 @@
 import { mapState } from 'vuex'
 import InfiniteLoading from 'vue-infinite-loading'
 import Article from '~/components/Article'
+import Bubbly from '~/components/Bubbly'
 import Loader from '~/components/Loader.vue'
 
 export default {
   components: {
     Article,
+    Bubbly,
     InfiniteLoading,
     Loader
   },
@@ -121,7 +126,7 @@ export default {
       // let t = 0
       // const time = 1
       const frame = 60
-      const endIndex = 4.5
+      const endIndex = 5
       // const diffIndex = this.offsetIndex - endIndex
       const timer = setInterval(() => {
         // t += (diffIndex / (frame * time))
@@ -133,7 +138,7 @@ export default {
         // console.log(diffIndex / (frame * time))
         // console.log(this.easeOutCubic(t))
         // this.offsetIndex = 10 - this.easeOutCubic(t)
-        this.offsetIndex = this.offsetIndex - 0.12
+        this.offsetIndex = this.offsetIndex - 0.2
         // console.log(this.offsetIndex)
       }, 1000 / frame)
     }

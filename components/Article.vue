@@ -48,6 +48,8 @@
   margin-left 0rem
   margin-top -6rem
   z-index: 0
+  +mobile()
+    left 70%
   &.is-active
     z-index 1
 
@@ -76,6 +78,7 @@
   height 10rem
   display block
   overflow hidden
+  position relative
   transition: all .25s ease-in-out
   &:hover
     opacity .9
@@ -104,7 +107,7 @@
   +mobile()
     background rgba(#fff, 0.5)
     font-size 1.5rem
-    top 50%
+    top 60%
     bottom auto
     left 50%
     transform scale(1) translate(-50%, -50%)
@@ -182,14 +185,14 @@ export default {
       const radPow = 1
       const radiusPow = 0.5
       const scalePow = 0.95
-      const stepScroll = this.scrollTop / 200
+      const stepScroll = this.scrollTop / 500
 
       const index = stepScroll < this.offsetIndex + this.index ? this.offsetIndex + this.index - stepScroll : 0
 
       const rad = (2 * Math.PI * originDeg / 360) - Math.pow(index, radPow) * (2 * Math.PI * stepDeg / 360)
 
       this.x = (originRadius - Math.pow(index, radiusPow) * stepRadius) * Math.cos(rad) * 0.5
-      this.y = (originRadius - Math.pow(index, radiusPow) * stepRadius) * Math.sin(rad) * 0.5
+      this.y = (originRadius - Math.pow(index, radiusPow) * stepRadius) * Math.sin(rad) * 0.6
       // const x = (originRadius - Math.pow(index, radiusPow) * stepRadius) * Math.cos(rad) * 0.5 * Math.pow(index, 1)
       // const y = (originRadius - Math.pow(index, radiusPow) * stepRadius) * Math.sin(rad) * 1.2
       const z = rad

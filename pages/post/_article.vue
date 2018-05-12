@@ -19,7 +19,10 @@
             </span>
           </p>
         </header>
-        <section v-html="article.content" class="article-main"></section>
+        <section v-html="article.content" class="article-main section"></section>
+        <footer class="section">
+          shere いれるよ〜
+        </footer>
         <!-- <ArticleComments :article="article"/> -->
       </div>
     </transition>
@@ -31,7 +34,7 @@
 
 .article-container
   position relative
-  padding 0 1rem
+  padding 0 $column-gap $section-gap * 2
   &:before
     position absolute
     top 0
@@ -65,13 +68,15 @@
 .article-body
   position relative
   max-width 40rem
-  padding 2rem 0
   margin 0 auto
+  padding-bottom $section-gap * 3
+
 
 .article-header
   min-height 60vh
+  padding-top $section-gap * 2
   .article-title
-    padding 2rem 0
+    padding-bottom $section-gap * 2
     margin 0
     color $color-white
 

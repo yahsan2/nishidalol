@@ -92,21 +92,17 @@
   transform-origin: 20rem 40%
 
 .articles
-  gradient(#fff200, #32e5e9)
+  gradient($color-bg-home0, $color-bg-home1)
   .category-container-lifestyle &
-    gradient(#f02bc2, #f2989a)
+    gradient($color-bg-lifestyle0, $color-bg-lifestyle1)
   .category-container-family &
-    gradient(#ff5f6d, #ffc371)
-    gradient(#ff5f6d, #ffdf71)
+    gradient($color-bg-family0, $color-bg-family1)
   .category-container-remote &
-    gradient(#005bea, #00c6fb)
+    gradient($color-bg-remote0, $color-bg-remote1)
   .category-container-travel &
-    gradient(#b3ffab, #12fff7)
-    gradient(#12fff7, #b3ffab)
-    gradient(blue(#12fff7,90%), #b3ffab)
-
+    gradient($color-bg-travel0, $color-bg-travel1)
   .category-container-lifelog &
-    gradient(#7028e4, #a8d3ff)
+    gradient($color-bg-lifelog0, $color-bg-lifelog1)
 </style>
 
 <script>

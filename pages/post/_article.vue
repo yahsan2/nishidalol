@@ -1,24 +1,25 @@
 <template>
-  <article class="single article-container container section">
-    <ArticleFeaturedImage
-      v-if="featuredImage"
-      :featured-image="featuredImage"
-    />
+  <article class="single article-container section" :class="categorySlugs">
     <transition name="slide-fade">
-      <div class="article-body section typeset" :class="{ 'no-featured-image': !featuredImage }">
+      <div class="article-body typeset" :class="{ 'no-featured-image': !featuredImage }">
         <header class="article-header">
+          <h1 class="article-title" v-html="article.title"></h1>
+          <ArticleFeaturedImage
+            v-if="featuredImage"
+            :featured-image="featuredImage"
+          />
           <p class="article-meta">
             <span>{{ longTimestamp(article.date) }}</span>
             <span class="separator">|</span>
-            <nuxt-link class="author fancy" :to="`/authors/${author.slug}`">{{ author.name }}</nuxt-link>
+            <!-- <nuxt-link class="author fancy" :to="`/authors/${author.slug}`"></nuxt-link> -->
+            <span>{{ author.name }}</span>
             <span class="separator">|</span>
             <span class="categories">
               <nuxt-link class="term" v-for="term in article.terms[0]" :to="`/category/${term.slug}`" :key="term.id" v-html="term.name" v-if="article.terms && article.terms[0]"></nuxt-link>
             </span>
           </p>
-          <h1 class="article-title" v-html="article.title"></h1>
         </header>
-        <section v-html="article.content"></section>
+        <section v-html="article.content" class="article-main"></section>
         <!-- <ArticleComments :article="article"/> -->
       </div>
     </transition>
@@ -27,11 +28,55 @@
 
 <style lang="stylus" scoped>
 @import '~assets/style/settings'
+
+.article-container
+  position relative
+  padding 0 1rem
+  &:before
+    position absolute
+    top 0
+    left 0
+    width 100%
+    content: ''
+    height 100vh
+    display block
+  &.lifestyle
+    background mix($color-bg-lifestyle1, #fff)
+    &:before
+      gradient($color-bg-lifestyle0, mix($color-bg-lifestyle1, #fff))
+  &.family
+    background mix($color-bg-family1, #fff)
+    &:before
+      gradient($color-bg-family0, mix($color-bg-family1, #fff))
+  &.remote
+    background mix($color-bg-remote1, #fff)
+    &:before
+      gradient($color-bg-remote0, mix($color-bg-remote1, #fff))
+  &.travel
+    background mix($color-bg-travel1, #fff)
+    &:before
+      gradient($color-bg-travel0, mix($color-bg-travel1, #fff))
+  &.lifelog
+    background mix($color-bg-lifelog1, #fff)
+    &:before
+      gradient($color-bg-lifelog0, mix($color-bg-lifelog1, #fff))
+
+
 .article-body
+  position relative
   max-width 40rem
+  padding 2rem 0
   margin 0 auto
 
+.article-header
+  min-height 60vh
+  .article-title
+    padding 2rem 0
+    margin 0
+    color $color-white
+
 .article-meta
+  padding 1rem 0 2rem
   .separator
     margin 0 1rem
 
@@ -88,6 +133,9 @@ export default {
     },
     author () {
       return this.article.author || {}
+    },
+    categorySlugs () {
+      return this.article.terms && this.article.terms[0] ? this.article.terms[0].map(cat => cat.slug).join(' ') : ''
     },
     featuredImage () {
       if (this.article && this.article.images && this.article.images[0]) {

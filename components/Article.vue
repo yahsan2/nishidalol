@@ -45,31 +45,19 @@
   // gradient(#f9f, #f9f)
 
 .article-body
-  gradient(#ff9, #fff)
+  background mix($color-bg-home0, #fff)
   &.lifestyle
-    gradient(#f7b4d9, #f5ecca)
-    background mix(#f2989a, #fff)
+    background mix($color-bg-lifestyle1, #fff)
   &.family
-    gradient(#ff5f6d, #fdf9d5)
-    gradient(#fff38d, #fdf9d5)
-    gradient(lighten(mix(#ff5f6d,#ffc371), 10%), mix(#ffc371,#fff))
-    background mix(#ffdf71, #fff)
-
-    // gradient(lighten(#ff5f6d,40%), lighten(#ffc371,40%))
+    background mix($color-bg-family1, #fff)
   &.remote
-    gradient(#d7fffe, #fcf5fd)
-    background mix(#00c6fb, #fff)
+    background mix($color-bg-remote1, #fff)
   &.travel
-    gradient(#aefb7f, #e5f9d5)
-    gradient(lighten(mix(#12fff7,#b3ffab), 10%), mix(#b3ffab,#fff))
-    background mix(#b3ffab,#fff)
+    background mix($color-bg-travel1,#fff)
   &.lifelog
-    gradient(#a8c1ec, lighten(#fac1eb, 60%))
-    background mix(#a8d3ff,#fff)
+    background mix($color-bg-lifelog1,#fff)
   border-radius: 50%
   background-blend-mode: darken
-  // +media("tablet")
-  //   box-shadow 1.5rem 1.5rem 30px rgba(#999, .6)
   width 10rem
   height 10rem
   display block

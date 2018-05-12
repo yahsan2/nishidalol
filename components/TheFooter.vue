@@ -1,5 +1,5 @@
 <template>
-  <footer class="c-footer">
+  <footer class="c-footer hide">
     <div v-if="meta" class="footer-container container section">
       <p><nuxt-link class="fancy" to="/" exact><span v-html="meta.name"></span></nuxt-link></p>
       <p v-if="meta.description" v-html="meta.description"></p>
@@ -35,7 +35,6 @@ export default {
   font-family: 'Roboto', sans-serif
   font-size: .7rem
   margin: 0 auto
-  text-align: center
   a
     color: #aaa
 </style>

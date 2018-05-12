@@ -58,7 +58,6 @@ palt()
   text-align justify
 
 p
-  palt()
   font-size $fontsize-medium
   color $color-text
   margin 0
@@ -67,7 +66,7 @@ p
 
 
 a
-  palt()
+  // palt()
   color $color-link
   text-decoration none
   letter-spacing .05rem
@@ -79,6 +78,36 @@ a
     color $color-hover
   &:focus
     color $color-focus
+  .lifestyle &
+    color $color-bg-lifestyle0
+    &:visited
+      color mix($color-bg-lifestyle0, #fff)
+    &:hover
+      color lighten($color-bg-lifestyle0, 30%)
+  .family &
+    color $color-bg-family0
+    &:visited
+      color mix($color-bg-family0, #fff)
+    &:hover
+      color lighten($color-bg-family0, 30%)
+  .remote &
+    color $color-bg-remote0
+    &:visited
+      color lighten($color-bg-remote0, 30%)
+    &:hover
+      color lighten($color-bg-remote0, 20%)
+  .travel &
+    color $color-bg-travel0
+    &:visited
+      color mix($color-bg-travel0, #fff)
+    &:hover
+      color lighten($color-bg-travel0, 30%)
+  .lifelog &
+    color $color-bg-lifelog0
+    &:visited
+      color mix($color-bg-lifelog0, #fff)
+    &:hover
+      color lighten($color-bg-lifelog0, 30%)
 
 &::selection
   color: $color-white
@@ -103,8 +132,9 @@ blockquote
   margin 0
 
 .typeset
-  div
+  div:not(.columns)
     max-width 100%
+
   img
     img()
 

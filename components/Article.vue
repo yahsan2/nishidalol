@@ -32,6 +32,7 @@
   margin-top -6rem
   z-index: 0
   +touch()
+    top 45%
     left 70%
   &.is-active
     z-index 1
@@ -94,7 +95,7 @@
   +touch()
     font-size $fontsize-xxlarge
   +mobile()
-    top 60%
+    top 50%
     bottom auto
     left 0%
     width 100%

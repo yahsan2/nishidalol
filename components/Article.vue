@@ -1,6 +1,6 @@
 <template>
   <article class="c-list-article" :class="{'is-active': isActive}">
-    <h2 class="article-title" :style="titlePosition">
+    <h2 class="article-title">
       <nuxt-link :to="`/${article.type}/${article.slug}`" v-html="article.title"></nuxt-link>
     </h2>
     <div class="article-body-container" :style="position">
@@ -97,12 +97,11 @@
   min-width 20rem
   max-width 40%
   font-size 3rem
+  transform translate3d(0, 50%, 0)
   a
-    color: rgba($color-white, .25)
-    color: $color-gray
+    color: rgba($color-white, 0)
     transition: all .25s ease-out
-    transform scale(.75)
-
+    // transform scale(.75)
     display inline-block
   +touch()
     font-size $fontsize-xxlarge
@@ -112,16 +111,14 @@
     left 0%
     width 100%
     max-width none
-
     margin-left 0
-    // height 100%
-    text-align center
-    // background rgba(#fff, 0.5)
-    // left 50%
-    // transform scale(1) translate(-50%, -50%)
-    // margin-top 2rem
+    transform translate3d(0, -50%, 0)
+    margin-top 2rem
+    .is-active &
+      background rgba(#fff, 0.5)
     a
-      padding 2rem
+      text-align center
+      padding 1rem 0rem
       width 100%
       font-size 1.5rem
       // border-radius: 50%
@@ -186,7 +183,7 @@ export default {
     },
     titlePosition () {
       return {
-        'transform': `translate3d(0, ${-1 * this.scrollTop * 1.25 + (this.index + 0.25) * 625}px, 0)`
+        'transform': `translate3d(0, ${-1 * this.scrollTop * 1 + (this.index + 0.25) * 500}px, 0)`
       }
     },
     position () {

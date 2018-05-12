@@ -90,7 +90,7 @@
   opacity 0
   .is-active &
     transition-delay .35s
-    opacity .98
+    opacity 1
   +touch()
     font-size $fontsize-xxlarge
   +mobile()

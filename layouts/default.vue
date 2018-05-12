@@ -81,7 +81,7 @@ export default {
     async defaultPostCache () {
       const query = {
         orderby: 'date',
-        per_page: 10,
+        per_page: 100,
         page: 1,
         _embed: 1
       }

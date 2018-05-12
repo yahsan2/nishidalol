@@ -1,8 +1,8 @@
 <template>
   <section class="home-container main-container">
     <ArticleList
+      :title="'NISHIDAKE'"
       :articles="articles"
-      :siteTitle="'NISHIDAKE'"
       :query="$store.state.currentQuery"
     />
   </section>
@@ -19,8 +19,6 @@ import ArticleList from '~/components/ArticleList'
 
 export default {
   async asyncData ({ app, store, params, route }) {
-    store.commit('setCurrentPath', route.path)
-
     const query = {
       orderby: 'date',
       per_page: 100,
@@ -36,9 +34,9 @@ export default {
       })
       store.commit('setCachePosts', posts.data)
     }
-
-    store.commit('setCurrentPosts')
+    store.commit('setCurrentPath', route.path)
     store.commit('setCurrentQuery', query)
+    store.commit('setCurrentPosts')
   },
 
   computed: {

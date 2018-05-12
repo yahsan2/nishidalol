@@ -13,7 +13,7 @@
             <nuxt-link class="author fancy" :to="`/authors/${author.slug}`">{{ author.name }}</nuxt-link>
             <span class="separator">|</span>
             <span class="categories">
-              <nuxt-link class="term" v-for="term in article.terms[0]" :to="`/category/${term.slug}`" :key="term.id" v-html="term.name" v-if="article.terms[0]"></nuxt-link>
+              <nuxt-link class="term" v-for="term in article.terms[0]" :to="`/category/${term.slug}`" :key="term.id" v-html="term.name" v-if="article.terms && article.terms[0]"></nuxt-link>
             </span>
           </p>
           <h1 class="article-title" v-html="article.title"></h1>

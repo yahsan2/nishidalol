@@ -1,15 +1,10 @@
 <template>
-  <section class="category-container main-container container section">
-    <header>
-      <h1>{{ category.name }}</h1>
-      <p v-if="category.description">{{ category.description }}</p>
-    </header>
-    <main class="section">
-      <ArticleList
-        :articles="articles"
-        :query="$store.state.currentQuery"
-      />
-    </main>
+  <section class="category-container main-container" :class="`category-container-${category.slug}`">
+    <ArticleList
+      :title="category.name"
+      :articles="articles"
+      :query="$store.state.currentQuery"
+    />
   </section>
 </template>
 
@@ -24,8 +19,6 @@ import ArticleList from '~/components/ArticleList'
 
 export default {
   async asyncData ({ app, store, params, route, error }) {
-    store.commit('setCurrentPath', route.path)
-
     // Set default category cache
     if (!Object.keys(store.state.cacheCategories).length) {
       let categories = await app.$api.get('/categories', {
@@ -43,12 +36,11 @@ export default {
 
     const query = {
       orderby: 'date',
-      per_page: 10,
+      per_page: 100,
       categories: category.id,
       page: 1,
       _embed: 1
     }
-    store.commit('setCurrentQuery', query)
 
     if (!store.state.cachePages[route.path]) {
       const posts = await app.$api.get('/posts', query)
@@ -58,6 +50,9 @@ export default {
       })
       store.commit('setCachePosts', posts.data)
     }
+    store.commit('setCurrentPath', route.path)
+    store.commit('setCurrentQuery', query)
+    store.commit('setCurrentPosts')
   },
   computed: {
     articles () {

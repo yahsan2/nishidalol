@@ -4,8 +4,8 @@
       <no-ssr>
         <!-- <Bubbly/> -->
       </no-ssr>
-      <h1 class="site-title" :style="{'transform': titleTransform}">
-        <span v-html="siteTitle"></span>
+      <h1 class="site-title">
+        <span v-html="title" :style="{'transform': titleTransform}"></span>
       </h1>
       <Article
         v-for="(article, index) in articles"
@@ -15,9 +15,10 @@
         :key="article.id"
         :article="article"
         :offsetIndex="offsetIndex"
+        class="article"
       />
     </div>
-    <div class="scroll-block":style="{'min-height': (articles.length + 1.5) * 500 + 'px'}"></div>
+    <div class="scroll-block":style="{'min-height': (articles.length + .9) * 500 + 'px'}"></div>
     <no-ssr>
       <InfiniteLoading
         ref="infiniteLoading"
@@ -40,23 +41,34 @@
 @import '~assets/style/settings'
 .site-title
   position fixed
-  left 85%
-  top 40%
-  // margin 4rem 0 0
+  margin 0 0
   padding 0
-  transform-origin 50% 50%
   span
-    color $color-white
-    transform translate(-50%, -50%) rotate(90deg)
-    transform-origin 50% 50%
+    color rgba($color-white, .5)
     line-height 1
     palt()
+    upper()
+    // text-transform uppercase
   +mobile()
     font-size 5rem
+  +touch()
+    left 85%
+    top 40%
+    transform translate(-50%, -50%) rotate(90deg)
+    transform-origin 50% 50%
+    span
+
   +tablet()
     font-size 7.5rem
   +desktop()
-    font-size 8rem
+    font-size 18rem
+    left 50%
+    top 40%
+    transform translate(-50%, -50%) rotate(20deg)
+    span
+      // background rgba($color-blue, .4)
+
+
 
 .spinner
   position: relative
@@ -73,7 +85,6 @@
   width 100vw
 
 .articles
-  gradient(#fff200, #32e5e9)
   position fixed
   top: 0
   left: 0
@@ -81,6 +92,22 @@
   height 100%
   transform-origin: 20rem 40%
 
+.articles
+  gradient(#fff200, #32e5e9)
+  .category-container-lifestyle &
+    gradient(#f02bc2, #f2989a)
+  .category-container-family &
+    gradient(#ff5f6d, #ffc371)
+    gradient(#ff5f6d, #ffdf71)
+  .category-container-remote &
+    gradient(#005bea, #00c6fb)
+  .category-container-travel &
+    gradient(#b3ffab, #12fff7)
+    gradient(#12fff7, #b3ffab)
+    gradient(blue(#12fff7,90%), #b3ffab)
+
+  .category-container-lifelog &
+    gradient(#7028e4, #a8d3ff)
 </style>
 
 <script>
@@ -98,7 +125,7 @@ export default {
     Loader
   },
   props: {
-    siteTitle: String,
+    title: String,
     articles: Array,
     query: Object
   },
@@ -111,7 +138,10 @@ export default {
   computed: {
     titleTransform () {
       // return ``
-      return `scale(${1 - (0.0000005 * this.scrollTop)}) translate(0, ${-1 * this.scrollTop / 700}px)`
+      return `
+        scale(${1 - (this.scrollTop / 500000)})
+        translate(0, ${-1 * this.scrollTop / 500}px)
+      `
     },
     rotate () {
       return {

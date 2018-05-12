@@ -1,10 +1,10 @@
 <template>
   <article class="c-list-article" :class="{'is-active': isActive}">
-    <h2 class="article-title">
+    <h2 class="article-title" :style="titlePosition">
       <nuxt-link :to="`/${article.type}/${article.slug}`" v-html="article.title"></nuxt-link>
     </h2>
     <div class="article-body-container" :style="position">
-      <nuxt-link :to="`/${article.type}/${article.slug}`" class="article-body">
+      <nuxt-link :to="`/${article.type}/${article.slug}`" class="article-body" :class="categorySlugs">
         <div
           v-if="featuredImage"
           :style="{'background-image': `url(${featuredImage.source_url})`}"
@@ -18,24 +18,7 @@
         /> -->
       </nuxt-link>
     </div>
-<!--
-    <div class="article-meta">
-      <span class="categories">
-        <nuxt-link class="term" v-for="term in article.terms[0]" :to="`/category/${term.slug}`" :key="term.id" v-html="term.name" v-if="article.terms[0]"></nuxt-link>
-      </span>
-    </div>
-    <nuxt-link :to="`/${article.type}/${article.slug}`" class="article-body">
-      <div class="columns">
-        <div class="column article-thumbnail">
-
-        </div>
-        <div class="column article-content">
-          <h2 v-html="article.title"></h2>
-          <div class="excerpt" v-html="article.excerpt"></div>
-        </div>
-      </div>
-    </nuxt-link>
- -->  </article>
+  </article>
 </template>
 
 <style lang="stylus" scoped>
@@ -62,14 +45,27 @@
   // gradient(#f9f, #f9f)
 
 .article-body
-  .c-list-article &
-    gradient(#ff9, #fff)
-  .c-list-article::nth-child(4n+1) &
-    gradient(#f9f, #fff)
-  .c-list-article::nth-child(4n+2) &
-    gradient(#f99, #fff)
-  .c-list-article::nth-child(4n+3) &
-    gradient(#99f, #fff)
+  gradient(#ff9, #fff)
+  &.lifestyle
+    gradient(#f7b4d9, #f5ecca)
+    background mix(#f2989a, #fff)
+  &.family
+    gradient(#ff5f6d, #fdf9d5)
+    gradient(#fff38d, #fdf9d5)
+    gradient(lighten(mix(#ff5f6d,#ffc371), 10%), mix(#ffc371,#fff))
+    background mix(#ffdf71, #fff)
+
+    // gradient(lighten(#ff5f6d,40%), lighten(#ffc371,40%))
+  &.remote
+    gradient(#d7fffe, #fcf5fd)
+    background mix(#00c6fb, #fff)
+  &.travel
+    gradient(#aefb7f, #e5f9d5)
+    gradient(lighten(mix(#12fff7,#b3ffab), 10%), mix(#b3ffab,#fff))
+    background mix(#b3ffab,#fff)
+  &.lifelog
+    gradient(#a8c1ec, lighten(#fac1eb, 60%))
+    background mix(#a8d3ff,#fff)
   border-radius: 50%
   background-blend-mode: darken
   // +media("tablet")
@@ -80,43 +76,64 @@
   overflow hidden
   position relative
   transition: all .25s ease-in-out
-  &:hover
-    opacity .9
+  opacity: 0.8
   .is-active &
+    opacity .98
     +media("mobile")
       transform: scale(1.5) translate3d(.5rem, -1rem, 0)
     +media("tablet")
       transform: scale(3) translate3d(-6rem, -2rem, 0)
+  &:hover
+    opacity 1
 
 .article-title
   position fixed
   bottom 25%
-  left 5%
-  transform translate(0, 50%)
-  opacity 0
+  left 10%
+  margin-left 2rem
   z-index 0
-  margin-top 10px
-  transition: opacity .25s ease-out
+  transition: opacity 1s ease-out
   padding 1rem 2rem
-  // text-align justify
   min-width 20rem
-  max-width 50%
-  max-width 40%
-  font-size 5rem
+  // max-width 40%
   font-size 3rem
+  a
+    color: rgba($color-white, .25)
+    color: $color-gray
+    transition: all .25s ease-out
+    transform scale(.75)
+
+    display inline-block
   +touch()
     font-size $fontsize-xxlarge
   +mobile()
-    background rgba(#fff, 0.5)
-    font-size 1.5rem
     top 60%
     bottom auto
-    left 50%
-    transform scale(1) translate(-50%, -50%)
-    margin-top 2rem
+    left 0%
+    width 100%
+    margin-left 0
+    // height 100%
+    text-align center
+    // background rgba(#fff, 0.5)
+    // left 50%
+    // transform scale(1) translate(-50%, -50%)
+    // margin-top 2rem
+    a
+      padding 2rem
+      width 100%
+      font-size 1.5rem
+      // border-radius: 50%
+
   .is-active &
     transition-delay: .2s
-    opacity 1
+    opacity .98
+    a
+      color: $color-heading
+      transform scale(1)
+
+
+  // .is-ended &
+  //   opacity 0
 
 
 .article-thumbnail
@@ -128,14 +145,12 @@
   width 100%
   height 100%
   opacity 0
-  transition: opacity .25s ease-out
+  transition: opacity .25s ease-out .35s
   .is-active &,
   .article-body:hover &
     opacity 1
   .is-active &
     transition-delay: .35s
-
-
 </style>
 
 <script>
@@ -164,12 +179,12 @@ export default {
       // -12.9819rem, -4.21808rem
       return this.x < -9 && this.y < -1 && this.scale > 0
     },
-    isEnded () {
-      return this.x < -9 || this.y < -1
+    categorySlugs () {
+      return this.article.terms && this.article.terms[0] ? this.article.terms[0].map(cat => cat.slug).join(' ') : ''
     },
-    bg () {
+    titlePosition () {
       return {
-
+        'transform': `translate3d(0, ${-1 * this.scrollTop * 1.25 + (this.index + 0.25) * 625}px, 0)`
       }
     },
     position () {

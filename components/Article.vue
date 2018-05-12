@@ -170,11 +170,6 @@ export default {
     categorySlugs () {
       return this.article.terms && this.article.terms[0] ? this.article.terms[0].map(cat => cat.slug).join(' ') : ''
     },
-    titlePosition () {
-      return {
-        'transform': `translate3d(0, ${-1 * this.scrollTop * 1 + (this.index + 0.25) * 500}px, 0)`
-      }
-    },
     position () {
       const displayLenght = 10
       // const originWidth = 12 // 15rem, 240px
@@ -194,21 +189,20 @@ export default {
 
       const index = stepScroll < this.offsetIndex + this.index ? this.offsetIndex + this.index - stepScroll : 0
 
-      const rad = (2 * Math.PI * originDeg / 360) - Math.pow(index, radPow) * (2 * Math.PI * stepDeg / 360)
-
-      this.x = (originRadius - Math.pow(index, radiusPow) * stepRadius) * Math.cos(rad) * 0.5
-      this.y = (originRadius - Math.pow(index, radiusPow) * stepRadius) * Math.sin(rad) * 0.6
-      // const x = (originRadius - Math.pow(index, radiusPow) * stepRadius) * Math.cos(rad) * 0.5 * Math.pow(index, 1)
-      // const y = (originRadius - Math.pow(index, radiusPow) * stepRadius) * Math.sin(rad) * 1.2
-      const z = rad
-
       const scrollScale = 0
-      // const scrollScale = Math.pow(stepScroll, pow) * stepScale
       this.scale = originScale - Math.pow(index, scalePow) * stepScale + scrollScale
       this.scale = (this.scale < 0) ? 0 : this.scale
 
+      if (this.scale) {
+        const rad = (2 * Math.PI * originDeg / 360) - Math.pow(index, radPow) * (2 * Math.PI * stepDeg / 360)
+
+        this.x = (originRadius - Math.pow(index, radiusPow) * stepRadius) * Math.cos(rad) * 0.5
+        this.y = (originRadius - Math.pow(index, radiusPow) * stepRadius) * Math.sin(rad) * 0.6
+      }
+
       return {
-        'transform': `scale(${this.scale}) translate3d(${this.x}rem, ${this.y}rem, ${z}rem)`
+        'transform': `scale(${this.scale}) translate3d(${this.x}rem, ${this.y}rem, 0)`,
+        'display': this.scale > 0 && this.y < 20 ? 'block' : 'none'
         // 'width': `${originWidth}rem`,
         // 'height': `${originWidth}rem`,
         // 'margin-left': `${1 * originWidth / 4}rem`,

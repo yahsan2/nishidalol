@@ -120,7 +120,7 @@ export default {
         transition transform .25s
         transform-origin 50% 50%
       &:hover
-        transform rotate(-10deg) scale(1.2)
+        transform translateY(-.5rem) rotate(-10deg) scale(1.2)
         span
           transform scale(1.2)
       // position relative

@@ -7,7 +7,7 @@
       <nuxt-link :to="`/${article.type}/${article.slug}`" class="article-body" :class="categorySlugs">
         <div
           v-if="featuredImage"
-          :style="{'background-image': `url(${featuredImage.media_details.sizes.medium})`}"
+          :style="{'background-image': `url(${featuredImage.source_url})`}"
           class="article-thumbnail"
         />
 <!--         <ArticleFeaturedImage
@@ -89,7 +89,7 @@
   transform translate3d(0, 50%, 0)
   opacity 0
   .is-active &
-    transition-delay: .2s
+    transition-delay .35s
     opacity .98
   +touch()
     font-size $fontsize-xxlarge

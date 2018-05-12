@@ -1,8 +1,8 @@
 <template>
   <article class="c-list-article" :class="{'is-active': isActive}">
-<!--     <h2 class="article-title">
+    <h2 class="article-title">
       <nuxt-link :to="`/${article.type}/${article.slug}`" v-html="article.title"></nuxt-link>
-    </h2> -->
+    </h2>
     <div class="article-body-container" :style="position">
       <nuxt-link :to="`/${article.type}/${article.slug}`" class="article-body" :class="categorySlugs">
         <div
@@ -81,17 +81,15 @@
   left 5%
   margin-left 2rem
   z-index 0
-  transition: opacity 1s ease-out
+  transition: opacity .25s ease-out
   padding 1rem 2rem
   min-width 20rem
   max-width 40%
   font-size 3rem
   transform translate3d(0, 50%, 0)
-  a
-    color: rgba($color-white, 0)
-    transition: all .25s ease-out
-    // transform scale(.75)
-    display inline-block
+  opacity 0
+  .is-active &
+    opacity .98
   +touch()
     font-size $fontsize-xxlarge
   +mobile()
@@ -103,21 +101,14 @@
     margin-left 0
     transform translate3d(0, -50%, 0)
     margin-top 2rem
-    .is-active &
-      background rgba(#fff, 0.5)
+    background rgba($color-white, 0.5)
+    text-align center
     a
-      text-align center
       padding 1rem 0rem
       width 100%
       font-size 1.5rem
-      // border-radius: 50%
 
-  .is-active &
-    transition-delay: .2s
-    opacity .98
-    a
-      color: $color-heading
-      transform scale(1)
+
 
 
   // .is-ended &

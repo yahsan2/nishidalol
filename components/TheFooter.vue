@@ -7,7 +7,7 @@
     <nav class="f-nav">
       <ul class="f-nav-ul">
         <li class="f-nav-li top">
-          <nuxt-link to="/" exact><span>トップ<br>oppai</span></nuxt-link>
+          <nuxt-link to="/" exact><span>トップ<br>ボタン</span></nuxt-link>
         </li>
         <li class="f-nav-li about">
           <nuxt-link to="/about" exact><span>お仕事依頼</span></nuxt-link>

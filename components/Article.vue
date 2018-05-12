@@ -1,8 +1,5 @@
 <template>
   <article class="c-list-article" :class="{'is-active': isActive}">
-    <h2 class="article-title">
-      <nuxt-link :to="`/${article.type}/${article.slug}`" v-html="article.title"></nuxt-link>
-    </h2>
     <div class="article-body-container" :style="position">
       <nuxt-link :to="`/${article.type}/${article.slug}`" class="article-body" :class="categorySlugs">
         <div

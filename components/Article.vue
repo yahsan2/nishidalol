@@ -7,7 +7,7 @@
       <nuxt-link :to="`/${article.type}/${article.slug}`" class="article-body" :class="categorySlugs">
         <div
           v-if="featuredImage"
-          :style="{'background-image': `url(${featuredImage.source_url})`}"
+          :style="{'background-image': `url(${featuredImage.media_details.sizes.medium})`}"
           class="article-thumbnail"
         />
 <!--         <ArticleFeaturedImage

@@ -114,11 +114,17 @@ export default {
       width 6rem
       height 6rem
       transition transform .25s
+      +touch()
+        width 5rem
+        height 5rem
+        font-size $fontsize-small
+        font-weight bold
       span
         line-height 1.4
         text-align center
         transition transform .25s
         transform-origin 50% 50%
+
       &:hover
         transform translateY(-.5rem) rotate(-10deg) scale(1.2)
         span

@@ -89,6 +89,7 @@
   transform translate3d(0, 50%, 0)
   opacity 0
   .is-active &
+    transition-delay: .2s
     opacity .98
   +touch()
     font-size $fontsize-xxlarge
@@ -100,13 +101,13 @@
     max-width none
     margin-left 0
     transform translate3d(0, -50%, 0)
-    margin-top 2rem
+    margin-top 3rem
     background rgba($color-white, 0.5)
     text-align center
+    padding 1rem
     a
-      padding 1rem 0rem
       width 100%
-      font-size 1.5rem
+      font-size $fontsize-large
 
 
 

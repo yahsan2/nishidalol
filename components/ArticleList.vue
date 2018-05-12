@@ -69,7 +69,6 @@
       // background rgba($color-blue, .4)
 
 
-
 .spinner
   position: relative
   margin: auto

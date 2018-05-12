@@ -89,13 +89,13 @@
 .article-title
   position fixed
   bottom 25%
-  left 10%
+  left 5%
   margin-left 2rem
   z-index 0
   transition: opacity 1s ease-out
   padding 1rem 2rem
   min-width 20rem
-  // max-width 40%
+  max-width 40%
   font-size 3rem
   a
     color: rgba($color-white, .25)
@@ -111,6 +111,8 @@
     bottom auto
     left 0%
     width 100%
+    max-width none
+
     margin-left 0
     // height 100%
     text-align center

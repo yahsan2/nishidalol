@@ -27,6 +27,7 @@ export default {
     }
 
     if (!store.state.cachePages[route.path]) {
+      store.commit('setLoadingStatus', 'loading')
       const posts = await app.$api.get('/posts', query)
       store.commit('setCachePages', {
         path: route.path,

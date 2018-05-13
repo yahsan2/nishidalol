@@ -1,5 +1,5 @@
 <template>
-  <footer class="c-footer">
+  <footer class="c-footer" :class="{'is-loaded': loadingStatus === 'loaded'}">
     <div class="f-text">
       <h2><nuxt-link to="/" exact><span>家族でどう楽しく生きるか模索する、にしだけ夫婦ブログ</span></nuxt-link></h2>
       <!-- <p><small>© {{ year }}</small></p> -->
@@ -9,8 +9,8 @@
         <li class="f-nav-li top">
           <nuxt-link to="/" exact><span>トップ<br>ボタン</span></nuxt-link>
         </li>
-        <li class="f-nav-li about">
-          <nuxt-link to="/about" exact><span>お仕事依頼</span></nuxt-link>
+        <li class="f-nav-li contact">
+          <nuxt-link to="/contact" exact><span>お仕事依頼</span></nuxt-link>
         </li>
         <li class="f-nav-li dream">
           <nuxt-link to="/dream" exact><span>助けて<br>ほしい夢</span></nuxt-link>
@@ -19,7 +19,7 @@
           <nuxt-link to="/category/family" exact><span>家族の<br>価値観</span></nuxt-link>
         </li>
         <li class="f-nav-li travel">
-          <nuxt-link to="/category/travel" exact><span>旅人<br>ファイヤー</span></nuxt-link>
+          <nuxt-link to="/category/travel" exact><span>旅人<br>お役立ち</span></nuxt-link>
         </li>
         <li class="f-nav-li remote">
           <nuxt-link to="/category/remote" exact><span>リモート<br>ワーク</span></nuxt-link>
@@ -30,12 +30,17 @@
         <li class="f-nav-li lifelog">
           <nuxt-link to="/category/lifelog" exact><span>にしだけ<br>日記</span></nuxt-link>
         </li>
+        <li class="f-nav-li lifelog">
+          <nuxt-link to="/category/lifelog" exact><span>SNS<br>フォロー<br>してや</span></nuxt-link>
+        </li>
       </ul>
     </nav>
   </footer>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   computed: {
     meta () {
@@ -43,8 +48,16 @@ export default {
     },
     year () {
       return new Date().getFullYear()
-    }
+    },
+    ...mapState([
+      'loadingStatus'
+    ])
   }
+  // watch: {
+  //   loadingStatus (status) {
+  //     console.log(status)
+  //   }
+  // }
 }
 </script>
 
@@ -86,12 +99,13 @@ export default {
   .f-nav-li
     display inline-block
     padding-left $column-gap
-    transition transform .25s
+    transition transform .2s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+    transform translateY(200%)
     &:last-child
       padding-right $column-gap
     &.top a
       background rgba(mix($color-bg-home0, #fff), .9)
-    &.about a
+    &.contact a
       background rgba(mix($color-bg-home1, #fff), .9)
     &.dream a
       background rgba(mix($color-bg-lifestyle0, #fff), .9)
@@ -105,15 +119,22 @@ export default {
       background rgba(mix($color-bg-travel0, #fff), .9)
     &.lifelog a
       background rgba(mix($color-bg-lifelog0, #fff), .9)
+    .is-loaded &,
+    &:hover
+      transform translateY(0%)
+    for num in (1..10)
+      .is-loaded &:nth-child({num})
+        transition-delay (num - 1) * .075s + 2s
     > a
       border-radius 50%
       display flex
       align-items center
       justify-content center
       color $color-text
-      width 6rem
-      height 6rem
-      transition transform .25s
+      width 5.25rem
+      height 5.25rem
+      transition transform .25s cubic-bezier(0.175, 0.885, 0.32, 1.575)
+      transition transform .25s ease-in-out
       +touch()
         width 5rem
         height 5rem
@@ -122,9 +143,8 @@ export default {
       span
         line-height 1.4
         text-align center
-        transition transform .25s
+        transition transform .1s
         transform-origin 50% 50%
-
       &:hover
         transform translateY(-.5rem) rotate(-10deg) scale(1.2)
         span

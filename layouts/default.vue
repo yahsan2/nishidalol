@@ -51,6 +51,14 @@
   .hide-small-only
     display: none
 
+.nuxt-progress
+  position fixed
+  // max-width 80%
+  height .8rem !important
+  bottom 0%
+  top auto
+  left 50%
+  transform translate(-50%, 0%)
 </style>
 
 <script>

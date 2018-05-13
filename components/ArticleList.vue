@@ -1,12 +1,13 @@
 <template>
-  <div class="article-list" id="article-list">
+  <div class="article-list" id="article-list"
+    :class="{'is-loaded': loadingStatus == 'loaded' }"
+  >
+    <h1 class="site-title"
+      :style="{'transform': titleTransform}"
+    >
+      <span class="site-title-inner"><span v-html="title"></span></span>
+    </h1>
     <div class="articles">
-      <no-ssr>
-        <!-- <Bubbly/> -->
-      </no-ssr>
-      <h1 class="site-title">
-        <span v-html="title" :style="{'transform': titleTransform}"></span>
-      </h1>
       <Article
         v-for="(article, index) in articles"
         :index="index"
@@ -39,24 +40,65 @@
 
 <style lang="stylus" scoped>
 @import '~assets/style/settings'
+
+@keyframes title
+  0%
+    width 100%
+  25%
+    width 100%
+  50%
+    width 100%
+  100%
+    width 100%
+
+
+
 .site-title
   position fixed
   margin 0 0
   padding 0
-  span
+  .site-title-inner
     color rgba($color-white, .5)
     line-height 1
     palt()
     upper()
+    min-width 120rem
+    > span
+      display block
+      transform translate(-100%, 0)
+      text-align center
+      &:after
+        content ''
+        position absolute
+        background rgba(#fff, 1)
+        display block
+        top 0
+        left 0
+        width 100%
+        height 100%
+
+  .is-loaded &
+    .site-title-inner
+      > span
+        transition all .4s ease .25s
+        transform translate(0%, 0)
+        width 100%
+        &:after
+          transition all .4s ease .7s
+          transform translate(100%, 0)
+        // opacity 0
+
+      // span:after
+      //   width 0%
     // text-transform uppercase
   +mobile()
     font-size 5rem
   +touch()
     left 85%
-    top 40%
-    transform translate(-50%, -50%) rotate(90deg)
-    transform-origin 50% 50%
-    span
+    top 0%
+    .site-title-inner
+      transform translate(-50%, 250%) rotate(90deg)
+      transform-origin 50% 50%
 
   +tablet()
     font-size 7.5rem
@@ -64,8 +106,8 @@
     font-size 18rem
     left 50%
     top 40%
-    transform translate(-50%, -50%) rotate(20deg)
-    span
+    .site-title-inner
+      transform translate(-50%, -50%) rotate(20deg)
       // background rgba($color-blue, .4)
 
 
@@ -78,6 +120,32 @@
   // height 100%
   // overflow auto
   // -webkit-overflow-scrolling: touch
+  &:before
+    content ''
+    display block
+    position fixed
+    height 100vh
+    width 100%
+    left 0
+    top 0
+    transition all .25s
+    transform scale(1.1) translate(0, 0)
+    opacity 1
+    gradient($color-bg-home0, $color-bg-home1)
+    .category-container-lifestyle &
+      gradient($color-bg-lifestyle0, $color-bg-lifestyle1)
+    .category-container-family &
+      gradient($color-bg-family0, $color-bg-family1)
+    .category-container-remote &
+      gradient($color-bg-remote0, $color-bg-remote1)
+    .category-container-travel &
+      gradient($color-bg-travel0, $color-bg-travel1)
+    .category-container-lifelog &
+      gradient($color-bg-lifelog0, $color-bg-lifelog1)
+  &.is-loaded:before
+    transform scale(1) translate(0, 0)
+    opacity 1
+
 .scroll-block
   content ''
   display block
@@ -90,19 +158,12 @@
   width 100%
   height 100%
   transform-origin: 20rem 40%
-
-.articles
-  gradient($color-bg-home0, $color-bg-home1)
-  .category-container-lifestyle &
-    gradient($color-bg-lifestyle0, $color-bg-lifestyle1)
-  .category-container-family &
-    gradient($color-bg-family0, $color-bg-family1)
-  .category-container-remote &
-    gradient($color-bg-remote0, $color-bg-remote1)
-  .category-container-travel &
-    gradient($color-bg-travel0, $color-bg-travel1)
-  .category-container-lifelog &
-    gradient($color-bg-lifelog0, $color-bg-lifelog1)
+  transition all .25s
+  transform translate(0, .5rem)
+  opacity 0
+  .is-loaded &
+    transform translate(0, 0)
+    opacity 1
 </style>
 
 <script>
@@ -126,15 +187,15 @@ export default {
   },
   data () {
     return {
+      mounted: false,
       scrollTop: 0,
-      offsetIndex: 10
+      offsetIndex: 12
     }
   },
   computed: {
     titleTransform () {
       // return ``
       return `
-        scale(${1 - (this.scrollTop / 500000)})
         translate(0, ${-1 * this.scrollTop / 500}px)
       `
     },
@@ -145,7 +206,8 @@ export default {
     },
     ...mapState([
       'currentPath',
-      'cachePages'
+      'cachePages',
+      'loadingStatus'
     ])
   },
   methods: {
@@ -176,33 +238,41 @@ export default {
       return t1 * t1 * t1 + 1
     },
     initOffsetIndex () {
-      // let t = 0
-      // const time = 1
       const frame = 60
       const endIndex = 5
-      // const diffIndex = this.offsetIndex - endIndex
+      this.offsetIndex = 12
       const timer = setInterval(() => {
-        // t += (diffIndex / (frame * time))
         if (this.offsetIndex <= endIndex) {
           this.offsetIndex = endIndex
           clearInterval(timer)
         }
-        // console.log(diffIndex)
-        // console.log(diffIndex / (frame * time))
-        // console.log(this.easeOutCubic(t))
-        // this.offsetIndex = 10 - this.easeOutCubic(t)
         this.offsetIndex = this.offsetIndex - 0.2
-        // console.log(this.offsetIndex)
+      }, 1000 / frame)
+    },
+    resetOffsetIndex () {
+      const frame = 60
+      const timer = setInterval(() => {
+        if (this.offsetIndex <= this.articles.length) {
+          this.offsetIndex = this.articles.length
+          clearInterval(timer)
+        }
+        this.offsetIndex = this.offsetIndex - 0.2
       }, 1000 / frame)
     }
   },
   mounted () {
     if (process.browser) {
       window.addEventListener('scroll', this.handleScroll)
-      this.initOffsetIndex()
+      setTimeout(() => {
+        this.initOffsetIndex()
+      }, this.loadingStatus !== 'loaded' ? 1250 : 250)
+      setTimeout(() => {
+        this.$store.commit('setLoadingStatus', 'loaded')
+      }, 100)
     }
   },
   beforeDestroy () {
+    console.log('beforeDestroy')
     if (process.browser) {
       window.addEventListener('scroll', this.handleScroll)
     }

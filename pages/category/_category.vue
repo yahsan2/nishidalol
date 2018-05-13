@@ -21,6 +21,7 @@ export default {
   async asyncData ({ app, store, params, route, error }) {
     // Set default category cache
     if (!Object.keys(store.state.cacheCategories).length) {
+      store.commit('setLoadingStatus', 'loading')
       let categories = await app.$api.get('/categories', {
         per_page: 100
       })
@@ -30,6 +31,7 @@ export default {
     const category = store.state.cacheCategories[params.category] || null
 
     if (!category) {
+      store.commit('setLoadingStatus', 'loaded')
       error({ statusCode: 404, message: 'ページが見つかりません' })
       return
     }
@@ -43,6 +45,7 @@ export default {
     }
 
     if (!store.state.cachePages[route.path]) {
+      store.commit('setLoadingStatus', 'loading')
       const posts = await app.$api.get('/posts', query)
       store.commit('setCachePages', {
         path: route.path,

@@ -26,6 +26,7 @@ const store = () => new Vuex.Store({
   },
 
   state: {
+    loadingStatus: 'init',
     currentQuery: {},
     currentPath: null,
     currentPosts: [],
@@ -40,6 +41,9 @@ const store = () => new Vuex.Store({
   },
 
   mutations: {
+    setLoadingStatus (state, data) {
+      state.loadingStatus = data
+    },
     setPost (state, data) {
       state.post = data
     },

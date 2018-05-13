@@ -64,16 +64,19 @@
   display block
   overflow hidden
   position relative
-  transition: all .25s ease-in-out
+  transition: all .25s cubic-bezier(0.175, 0.885, 0.32, 1.275)
   opacity: 0.8
+  &:hover
+    opacity 1
+    transform: scale(1.1)
+
   .is-active &
-    opacity .98
+    opacity 1
     +media("mobile")
       transform: scale(1.5) translate3d(.5rem, -1rem, 0)
     +media("tablet")
       transform: scale(3) translate3d(-6rem, -2rem, 0)
-  &:hover
-    opacity 1
+
 
 .article-title
   position fixed
@@ -125,7 +128,7 @@
   width 100%
   height 100%
   opacity 0
-  transition: opacity .25s ease-out .35s
+  transition: opacity .25s ease-out
   .is-active &,
   .article-body:hover &
     opacity 1

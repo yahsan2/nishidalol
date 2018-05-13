@@ -275,11 +275,9 @@ export default {
     }
   },
   beforeDestroy () {
-    console.log('beforeDestroy')
     if (process.browser) {
       window.addEventListener('scroll', this.handleScroll)
     }
-    console.log('scrolling Destroyed')
   }
 }
 </script>

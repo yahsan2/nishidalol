@@ -35,8 +35,8 @@ export default {
       })
       store.commit('setCachePosts', posts.data)
     }
-    store.commit('setCurrentPath', route.path)
     store.commit('setCurrentQuery', query)
+    store.commit('setCurrentPath', route.path)
     store.commit('setCurrentPosts')
   },
 

@@ -15,14 +15,14 @@
         <li class="f-nav-li dream">
           <nuxt-link to="/dream" exact><span>助けて<br>ほしい夢</span></nuxt-link>
         </li>
+        <li class="f-nav-li remote">
+          <nuxt-link to="/category/remote" exact><span>リモート<br>ワーク</span></nuxt-link>
+        </li>
         <li class="f-nav-li family">
           <nuxt-link to="/category/family" exact><span>家族の<br>価値観</span></nuxt-link>
         </li>
         <li class="f-nav-li travel">
           <nuxt-link to="/category/travel" exact><span>旅人<br>お役立ち</span></nuxt-link>
-        </li>
-        <li class="f-nav-li remote">
-          <nuxt-link to="/category/remote" exact><span>リモート<br>ワーク</span></nuxt-link>
         </li>
         <li class="f-nav-li lifestyle">
           <nuxt-link to="/category/lifestyle" exact><span>暮らし<br>の実験</span></nuxt-link>
@@ -30,8 +30,8 @@
         <li class="f-nav-li lifelog">
           <nuxt-link to="/category/lifelog" exact><span>にしだけ<br>日記</span></nuxt-link>
         </li>
-        <li class="f-nav-li lifelog">
-          <nuxt-link to="/category/lifelog" exact><span>SNS<br>フォロー<br>してや</span></nuxt-link>
+        <li class="f-nav-li sns">
+          <a href="https://pomu.me/nishidalol" title="" target="_blank"><span>SNS<br>フォロー<br>してや</span></a></nuxt-link>
         </li>
       </ul>
     </nav>
@@ -119,6 +119,14 @@ export default {
       background rgba(mix($color-bg-travel0, #fff), .9)
     &.lifelog a
       background rgba(mix($color-bg-lifelog0, #fff), .9)
+    &.contact a
+      background rgba(mix($color-bg-contact0, #fff), .9)
+    &.dream a
+      background rgba(mix($color-bg-dream0, #fff), .9)
+    &.sns a
+      background rgba(mix(#1dcaff, #fff), .9)
+
+      // color #fff
     .is-loaded &,
     &:hover
       transform translateY(0%)

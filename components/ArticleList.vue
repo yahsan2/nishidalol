@@ -191,7 +191,7 @@ export default {
       mounted: false,
       scrollTop: 0,
       offsetIndex: 12,
-      scrollSpeed: 450
+      scrollSpeed: 350
     }
   },
   computed: {

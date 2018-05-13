@@ -96,6 +96,8 @@
     opacity 1
   +touch()
     font-size $fontsize-xxlarge
+    .is-active &
+      transition-delay 0s
   +mobile()
     top 50%
     bottom auto

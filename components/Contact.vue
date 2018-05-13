@@ -16,7 +16,7 @@
     <p>個人・法人に関わらず、お気軽にお問合せくださいね :D</p>
 
 
-    <form name="contactform" method="POST" action="thankyou" netlify>
+    <form name="contactform" method="POST" netlify>
       <div class="field">
         <label class="label">お名前</label>
         <div class="control has-icons-left has-icons-right">
@@ -35,7 +35,6 @@
           <textarea name="message" class="textarea" placeholder=""></textarea>
         </div>
       </div>
-      <div data-netlify-recaptcha></div>
       <div class="field is-grouped">
         <div class="control">
           <button type="submit" class="button is-link">送信</button>

@@ -16,7 +16,7 @@
     <p>個人・法人に関わらず、お気軽にお問合せくださいね :D</p>
 
 
-    <form name="contact" method="POST" action="thankyou" netlify>
+    <form name="contact" method="POST" action="/thankyou" netlify>
       <div class="field">
         <label class="label">お名前</label>
         <div class="control has-icons-left has-icons-right">

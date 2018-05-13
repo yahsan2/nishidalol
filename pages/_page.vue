@@ -1,8 +1,10 @@
 <template>
-  <ArticleDetail
-    :article="article"
-    :postType="'page'"
-  />
+  <transition name="slide-fade">
+    <ArticleDetail
+      :article="article"
+      :postType="'page'"
+    />
+  </transition>
 </template>
 
 
@@ -35,6 +37,8 @@ export default {
     store.commit('setCurrentPath', route.path)
     store.commit('setCurrentPosts')
   },
+
+  transition: 'slide-fade',
 
   components: {
     ArticleDetail

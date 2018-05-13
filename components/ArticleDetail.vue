@@ -1,34 +1,36 @@
 <template>
-  <article class="single article-container section" :class="categorySlugs">
-    <transition name="slide-fade">
-      <div class="article-body typeset" :class="{ 'no-featured-image': !featuredImage }">
-        <header class="article-header" v-if="article.title">
-          <h1 class="article-title" v-html="article.title"></h1>
-          <ArticleFeaturedImage
-            v-if="featuredImage"
-            :featured-image="featuredImage"
-          />
-          <p class="article-meta" v-if="['page','contact', 'dream', 'thankyou'].indexOf(article.slug) !== -1 ">
-            <span>{{ longTimestamp(article.date) }}</span>
-            <span class="separator">|</span>
-            <!-- <nuxt-link class="author fancy" :to="`/authors/${author.slug}`"></nuxt-link> -->
-            <span>{{ author.name }}</span>
-            <span class="separator">|</span>
-            <span class="categories" v-if="article.terms && article.terms[0]">
-              <nuxt-link class="term" v-for="term in article.terms[0]" :to="`/category/${term.slug}`" :key="term.id" v-html="term.name"></nuxt-link>
-            </span>
-          </p>
-        </header>
-        <section v-html="article.content" class="article-main section" v-if="['contact', 'dream', 'thankyou'].indexOf(postType) === -1 "/>
-        <Contact v-if="postType === 'contact'" />
-        <Dream v-if="postType === 'dream'" />
-        <Thankyou v-if="postType === 'thankyou'" />
-        <footer class="section">
-          shere いれるよ〜
-        </footer>
-        <!-- <ArticleComments :article="article"/> -->
-      </div>
-    </transition>
+  <article class="single article-container section"
+    :class="categorySlugs"
+    >
+    <div class="article-body typeset"
+      :class="{'is-loaded': loadingStatus == 'loaded' }"
+    >
+      <header class="article-header" v-if="article.title">
+        <h1 class="article-title" v-html="article.title"></h1>
+        <ArticleFeaturedImage
+          v-if="featuredImage"
+          :featured-image="featuredImage"
+        />
+        <p class="article-meta" v-if="['page','contact', 'dream', 'thankyou'].indexOf(article.slug) !== -1 ">
+          <span>{{ longTimestamp(article.date) }}</span>
+          <span class="separator">|</span>
+          <!-- <nuxt-link class="author fancy" :to="`/authors/${author.slug}`"></nuxt-link> -->
+          <span>{{ author.name }}</span>
+          <span class="separator">|</span>
+          <span class="categories" v-if="article.terms && article.terms[0]">
+            <nuxt-link class="term" v-for="term in article.terms[0]" :to="`/category/${term.slug}`" :key="term.id" v-html="term.name"></nuxt-link>
+          </span>
+        </p>
+      </header>
+      <section v-html="article.content" class="article-main section" v-if="['contact', 'dream', 'thankyou'].indexOf(postType) === -1 "/>
+      <Contact v-if="postType === 'contact'" />
+      <Dream v-if="postType === 'dream'" />
+      <Thankyou v-if="postType === 'thankyou'" />
+      <footer class="section">
+        shere いれるよ〜
+      </footer>
+      <!-- <ArticleComments :article="article"/> -->
+    </div>
   </article>
 </template>
 
@@ -83,6 +85,13 @@
   max-width 40rem
   margin 0 auto
   padding-bottom $section-gap * 3
+  transition all .25s
+  transform translate(0, .5rem)
+  opacity 0
+  &.is-loaded
+    transform translate(0, 0)
+    opacity 1
+
 
 
 .article-header
@@ -144,7 +153,8 @@ export default {
     },
     ...mapState([
       'currentPath',
-      'cachePages'
+      'cachePages',
+      'loadingStatus'
     ])
   },
 

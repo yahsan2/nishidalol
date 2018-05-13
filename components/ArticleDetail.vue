@@ -2,26 +2,27 @@
   <article class="single article-container section" :class="categorySlugs">
     <transition name="slide-fade">
       <div class="article-body typeset" :class="{ 'no-featured-image': !featuredImage }">
-        <header class="article-header">
+        <header class="article-header" v-if="article.title">
           <h1 class="article-title" v-html="article.title"></h1>
           <ArticleFeaturedImage
             v-if="featuredImage"
             :featured-image="featuredImage"
           />
-          <p class="article-meta" v-if="postType !== 'page'">
+          <p class="article-meta" v-if="['page','contact', 'dream', 'thankyou'].indexOf(article.slug) !== -1 ">
             <span>{{ longTimestamp(article.date) }}</span>
             <span class="separator">|</span>
             <!-- <nuxt-link class="author fancy" :to="`/authors/${author.slug}`"></nuxt-link> -->
             <span>{{ author.name }}</span>
             <span class="separator">|</span>
-            <span class="categories">
-              <nuxt-link class="term" v-for="term in article.terms[0]" :to="`/category/${term.slug}`" :key="term.id" v-html="term.name" v-if="article.terms && article.terms[0]"></nuxt-link>
+            <span class="categories" v-if="article.terms && article.terms[0]">
+              <nuxt-link class="term" v-for="term in article.terms[0]" :to="`/category/${term.slug}`" :key="term.id" v-html="term.name"></nuxt-link>
             </span>
           </p>
         </header>
-        <section v-html="article.content" class="article-main section" v-if="['contact', 'dream'].indexOf(article.slug) === -1 "/>
-        <Contact v-if="article.slug === 'contact'" />
-        <Dream v-if="article.slug === 'dream'" />
+        <section v-html="article.content" class="article-main section" v-if="['contact', 'dream', 'thankyou'].indexOf(postType) === -1 "/>
+        <Contact v-if="postType === 'contact'" />
+        <Dream v-if="postType === 'dream'" />
+        <Thankyou v-if="postType === 'thankyou'" />
         <footer class="section">
           shere いれるよ〜
         </footer>
@@ -39,12 +40,12 @@
   padding 0 $column-gap $section-gap * 2
   background mix($color-bg-home1, #fff)
   &:before
+    content: ''
     gradient(mix($color-bg-home0, #fff), mix($color-bg-home1, #fff))
     position absolute
     top 0
     left 0
     width 100%
-    content: ''
     height 100vh
     display block
   &.lifestyle
@@ -67,7 +68,7 @@
     background mix($color-bg-lifelog1, #fff)
     &:before
       gradient($color-bg-lifelog0, mix($color-bg-lifelog1, #fff))
-  &.contact
+  &.contact, &.thankyou
     background mix($color-bg-contact1, #fff)
     &:before
       gradient($color-bg-contact0, mix($color-bg-contact1, #fff))
@@ -105,6 +106,7 @@ import { mapState } from 'vuex'
 import ArticleFeaturedImage from '~/components/ArticleFeaturedImage'
 import Contact from '~/components/Contact'
 import Dream from '~/components/Dream'
+import Thankyou from '~/components/Thankyou'
 
 export default {
   props: {
@@ -120,7 +122,8 @@ export default {
   components: {
     ArticleFeaturedImage,
     Contact,
-    Dream
+    Dream,
+    Thankyou
   },
 
   computed: {

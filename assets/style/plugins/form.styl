@@ -1,0 +1,661 @@
+form
+  padding .5rem 1rem 1rem
+  background rgba($color-white, .8)
+  border-radius .25rem
+  padding-top .5rem
+  margin-bottom 1rem
+
+label
+  font-weight bold
+  font-size $fontsize-small
+
+input, textarea
+  box-sizing border-box
+  width 100%
+  padding 0.5rem .75rem
+  border-radius .25rem
+  box-shadow none
+  border 1px solid $color-lightgray
+  &::placeholder
+    color $color-lightgray
+  &:focus
+    outline-color $color-bg-contact0
+
+  + input, textarea
+    margin-top .5rem
+
+textarea
+  min-height 10rem
+
+button
+  padding .5rem 1rem
+  border 2px solid $color-bg-home1
+  background $color-white
+  color $color-bg-home1
+  border-radius .25rem
+  cursor pointer
+  &:focus
+    background $color-lightgray-1
+    border 2px solid lighten($color-bg-home1, 50%)
+    color lighten($color-bg-home1, 50%)
+    outline none
+
+
+// // $control-radius =! $radius
+// // $control-radius-small =! $radius-small
+
+// // $control-padding-vertical =! calc(0.375em - 1px)
+// // $control-padding-horizontal =! calc(0.625em - 1px)
+
+// // control()
+// //   -moz-appearance: none
+// //   -webkit-appearance: none
+// //   align-items: center
+// //   border: 1px solid transparent
+// //   border-radius: $control-radius
+// //   box-shadow: none
+// //   display: inline-flex
+// //   font-size: $fontsize-medium
+// //   height: 2.25em
+// //   justify-content: flex-start
+// //   line-height: 1.5
+// //   padding-bottom: $control-padding-vertical
+// //   padding-left: $control-padding-horizontal
+// //   padding-right: $control-padding-horizontal
+// //   padding-top: $control-padding-vertical
+// //   position: relative
+// //   vertical-align: top
+// //   // States
+// //   &:focus,
+// //   &.is-focused,
+// //   &:active,
+// //   &.is-active
+// //     outline: none
+// //   &[disabled]
+// //     cursor: not-allowed
+
+// // // The controls sizes use mixins so they can be used at different breakpoints
+// // control-small()
+// //   border-radius: $control-radius-small
+// //   font-size: $fontsize-small
+// // control-medium()
+// //   font-size: $fontsize-medium
+// // control-large()
+// //   font-size: $fontsize-large
+
+// input()
+//   control()
+//   background-color $color-white
+//   border-color $color-gray
+//   color $color-text
+//   placeholder()
+//     color rgba($color-text, 0.3)
+//   &:hover,
+//   &.is-hovered
+//     border-color $color-lightgray
+//   &:focus,
+//   &.is-focused,
+//   &:active,
+//   &.is-active
+//     border-color $color-lightgray
+//     // box-shadow $input-focus-box-shadow-size $input-focus-box-shadow-color
+//   &[disabled]
+//     background-color $color-lightgray
+//     // border-color $input-disabled-border-color
+//     box-shadow none
+//     color $color-lightgray
+//     +placeholder
+//       color rgba($color-lightgray, 0.3)
+
+// .input,
+// .textarea
+//   input()
+//   box-shadow $input-shadow
+//   max-width 100%
+//   width 100%
+// //   &[readonly]
+// //     box-shadow none
+// //   // for $name, $pair in $colors
+// //   //   $color = nth($pair, 1)
+// //   //   &.is-#{$name}
+// //   //     border-color $color
+// //   //     &:focus,
+// //   //     &.is-focused,
+// //   //     &:active,
+// //   //     &.is-active
+// //   //       box-shadow $input-focus-box-shadow-size rgba($color-bla, 0.25)
+// //   &.is-small
+// //     control-small()
+// //   &.is-medium
+// //     control-medium()
+// //   &.is-large
+// //     control-large()
+// //   // Modifiers
+// //   &.is-fullwidth
+// //     display block
+// //     width 100%
+// //   &.is-inline
+// //     display inline
+// //     width auto
+
+// .input
+//   &.is-rounded
+//     border-radius 1rem
+//     padding-left 1em
+//     padding-right 1em
+//   &.is-static
+//     background-color transparent
+//     border-color transparent
+//     box-shadow none
+//     padding-left 0
+//     padding-right 0
+
+// .textarea
+//   display block
+//   max-width 100%
+//   min-width 100%
+//   padding 0.625em
+//   resize vertical
+//   &:not([rows])
+//     max-height 600px
+//     min-height 120px
+//   &[rows]
+//     height unset
+//   // Modifiers
+//   &.has-fixed-size
+//     resize none
+
+// .checkbox,
+// .radio
+//   cursor pointer
+//   display inline-block
+//   line-height 1.25
+//   position relative
+//   input
+//     cursor pointer
+//   &:hover
+//     color $input-hover-color
+//   &[disabled]
+//     color $input-disabled-color
+//     cursor not-allowed
+
+// .radio
+//   & + .radio
+//     margin-left 0.5em
+
+// .select
+//   display inline-block
+//   max-width 100%
+//   position relative
+//   vertical-align top
+//   &:not(.is-multiple)
+//     height 2.25em
+//     &::after
+//       arrow($input-arrow)
+//       margin-top -0.375em
+//       right 1.125em
+//       top 50%
+//       z-index 4
+//   &.is-rounded
+//     select
+//       border-radius $radius-rounded
+//       padding-left 1em
+//   select
+//     +input
+//     cursor pointer
+//     display block
+//     font-size 1em
+//     max-width 100%
+//     outline none
+//     &::-ms-expand
+//       display none
+//     &[disabled]:hover
+//       border-color $input-disabled-border-color
+//     &:not([multiple])
+//       padding-right 2.5em
+//     &[multiple]
+//       height unset
+//       padding 0
+//       option
+//         padding 0.5em 1em
+//   // States
+//   &:hover
+//     &::after
+//       border-color $input-hover-color
+//   // Colors
+//   // for $name, $pair in $colors
+//   //   $color = nth($pair, 1)
+//   //   &.is-#{$name} select
+//   //     border-color $color
+//   //     &:focus,
+//   //     &.is-focused,
+//   //     &:active,
+//   //     &.is-active
+//   //       box-shadow $input-focus-box-shadow-size rgba($color, 0.25)
+//   // Sizes
+//   &.is-small
+//     control-small()
+//   &.is-medium
+//     control-medium()
+//   &.is-large
+//     control-large()
+//   // Modifiers
+//   &.is-disabled
+//     &::after
+//       border-color $input-disabled-color
+//   &.is-fullwidth
+//     width 100%
+//     select
+//       width 100%
+//   &.is-loading
+//     &::after
+//       loader()
+//       margin-top 0
+//       position absolute
+//       right 0.625em
+//       top 0.625em
+//       transform none
+//     &.is-small:after
+//       font-size $fontsize-small
+//     &.is-medium:after
+//       font-size $fontsize-medium
+//     &.is-large:after
+//       font-size $fontsize-large
+
+// .file
+//   unselectable()
+//   align-items stretch
+//   display flex
+//   justify-content flex-start
+//   position relative
+//   // Colors
+//   // for $name, $pair in $colors
+//   //   $color = nth($pair, 1)
+//   //   $color-invert nth($pair, 2)
+//   //   &.is-#{$name}
+//   //     .file-cta
+//   //       background-color $color
+//   //       border-color transparent
+//   //       color $color-invert
+//   //     &:hover,
+//   //     &.is-hovered
+//   //       .file-cta
+//   //         background-color darken($color, 2.5%)
+//   //         border-color transparent
+//   //         color $color-invert
+//   //     &:focus,
+//   //     &.is-focused
+//   //       .file-cta
+//   //         border-color transparent
+//   //         box-shadow 0 0 0.5em rgba($color, 0.25)
+//   //         color $color-invert
+//   //     &:active,
+//   //     &.is-active
+//   //       .file-cta
+//   //         background-color darken($color, 5%)
+//   //         border-color transparent
+//   //         color $color-invert
+//   // Sizes
+//   &.is-small
+//     font-size $fontsize-small
+//   &.is-medium
+//     font-size $fontsize-medium
+//     .file-icon
+//       .fa
+//         font-size 21px
+//   &.is-large
+//     font-size $fontsize-large
+//     .file-icon
+//       .fa
+//         font-size 28px
+//   // Modifiers
+//   &.has-name
+//     .file-cta
+//       border-bottom-right-radius 0
+//       border-top-right-radius 0
+//     .file-name
+//       border-bottom-left-radius 0
+//       border-top-left-radius 0
+//     &.is-empty
+//       .file-cta
+//         border-radius $file-radius
+//       .file-name
+//         display none
+//   &.is-boxed
+//     .file-label
+//       flex-direction column
+//     .file-cta
+//       flex-direction column
+//       height auto
+//       padding 1em 3em
+//     .file-name
+//       border-width 0 1px 1px
+//     .file-icon
+//       height 1.5em
+//       width 1.5em
+//       .fa
+//         font-size 21px
+//     &.is-small
+//       .file-icon .fa
+//         font-size 14px
+//     &.is-medium
+//       .file-icon .fa
+//         font-size 28px
+//     &.is-large
+//       .file-icon .fa
+//         font-size 35px
+//     &.has-name
+//       .file-cta
+//         border-radius $file-radius $file-radius 0 0
+//       .file-name
+//         border-radius 0 0 $file-radius $file-radius
+//         border-width 0 1px 1px
+//   &.is-centered
+//     justify-content center
+//   &.is-fullwidth
+//     .file-label
+//       width 100%
+//     .file-name
+//       flex-grow 1
+//       max-width none
+//   &.is-right
+//     justify-content flex-end
+//     .file-cta
+//       border-radius 0 $file-radius $file-radius 0
+//     .file-name
+//       border-radius $file-radius 0 0 $file-radius
+//       border-width 1px 0 1px 1px
+//       order -1
+
+// .file-label
+//   align-items stretch
+//   display flex
+//   cursor pointer
+//   justify-content flex-start
+//   overflow hidden
+//   position relative
+//   &:hover
+//     .file-cta
+//       background-color darken($color-white, 2.5%)
+//       color $file-cta-hover-color
+//     .file-name
+//       border-color darken($color-darkgray, 2.5%)
+//   &:active
+//     .file-cta
+//       background-color darken($color-white, 5%)
+//       color $file-cta-active-color
+//     .file-name
+//       border-color darken($color-darkgray, 5%)
+
+// .file-input
+//   height 0.01em
+//   left 0
+//   outline none
+//   position absolute
+//   top 0
+//   width 0.01em
+
+// .file-cta,
+// .file-name
+//   control()
+//   border-color $file-border-color
+//   border-radius $file-radius
+//   font-size 1em
+//   padding-left 1em
+//   padding-right 1em
+//   white-space nowrap
+
+// .file-cta
+//   background-color $file-cta-background-color
+//   color $file-cta-color
+
+// .file-name
+//   border-color $file-name-border-color
+//   border-style $file-name-border-style
+//   border-width $file-name-border-width
+//   display block
+//   max-width $file-name-max-width
+//   overflow hidden
+//   text-align left
+//   text-overflow ellipsis
+
+// .file-icon
+//   align-items center
+//   display flex
+//   height 1em
+//   justify-content center
+//   margin-right 0.5em
+//   width 1em
+//   .fa
+//     font-size 14px
+
+// .label
+//   color $color-key
+//   display block
+//   font-size $fontsize-medium
+//   font-weight bold
+//   &:not(:last-child)
+//     margin-bottom 0.5em
+//   // Sizes
+//   &.is-small
+//     font-size $fontsize-small
+//   &.is-medium
+//     font-size $fontsize-medium
+//   &.is-large
+//     font-size $fontsize-large
+
+// .help
+//   display block
+//   font-size $help-size
+//   margin-top 0.25rem
+//   // for $name, $pair in $colors
+//   //   $color = nth($pair, 1)
+//   //   &.is-#{$name}
+//   //     color $color
+
+// // Containers
+
+// .field
+//   &:not(:last-child)
+//     margin-bottom 0.75rem
+//   // Modifiers
+//   &.has-addons
+//     display flex
+//     justify-content flex-start
+//     .control
+//       &:not(:last-child)
+//         margin-right -1px
+//       &:not(:first-child):not(:last-child)
+//         .button,
+//         .input,
+//         .select select
+//           border-radius 0
+//       &:first-child
+//         .button,
+//         .input,
+//         .select select
+//           border-bottom-right-radius 0
+//           border-top-right-radius 0
+//       &:last-child
+//         .button,
+//         .input,
+//         .select select
+//           border-bottom-left-radius 0
+//           border-top-left-radius 0
+//       .button,
+//       .input,
+//       .select select
+//         &:hover,
+//         &.is-hovered
+//           z-index 2
+//         &:focus,
+//         &.is-focused,
+//         &:active,
+//         &.is-active
+//           z-index 3
+//           &:hover
+//             z-index 4
+//       &.is-expanded
+//         flex-grow 1
+//     &.has-addons-centered
+//       justify-content center
+//     &.has-addons-right
+//       justify-content flex-end
+//     &.has-addons-fullwidth
+//       .control
+//         flex-grow 1
+//         flex-shrink 0
+//   &.is-grouped
+//     display flex
+//     justify-content flex-start
+//     & > .control
+//       flex-shrink 0
+//       &:not(:last-child)
+//         margin-bottom 0
+//         margin-right 0.75rem
+//       &.is-expanded
+//         flex-grow 1
+//         flex-shrink 1
+//     &.is-grouped-centered
+//       justify-content center
+//     &.is-grouped-right
+//       justify-content flex-end
+//     &.is-grouped-multiline
+//       flex-wrap wrap
+//       & > .control
+//         &:last-child,
+//         &:not(:last-child)
+//           margin-bottom 0.75rem
+//       &:last-child
+//         margin-bottom -0.75rem
+//       &:not(:last-child)
+//         margin-bottom 0
+
+//   &.is-horizontal
+//     tablet()
+//       display flex
+
+// .field-label
+//   .label
+//     font-size inherit
+//   mobile()
+//     margin-bottom 0.5rem
+//   tablet()
+//     flex-basis 0
+//     flex-grow 1
+//     flex-shrink 0
+//     margin-right 1.5rem
+//     text-align right
+//     &.is-small
+//       font-size $fontsize-small
+//       padding-top 0.375em
+//     &.is-normal
+//       padding-top 0.375em
+//     &.is-medium
+//       font-size $fontsize-medium
+//       padding-top 0.375em
+//     &.is-large
+//       font-size $fontsize-large
+//       padding-top 0.375em
+
+// .field-body
+//   .field .field
+//     margin-bottom 0
+//   tablet()
+//     display flex
+//     flex-basis 0
+//     flex-grow 5
+//     flex-shrink 1
+//     .field
+//       margin-bottom 0
+//     & > .field
+//       flex-shrink 1
+//       &:not(.is-narrow)
+//         flex-grow 1
+//       &:not(:last-child)
+//         margin-right 0.75rem
+
+// .control
+//   font-size $fontsize-medium
+//   position relative
+//   text-align left
+// //   // Modifiers
+// //   // DEPRECATED
+// //   &.has-icon
+// //     .icon
+// //       color $input-icon-color
+// //       height 2.25em
+// //       pointer-events none
+// //       position absolute
+// //       top 0
+// //       width 2.25em
+// //       z-index 4
+// //     .input
+// //       &:focus
+// //         & + .icon
+// //           color $input-icon-active-color
+// //       &.is-small
+// //         & + .icon
+// //           font-size $fontsize-small
+// //       &.is-medium
+// //         & + .icon
+// //           font-size $fontsize-medium
+// //       &.is-large
+// //         & + .icon
+// //           font-size $fontsize-large
+// //     &:not(.has-icon-right)
+// //       .icon
+// //         left 0
+// //       .input
+// //         padding-left 2.25em
+// //     &.has-icon-right
+// //       .icon
+// //         right 0
+// //       .input
+// //         padding-right 2.25em
+// //   &.has-icons-left,
+// //   &.has-icons-right
+// //     .input,
+// //     .select
+// //       &:focus
+// //         & ~ .icon
+// //           color $input-icon-active-color
+// //       &.is-small ~ .icon
+// //         font-size $fontsize-small
+// //       &.is-medium ~ .icon
+// //         font-size $fontsize-medium
+// //       &.is-large ~ .icon
+// //         font-size $fontsize-large
+// //     .icon
+// //       color $input-icon-color
+// //       height 2.25em
+// //       pointer-events none
+// //       position absolute
+// //       top 0
+// //       width 2.25em
+// //       z-index 4
+// //   &.has-icons-left
+// //     .input,
+// //     .select select
+// //       padding-left 2.25em
+// //     .icon.is-left
+// //       left 0
+// //   &.has-icons-right
+// //     .input,
+// //     .select select
+// //       padding-right 2.25em
+// //     .icon.is-right
+// //       right 0
+// //   &.is-loading
+// //     &::after
+// //       loader()
+// //       position absolute !important
+// //       right 0.625em
+// //       top 0.625em
+// //       z-index 4
+// //     &.is-small:after
+// //       font-size $fontsize-small
+// //     &.is-medium:after
+// //       font-size $fontsize-medium
+// //     &.is-large:after
+// //       font-size $fontsize-large

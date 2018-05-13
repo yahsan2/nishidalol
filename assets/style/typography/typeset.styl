@@ -17,10 +17,23 @@ h1()
 // Heading level 2.
 h2()
   fontline($fontsize-xlarge, 1.6, 0.5)
+  background linear-gradient(transparent, transparent 75%, rgba(#fff, .8) 75%, rgba(#fff, .8))
+  display inline-block
+  padding-left .5rem
+  padding-right .5rem
 
 // Heading level 3.
 h3()
   fontline($fontsize-large, 1.8, 0.5)
+  // background linear-gradient(transparent, transparent 75%, rgba(#fff, .8) 75%, rgba(#fff, .8))
+  // display inline-block
+  padding-left .5rem
+  padding-right .5rem
+  padding-top 0
+  margin-top 2rem
+  border-left .5rem solid #fff
+  // border-raidus 4rem
+
 
 // Heading level 4.
 h4()
@@ -133,12 +146,18 @@ dl()
 
 table()
   fontline($fontsize-medium)
+  margin-top 1rem
   font-feature-settings 'lnum', 'tnum'
+  border-collapse: collapse
   width 100%
+  background rgba(#fff, .8)
   thead
     th
       font-weight bold
       padding-bottom 1px
+  td, th
+    padding .5rem
+    border 1px solid $color-gray
 
 small()
   fontline($fontsize-small)

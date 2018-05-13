@@ -151,7 +151,8 @@ export default {
     article: Object,
     index: Number,
     scrollTop: Number,
-    offsetIndex: Number
+    offsetIndex: Number,
+    scrollSpeed: Number
   },
   components: {
     ArticleFeaturedImage,
@@ -180,7 +181,7 @@ export default {
       const radPow = 1
       const radiusPow = 0.5
       const scalePow = 0.95
-      const stepScroll = this.scrollTop / 500
+      const stepScroll = this.scrollTop / this.scrollSpeed
 
       const index = stepScroll < this.offsetIndex + this.index ? this.offsetIndex + this.index - stepScroll : 0
 

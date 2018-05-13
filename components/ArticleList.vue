@@ -16,10 +16,11 @@
         :key="article.id"
         :article="article"
         :offsetIndex="offsetIndex"
+        :scrollSpeed="scrollSpeed"
         class="article"
       />
     </div>
-    <div class="scroll-block":style="{'min-height': (articles.length + .9) * 500 + 'px'}"></div>
+    <div class="scroll-block":style="{'min-height': (articles.length + .9) * this.scrollSpeed + 'px'}"></div>
     <no-ssr>
       <InfiniteLoading
         ref="infiniteLoading"
@@ -189,14 +190,15 @@ export default {
     return {
       mounted: false,
       scrollTop: 0,
-      offsetIndex: 12
+      offsetIndex: 12,
+      scrollSpeed: 450
     }
   },
   computed: {
     titleTransform () {
       // return ``
       return `
-        translate(0, ${-1 * this.scrollTop / 500}px)
+        translate(0, ${-1 * this.scrollTop / this.scrollSpeed}px)
       `
     },
     rotate () {

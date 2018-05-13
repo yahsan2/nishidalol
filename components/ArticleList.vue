@@ -264,7 +264,7 @@ export default {
   },
   mounted () {
     if (process.browser) {
-      this. scrollSpeed = window.innerWidth > 960 ? 500 : 250
+      this.scrollSpeed = window.innerWidth > 960 ? 500 : 250
       window.addEventListener('scroll', this.handleScroll)
       setTimeout(() => {
         this.initOffsetIndex()

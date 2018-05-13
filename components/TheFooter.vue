@@ -101,6 +101,9 @@ export default {
     padding-left $column-gap
     transition transform .2s cubic-bezier(0.175, 0.885, 0.32, 1.275)
     transform translateY(200%)
+    a
+      font-family "Rounded Mplus 1c", sans-serif
+      // font-weight 500
     &:last-child
       padding-right $column-gap
     &.top a

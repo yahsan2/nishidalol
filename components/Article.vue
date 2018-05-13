@@ -89,6 +89,12 @@
   min-width 20rem
   max-width 40%
   font-size 3rem
+  // // font-family
+  font-weight 600
+  // a
+  //   letter-spacing -.1rem
+  font-family "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif
+
   transform translate3d(0, 50%, 0)
   opacity 0
   .is-active &

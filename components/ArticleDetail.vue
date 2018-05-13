@@ -11,7 +11,7 @@
           v-if="featuredImage"
           :featured-image="featuredImage"
         />
-        <p class="article-meta" v-if="['page','contact', 'dream', 'thankyou'].indexOf(article.slug) !== -1 ">
+        <p class="article-meta" v-if="['page','contact', 'dream', 'thankyou'].indexOf(article.slug) === -1 ">
           <span>{{ longTimestamp(article.date) }}</span>
           <span class="separator">|</span>
           <!-- <nuxt-link class="author fancy" :to="`/authors/${author.slug}`"></nuxt-link> -->
@@ -102,6 +102,9 @@
     padding-bottom $section-gap * 2
     margin 0
     color $color-white
+    // font-family "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif
+    letter-spacing -.075rem
+
 
 .article-meta
   padding 1rem 0 2rem

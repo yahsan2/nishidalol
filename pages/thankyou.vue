@@ -16,6 +16,7 @@ export default {
     return {
       article: {
         title: '送信完了ページ',
+        slug: 'thankyou',
         excerpt: 'お問い合わせありがとうございます。'
       }
 

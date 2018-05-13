@@ -16,6 +16,7 @@ export default {
     return {
       article: {
         title: '助けてほしい夢',
+        slug: 'dream',
         excerpt: '誰かに手伝ってほしい夢や、成し遂げたいこと、仲間がほしいこと'
       }
 

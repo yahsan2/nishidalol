@@ -16,6 +16,7 @@ export default {
     return {
       article: {
         title: 'お仕事依頼',
+        slug: 'contact',
         excerpt: 'WEB のクリエイティブや、コミュニティー運営・組織づくり、オンラインの業務改善などのお仕事依頼'
       }
 

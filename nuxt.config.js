@@ -54,10 +54,12 @@ module.exports = {
     routes () {
       return Promise.all([
         axios.get(`${apiUrl}/wp-json/wp/v2/posts?per_page=100&page=1&_embed=1`),
-        axios.get(`${apiUrl}/wp-json/wp/v2/pages?per_page=100&page=1&_embed=1`)
+        axios.get(`${apiUrl}/wp-json/wp/v2/pages?per_page=100&page=1&_embed=1`),
+        axios.get(`${apiUrl}/wp-json/wp/v2/categories?per_page=100`)
       ]).then((data) => {
         const posts = data[0]
         const pages = data[1]
+        const categories = data[2]
         return posts.data.map((post) => {
           return {
             route: '/post/' + post.slug,
@@ -67,6 +69,11 @@ module.exports = {
           return {
             route: page.slug,
             payload: page
+          }
+        })).concat(categories.data.map((category) => {
+          return {
+            route: `/category/${category.slug}`,
+            payload: category
           }
         }))
       })

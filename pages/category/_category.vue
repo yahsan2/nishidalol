@@ -18,9 +18,9 @@ import { mapGetters, mapState } from 'vuex'
 import ArticleList from '~/components/ArticleList'
 
 export default {
-  async asyncData ({ app, store, params, route, error }) {
+  async asyncData ({ app, store, params, route, error, payload }) {
     // Set default category cache
-    if (!Object.keys(store.state.cacheCategories).length) {
+    if (!Object.keys(store.state.cacheCategories).length && !payload) {
       store.commit('setLoadingStatus', 'loading')
       let categories = await app.$api.get('/categories', {
         per_page: 100
@@ -28,7 +28,7 @@ export default {
       store.commit('setCacheCategories', categories.data)
     }
 
-    const category = store.state.cacheCategories[params.category] || null
+    const category = payload || store.state.cacheCategories[params.category] || null
 
     if (!category) {
       store.commit('setLoadingStatus', 'loaded')

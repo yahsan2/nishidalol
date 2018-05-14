@@ -20,7 +20,7 @@ import ArticleList from '~/components/ArticleList'
 export default {
   async asyncData ({ app, store, params, route, error, payload }) {
     // Set default category cache
-    if (!Object.keys(store.state.cacheCategories).length && !payload) {
+    if (!Object.keys(store.state.cacheCategories).length) {
       store.commit('setLoadingStatus', 'loading')
       let categories = payload ? {data: [payload]} : await app.$api.get('/categories', {
         per_page: 100

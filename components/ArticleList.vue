@@ -133,7 +133,7 @@
     top 0
     transition all .25s
     transform scale(1.1) translate(0, 0)
-    opacity 1
+    opacity .5
     gradient($color-bg-home0, $color-bg-home1)
     .category-container-lifestyle &
       gradient($color-bg-lifestyle0, $color-bg-lifestyle1)

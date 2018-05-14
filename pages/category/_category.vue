@@ -22,13 +22,12 @@ export default {
     // Set default category cache
     if (!Object.keys(store.state.cacheCategories).length && !payload) {
       store.commit('setLoadingStatus', 'loading')
-      let categories = await app.$api.get('/categories', {
+      let categories = payload ? {data: [payload]} : await app.$api.get('/categories', {
         per_page: 100
       })
       store.commit('setCacheCategories', categories.data)
     }
-
-    const category = payload || store.state.cacheCategories[params.category] || null
+    const category = store.state.cacheCategories[params.category] || null
 
     if (!category) {
       store.commit('setLoadingStatus', 'loaded')

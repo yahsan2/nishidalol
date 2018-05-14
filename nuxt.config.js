@@ -74,7 +74,7 @@ module.exports = {
         })).concat(categories.data.map((category) => {
           return {
             route: `/category/${category.slug}`,
-            payload: category
+            payload: categories
           }
         }))
       })

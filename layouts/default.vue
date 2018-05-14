@@ -101,10 +101,19 @@ export default {
         })
         this.$store.commit('setCachePosts', posts.data)
       }
+    },
+    async defaultCategoryCache () {
+      if (this.$store.state.cacheCategories.length > 0) {
+        const categories = await this.$api.get('/categories', {
+          per_page: 100
+        })
+        store.commit('setCacheCategories', categories.data)
+      }
     }
   },
   mounted () {
     this.defaultPostCache()
+    this.defaultCategoryCache()
   }
 }
 </script>

@@ -107,7 +107,7 @@ export default {
         const categories = await this.$api.get('/categories', {
           per_page: 100
         })
-        store.commit('setCacheCategories', categories.data)
+        this.$store.commit('setCacheCategories', categories.data)
       }
     }
   },

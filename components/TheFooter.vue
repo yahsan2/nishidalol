@@ -146,6 +146,8 @@ export default {
       height 5.25rem
       transition transform .25s cubic-bezier(0.175, 0.885, 0.32, 1.575)
       transition transform .25s ease-in-out
+      font-size $fontsize-small * 1.2
+      letter-spacing -.01em
       +touch()
         width 5rem
         height 5rem

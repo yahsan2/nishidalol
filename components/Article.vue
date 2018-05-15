@@ -6,16 +6,10 @@
     <div class="article-body-container" :style="position">
       <nuxt-link :to="`/${article.type}/${article.slug}`" class="article-body" :class="categorySlugs">
         <div
-          v-if="featuredImage"
+          v-if="featuredImage && featuredImage.source_url"
           :style="{'background-image': `url(${featuredImage.source_url})`}"
           class="article-thumbnail"
         />
-<!--         <ArticleFeaturedImage
-          v-if="featuredImage"
-          :featured-image="featuredImage"
-          class="article-thumbnail hide"
-          x
-        /> -->
       </nuxt-link>
     </div>
   </article>

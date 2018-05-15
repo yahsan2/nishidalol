@@ -13,8 +13,9 @@
 .spinner
   opacity 1
   transition all .25s
-  .is-loaded + &
-    transition all 0s
+  .is-loaded + &,
+  [lazy="loaded"] + &
+    transition all .25s ease .5s
     opacity 0
 
 .spinner-container
@@ -61,15 +62,15 @@
 
 @-webkit-keyframes sk-bounce
   0%, 100%
-    -webkit-transform scale(0.05)
+    -webkit-transform scale(0.1)
   50%
     -webkit-transform scale(1.0)
 
 
 @keyframes sk-bounce
   0%, 100%
-    transform scale(0.05)
-    -webkit-transform scale(0.05)
+    transform scale(0.1)
+    -webkit-transform scale(0.1)
    50%
     transform scale(1.0)
     -webkit-transform scale(1.0)

@@ -26,12 +26,24 @@
       <Contact v-if="postType === 'contact'" />
       <Dream v-if="postType === 'dream'" />
       <Thankyou v-if="postType === 'thankyou'" />
-      <footer class="section">
-        shere いれるよ〜
+      <footer class="section article-footer" v-if="article.title">
+        <h4>シェアボタンでシェアできるよ。</h4>
+        <p>
+          <a class="share-icon" @click.prevent="popupWindow('twitter')">
+              <Twitter/>
+          </a>
+          <a class="share-icon" @click.prevent="popupWindow('facebook')">
+              <Facebook/>
+          </a>
+          <a class="share-icon" @click.prevent="copyPermalink()">
+              <LinkIcon/>
+          </a>
+        </p>
+        <p><small>シェアしてくれたら、嬉しすぎてバビっちゃうYO</small></p>
       </footer>
       <!-- <ArticleComments :article="article"/> -->
     </div>
-    <Loader class="page-loader" />
+    <Loader class="article-loader" />
   </article>
 </template>
 
@@ -93,7 +105,7 @@
     transform translate(0, 0)
     opacity 1
 
-.page-loader
+.article-loader
   position fixed
   top 50%
   left 50%
@@ -116,6 +128,24 @@
   .separator
     margin 0 1rem
 
+.article-footer
+  .share-icon
+    cursor pointer
+    display inline-block
+    transition all .25s
+    &:hover
+      transform scale(1.2)
+    & + .share-icon
+      margin-left .75rem
+
+  svg
+    width 25px
+    height 25px
+    line-height 1
+  p
+    line-height 1
+  .a
+    fill blue !important
 </style>
 
 <script>
@@ -125,6 +155,10 @@ import Contact from '~/components/Contact'
 import Dream from '~/components/Dream'
 import Thankyou from '~/components/Thankyou'
 import Loader from '~/components/Loader'
+
+import LinkIcon from '~/assets/svg/link'
+import Facebook from '~/assets/svg/facebook'
+import Twitter from '~/assets/svg/twitter'
 
 export default {
   props: {
@@ -142,10 +176,19 @@ export default {
     Contact,
     Dream,
     Thankyou,
-    Loader
+    Loader,
+    Facebook,
+    Twitter,
+    LinkIcon
   },
 
   computed: {
+    permalink () {
+      return `https://nishida.lol/${this.article.type}/${this.article.slug}`
+    },
+    encodePermalink () {
+      return encodeURIComponent(this.permalink)
+    },
     author () {
       return this.article.author || {}
     },
@@ -178,6 +221,62 @@ export default {
   },
 
   methods: {
+    execCopy (string) {
+      const temp = document.createElement('div')
+
+      temp.appendChild(document.createElement('pre')).textContent = string
+
+      const s = temp.style
+      s.position = 'fixed'
+      s.left = '-100%'
+
+      document.body.appendChild(temp)
+      document.getSelection().selectAllChildren(temp)
+
+      const result = document.execCommand('copy')
+      document.body.removeChild(temp)
+      return result
+    },
+    copyPermalink () {
+      if (this.execCopy(this.permalink)) {
+        window.alert(`${this.permalink} をクリッピボードにコピーしました`)
+      } else {
+        window.alert('このブラウザでは対応していません')
+      }
+    },
+    popupWindow (sns) {
+      if (process.browser) {
+        const w = 650
+        const h = 450
+
+        const dualScreenLeft = window.screenLeft !== undefined ? window.screenLeft : screen.left
+        const dualScreenTop = window.screenTop !== undefined ? window.screenTop : screen.top
+
+        const width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width
+        const height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height
+
+        const left = ((width / 2) - (w / 2)) + dualScreenLeft
+        const top = ((height / 2) - (h / 2)) + dualScreenTop
+
+        let permalink
+        switch (sns) {
+          case 'facebook':
+            permalink = `https://www.facebook.com/sharer/sharer.php?u=${this.encodePermalink}&v=3`
+            break
+          case 'twitter':
+            permalink = `https://twitter.com/intent/tweet?text=${encodeURIComponent(this.article.title) + '%20@nishidalol'}%20${this.encodePermalink}`
+            break
+          default:
+            break
+        }
+
+        const newWindow = window.open(permalink, sns, 'scrollbars=yes, menubar=no, toolbar=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left)
+
+        if (window.focus) {
+          newWindow.focus()
+        }
+      }
+    }
   },
 
   mounted () {

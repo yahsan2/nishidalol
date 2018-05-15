@@ -28,12 +28,13 @@ body
 // common heading
 heading()
   color $color-heading
-  font-weight bold
+  font-weight 600
   line-height 1.4
   letter-spacing .1rem
   font-feature-settings 'palt'
   padding-top ($section-gap/2)
   margin-bottom ($section-gap/2)
+  font-family $fontfamily-gothic-ja
   margin-top 0
   > span
     display inline-block
@@ -73,53 +74,53 @@ a
   transition all .1s
   color $color-focus
   &:visited
-    color $color-visited
+    color darken($color-visited, 20%)
   &:hover
-    color $color-hover
+    color darken($color-hover, 20%)
   &:focus
-    color $color-focus
+    color darken($color-focus, 20%)
   .lifestyle &
-    color $color-bg-lifestyle0
+    color darken($color-bg-lifestyle0, 20%)
     &:visited
-      color lighten($color-bg-lifestyle0, 20%)
+      color $color-bg-lifestyle0
     &:hover
-      color lighten($color-bg-lifestyle0, 15%)
+      color $color-bg-lifestyle0
   .family &
-    color $color-bg-family0
+    color darken($color-bg-family0, 20%)
     &:visited
-      color lighten($color-bg-family0, 20%)
+      color $color-bg-family0
     &:hover
-      color lighten($color-bg-family0, 15%)
+      color $color-bg-family0
   .remote &
-    color $color-bg-remote0
+    color darken($color-bg-remote0, 20%)
     &:visited
-      color lighten($color-bg-remote0, 15%)
+      color $color-bg-remote0
     &:hover
-      color lighten($color-bg-remote0, 20%)
+      color $color-bg-remote0
   .travel &
-    color $color-bg-travel0
+    color darken($color-bg-travel0, 20%)
     &:visited
-      color lighten($color-bg-travel0, 20%)
+      color $color-bg-travel0
     &:hover
-      color lighten($color-bg-travel0, 15%)
+      color $color-bg-travel0
   .lifelog &
-    color $color-bg-lifelog0
+    color darken($color-bg-lifelog0, 20%)
     &:visited
-      color lighten($color-bg-lifelog0, 20%)
+      color $color-bg-lifelog0
     &:hover
-      color lighten($color-bg-lifelog0, 15%)
+      color $color-bg-lifelog0
   .dream &
-    color $color-bg-dream0
+    color darken($color-bg-dream0, 20%)
     &:visited
-      color lighten($color-bg-dream0, 20%)
+      color $color-bg-dream0
     &:hover
-      color lighten($color-bg-dream0, 15%)
+      color $color-bg-dream0
   .contact &
-    color $color-bg-contact0
+    color darken($color-bg-contact0, 20%)
     &:visited
-      color lighten($color-bg-contact0, 20%)
+      color $color-bg-contact0
     &:hover
-      color lighten($color-bg-contact0, 15%)
+      color $color-bg-contact0
 
 &::selection
   color: $color-darkgray

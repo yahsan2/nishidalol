@@ -21,6 +21,9 @@ h2()
   display inline-block
   padding-left .5rem
   padding-right .5rem
+  // font-weight normal
+  font-family $fontfamily-sansserif-ja
+
 
 // Heading level 3.
 h3()
@@ -32,12 +35,16 @@ h3()
   padding-top 0
   margin-top 2rem
   border-left .5rem solid #fff
+  // font-weight 500
+  // font-family "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif
+
   // border-raidus 4rem
 
 
 // Heading level 4.
 h4()
   fontline($fontsize-medium, 2, 0.5)
+  font-family $fontfamily-sansserif-ja
 
 // Heading level 5.
 h5()
@@ -188,17 +195,17 @@ blockquote()
     margin-left $column-gap
 
 hr()
-  background-image linear-gradient(to bottom,rgba(0, 0, 0, 0) 50%, $color-bg-home0 50%)
+  background-image linear-gradient(to bottom,rgba(0, 0, 0, 0) 50%, darken($color-bg-home0, 20%) 50%)
   .lifestyle &
-    background-image linear-gradient(to bottom,rgba(0, 0, 0, 0) 50%, $color-bg-lifestyle1 50%)
+    background-image linear-gradient(to bottom,rgba(0, 0, 0, 0) 50%, darken($color-bg-lifestyle1, 20%) 50%)
   .family &
-    background-image linear-gradient(to bottom,rgba(0, 0, 0, 0) 50%, $color-bg-family1 50%)
+    background-image linear-gradient(to bottom,rgba(0, 0, 0, 0) 50%, darken($color-bg-family1, 20%) 50%)
   .remote &
-    background-image linear-gradient(to bottom,rgba(0, 0, 0, 0) 50%, $color-bg-remote1 50%)
+    background-image linear-gradient(to bottom,rgba(0, 0, 0, 0) 50%, darken($color-bg-remote1, 20%) 50%)
   .travel &
-    background-image linear-gradient(to bottom,rgba(0, 0, 0, 0) 50%, $color-bg-travel1 50%)
+    background-image linear-gradient(to bottom,rgba(0, 0, 0, 0) 50%, darken($color-bg-travel1, 20%) 50%)
   .lifelog &
-    background-image linear-gradient(to bottom,rgba(0, 0, 0, 0) 50%, $color-bg-lifelog1 50%)
+    background-image linear-gradient(to bottom,rgba(0, 0, 0, 0) 50%, darken($color-bg-lifelog1, 20%) 50%)
   background-position 0 50%
   background-repeat repeat-x
   background-size 100% 0.15rem

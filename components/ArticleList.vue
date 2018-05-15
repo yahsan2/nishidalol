@@ -57,7 +57,7 @@
       transform translate(-100%, 0)
       text-align center
       font-family "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif
-      letter-spacing 0
+      letter-spacing -1rem
       &:after
         content ''
         position absolute

@@ -2,6 +2,9 @@
   <article class="single article-container section"
     :class="categorySlugs"
     >
+    <div class="bg"
+      :style="{'background-image': `url(${featuredImage.source_url})`}"
+    ></div>
     <div class="article-body typeset"
       :class="{'is-loaded': loadingStatus == 'loaded' }"
     >
@@ -93,6 +96,30 @@
       gradient($color-bg-dream0, mix($color-bg-dream1, #fff))
 
 
+  > .bg
+    position absolute
+    top 0
+    left 0
+    mix-blend-mode darken
+    opacity 0.25
+    width 100%
+    height 100vh
+    display block
+    background no-repeat center
+    background-size cover
+    filter grayscale(100%)
+    &:before
+      content ''
+      position absolute
+      top 0
+      left 0
+      background: linear-gradient(transparent, transparent 45%, #fff)
+      width 100%
+      height 100vh
+
+    // min-height 100vh
+    // background #fff
+
 .article-body
   position relative
   max-width 40rem
@@ -104,7 +131,6 @@
   &.is-loaded
     transform translate(0, 0)
     opacity 1
-
 .article-loader
   position fixed
   top 50%
@@ -113,22 +139,31 @@
 
 .article-header
   .post &
-    min-height 60vh
+    min-height 70vh
   padding-top $section-gap * 2
   .article-title
     padding-bottom $section-gap * 2
     margin 0
     color $color-white
+    // font-weight 500
     // font-family "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif
-    letter-spacing -.075rem
+    // letter-spacing -.075rem
 
 
 .article-meta
   padding 1rem 0 2rem
   .separator
     margin 0 1rem
+  span, a
+    font-family $fontfamily-gothic-ja
 
 .article-footer
+  border-top 5px solid rgba(#fff, .5)
+  margin-top 4rem
+  padding-top 4rem
+  border-bottom 5px solid rgba(#fff, .5)
+  margin-bottom 4rem
+  padding-bottom 4rem
   .share-icon
     cursor pointer
     display inline-block

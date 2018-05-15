@@ -1,41 +1,29 @@
 <template>
-  <div class="article-list" id="article-list"
-    :class="{'is-loaded': loadingStatus == 'loaded' }"
-  >
-    <h1 class="site-title"
-      :style="{'transform': titleTransform}"
+  <div class="article-list" id="article-list">
+    <div class="article-list-container"
+      :class="{'is-loaded': loadingStatus == 'loaded' }"
     >
-      <span class="site-title-inner"><span v-html="title"></span></span>
-    </h1>
-    <div class="articles">
-      <Article
-        v-for="(article, index) in articles"
-        :index="index"
-        :scrollTop="scrollTop"
-        :length="articles.length"
-        :key="article.id"
-        :article="article"
-        :offsetIndex="offsetIndex"
-        :scrollSpeed="scrollSpeed"
-        class="article"
-      />
+      <h1 class="site-title"
+        :style="{'transform': titleTransform}"
+      >
+        <span class="site-title-inner"><span v-html="title"></span></span>
+      </h1>
+      <div class="articles">
+        <Article
+          v-for="(article, index) in articles"
+          :index="index"
+          :scrollTop="scrollTop"
+          :length="articles.length"
+          :key="article.id"
+          :article="article"
+          :offsetIndex="offsetIndex"
+          :scrollSpeed="scrollSpeed"
+          class="article"
+        />
+      </div>
+      <div class="scroll-block":style="{'min-height': (articles.length + .9) * this.scrollSpeed + 'px'}"></div>
     </div>
-    <div class="scroll-block":style="{'min-height': (articles.length + .9) * this.scrollSpeed + 'px'}"></div>
-    <no-ssr>
-      <InfiniteLoading
-        ref="infiniteLoading"
-        @infinite="moreArticles"
-        <span slot="spinner">
-          <Loader/>
-        </span>
-        <span slot="no-results">
-          <div>No Results Articles :)</div>
-        </span>
-        <span slot="no-more">
-          <div>No More Articles :)</div>
-        </span>
-      </InfiniteLoading>
-    </no-ssr>
+    <Loader class="page-loader" />
   </div>
 </template>
 
@@ -113,16 +101,19 @@
       transform translate(-50%, -50%) rotate(20deg)
       // background rgba($color-blue, .4)
 
-
-.spinner
-  position: relative
-  margin: auto
+.page-loader
+  position fixed
+  top 50%
+  left 50%
+  transform translate(-50%, -50%)
 
 .article-list
   // position
   // height 100%
   // overflow auto
   // -webkit-overflow-scrolling: touch
+
+.article-list-container
   &:before
     content ''
     display block

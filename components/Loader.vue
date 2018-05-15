@@ -1,7 +1,9 @@
 <template>
   <div class="spinner">
-    <div class="double-bounce1"></div>
-    <div class="double-bounce2"></div>
+    <div class="spinner-container">
+      <div class="dot1"></div>
+      <div class="dot2"></div>
+    </div>
   </div>
 </template>
 
@@ -9,34 +11,68 @@
 @import '~assets/style/settings'
 
 .spinner
-  width: 40px
-  height: 40px
+  opacity 1
+  transition all .25s
+  .is-loaded + &
+    transition all 0s
+    opacity 0
 
-.double-bounce1, .double-bounce2
-  width: 100%
-  height: 100%
-  border-radius: 50%
-  background-color: #adadad
-  opacity: 0.6
-  position: absolute
-  top: 0
-  left: 0
-  animation: sk-bounce 2.0s infinite ease-in-out
+.spinner-container
+  width 60px
+  height 60px
+  // position relative
+  text-align center
+  -webkit-animation sk-rotate 2.0s infinite linear
+  animation sk-rotate 2.0s infinite linear
 
-.double-bounce2
-  -webkit-animation-delay: -1.0s
-  animation-delay: -1.0s
+
+.dot1, .dot2
+  width 60%
+  height 60%
+  display inline-block
+  position absolute
+  top 0
+  background-color rgba($color-white, .8)
+  border-radius 100%
+  -webkit-animation sk-bounce 2.0s infinite ease-in-out
+  animation sk-bounce 2.0s infinite ease-in-out
+
+
+.dot2
+  top auto
+  bottom 0
+  -webkit-animation-delay -1.0s
+  animation-delay -1.0s
+
+
+@-webkit-keyframes sk-rotate
+  0%
+    -webkit-transform rotate(0deg)
+  100%
+    -webkit-transform rotate(360deg)
+
+@keyframes sk-rotate
+  0%
+    transform rotate(0deg)
+    -webkit-transform rotate(0deg)
+  100%
+    transform rotate(360deg)
+    -webkit-transform rotate(360deg)
+
+@-webkit-keyframes sk-bounce
+  0%, 100%
+    -webkit-transform scale(0.05)
+  50%
+    -webkit-transform scale(1.0)
+
 
 @keyframes sk-bounce
   0%, 100%
-    transform: scale(0.0)
-  50%
-    transform: scale(1.0)
+    transform scale(0.05)
+    -webkit-transform scale(0.05)
+   50%
+    transform scale(1.0)
+    -webkit-transform scale(1.0)
 
-.infinite-status-prompt
-  color: rgba($color-primary, .65)
-  font-size: 0.8rem
-  font-family: 'Roboto', sans-serif
-  margin: 64px auto
-  text-align: center
+
 </style>

@@ -31,6 +31,7 @@
       </footer>
       <!-- <ArticleComments :article="article"/> -->
     </div>
+    <Loader class="page-loader" />
   </article>
 </template>
 
@@ -92,7 +93,11 @@
     transform translate(0, 0)
     opacity 1
 
-
+.page-loader
+  position fixed
+  top 50%
+  left 50%
+  transform translate(-50%, -50%)
 
 .article-header
   .post &
@@ -119,6 +124,7 @@ import ArticleFeaturedImage from '~/components/ArticleFeaturedImage'
 import Contact from '~/components/Contact'
 import Dream from '~/components/Dream'
 import Thankyou from '~/components/Thankyou'
+import Loader from '~/components/Loader'
 
 export default {
   props: {
@@ -135,7 +141,8 @@ export default {
     ArticleFeaturedImage,
     Contact,
     Dream,
-    Thankyou
+    Thankyou,
+    Loader
   },
 
   computed: {
@@ -174,7 +181,9 @@ export default {
   },
 
   mounted () {
-    this.$store.commit('setLoadingStatus', 'loaded')
+    setTimeout(() => {
+      this.$store.commit('setLoadingStatus', 'loaded')
+    }, 100)
   },
 
   watch: {

@@ -15,8 +15,12 @@
   transition all .25s
   .is-loaded + &,
   [lazy="loaded"] + &
-    transition all .25s ease .5s
     opacity 0
+    +tablet()
+      transition all .25s ease .5s
+    +mobile()
+      transition all 0s
+
 
 .spinner-container
   width 60px

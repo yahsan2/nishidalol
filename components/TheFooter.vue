@@ -4,7 +4,7 @@
       <h2><nuxt-link to="/" exact><span>家族でどう楽しく生きるか模索する、にしだけ夫婦ブログ</span></nuxt-link></h2>
       <!-- <p><small>© {{ year }}</small></p> -->
     </div>
-    <nav class="f-nav">
+    <nav class="f-nav" id="f-nav">
       <ul class="f-nav-ul">
         <li class="f-nav-li top">
           <nuxt-link to="/" exact><span>トップ<br>ボタン</span></nuxt-link>
@@ -52,6 +52,12 @@ export default {
     ...mapState([
       'loadingStatus'
     ])
+  },
+  mounted () {
+    if (process.browser) {
+      const fNav = document.getElementById('f-nav')
+      fNav.scrollLeft = 80
+    }
   }
   // watch: {
   //   loadingStatus (status) {
@@ -93,14 +99,14 @@ export default {
   .f-nav-ul
     display flex
     // display: inline-flex
+    padding $column-gap 0 $column-gap * 2
     +tablet()
       justify-content flex-end
-    padding $column-gap 0 $column-gap * 2
   .f-nav-li
     display inline-block
     padding-left $column-gap
     transition transform .2s cubic-bezier(0.175, 0.885, 0.32, 1.275)
-    transform translateY(200%)
+    transform translate(0, 200%)
     a
       font-family "Rounded Mplus 1c", sans-serif
       // font-weight 500
@@ -132,7 +138,7 @@ export default {
       // color #fff
     .is-loaded &,
     &:hover
-      transform translateY(0%)
+      transform translate(0, 0%)
     for num in (1..10)
       .is-loaded &:nth-child({num})
         transition-delay (num - 1) * .075s + 2s

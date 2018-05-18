@@ -20,7 +20,7 @@
     <p>個人・法人に関わらず、お気軽にお問合せくださいね :D</p>
 
 
-    <form name="contactform" method="POST" netlify id="form">
+    <form name="contactform" method="POST" netlify action="thankyou" id="form">
       <div class="field">
         <label class="label">お名前</label>
         <div class="control has-icons-left has-icons-right">

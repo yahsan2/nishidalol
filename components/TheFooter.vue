@@ -1,9 +1,5 @@
 <template>
   <footer class="c-footer" :class="{'is-loaded': loadingStatus === 'loaded'}">
-    <div class="f-text">
-      <h2><nuxt-link to="/" exact><span>家族でどう楽しく生きるか模索する、にしだけ夫婦ブログ</span></nuxt-link></h2>
-      <!-- <p><small>© {{ year }}</small></p> -->
-    </div>
     <nav class="f-nav" id="f-nav">
       <ul class="f-nav-ul">
         <li class="f-nav-li top">
@@ -35,6 +31,10 @@
         </li>
       </ul>
     </nav>
+    <div class="f-text">
+      <h2><nuxt-link to="/" exact><span>家族でどう楽しく生きるか模索する、にしだけ夫婦ブログ</span></nuxt-link></h2>
+      <!-- <p><small>© {{ year }}</small></p> -->
+    </div>
   </footer>
 </template>
 

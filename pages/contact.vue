@@ -1,7 +1,7 @@
 <template>
   <ArticleDetail
     :article="article"
-    :postType="'contact'"
+    :postType="'page'"
   />
 </template>
 
@@ -17,7 +17,16 @@ export default {
       article: {
         title: 'お仕事依頼',
         slug: 'contact',
-        excerpt: 'WEB のクリエイティブや、コミュニティー運営・組織づくり、オンラインの業務改善などのお仕事依頼'
+        excerpt: 'WEB クリエイティブ / コミュニティーづくり・運営 / オンラインの業務改善',
+        images: [{
+          'sizes': {
+            'large': {
+              'width': 1300,
+              'height': 735,
+              'source_url': 'https://s3-ap-northeast-1.amazonaws.com/nishidalol/wp/wp-content/uploads/2018/01/12045105/IMG_E7622-1200x679.jpg'
+            }
+          }
+        }]
       }
 
     }

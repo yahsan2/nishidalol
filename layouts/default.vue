@@ -44,6 +44,9 @@
 .left
   float: left
 
+.cf
+  clearfix()
+
 .hide
   display: none
 

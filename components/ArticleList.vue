@@ -21,7 +21,7 @@
           class="article"
         />
       </div>
-      <div class="scroll-block":style="{'min-height': (articles.length + .9) * this.scrollSpeed + 'px'}"></div>
+      <div class="scroll-block":style="{'min-height': (articles.length + .905) * this.scrollSpeed + 'px'}"></div>
     </div>
     <Loader class="page-loader" />
   </div>

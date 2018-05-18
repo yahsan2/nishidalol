@@ -1,7 +1,7 @@
 <template>
   <ArticleDetail
     :article="article"
-    :postType="'thankyou'"
+    :postType="'page'"
   />
 </template>
 

@@ -88,7 +88,7 @@ module.exports = {
   modules: [
     '@nuxtjs/axios',
     ['@nuxtjs/google-analytics', {
-      id: 'UA-XXXX-XXX'
+      id: 'UA-91570631-1'
     }],
     ['~/modules/api', {
       'config': '~/api.config.js',

@@ -1,11 +1,15 @@
 <template>
   <section class="article-main contact typeset">
-    <p>こんにちは！</p>
-    <p>お仕事依頼ページを見ていただき、ありがとうございます。</p>
-    <p>にしだけ夫婦はこれまでの２人の経験を活かして、<strong>WEB のクリエイティブ</strong>や、<strong>コミュニティー運営・組織づくり</strong>、<strong>オンラインの業務改善</strong>など、幅広くお仕事をしています。</p>
-    <p>
-      <img src="~assets/images/contact/profile-0.jpg" alt="" class="blend">
-    </p>
+      <p>こんにちは！</p>
+      <p>お仕事依頼ページを見ていただき、ありがとうございます。</p>
+      <p>にしだけ夫婦はこれまでの２人の経験を活かして、<strong>WEB のクリエイティブ</strong>や、<strong>コミュニティー運営・組織づくり</strong>、<strong>オンラインの業務改善</strong>など、幅広くお仕事をしています。</p>
+    <div class="box">
+      <ul>
+        <li><a href="#form">お問い合わせフォーム</a></li>
+        <li><a href="#works">実績</a></li>
+        <li><a href="#skill">スキル</a></li>
+      </ul>
+    </div>
     <p>インターネットを絡めて、面白いことをやっていきたい！でも、</p>
     <ul>
       <li>アイデアが浮かばない。。？</li>
@@ -16,7 +20,7 @@
     <p>個人・法人に関わらず、お気軽にお問合せくださいね :D</p>
 
 
-    <form name="contactform" method="POST" netlify>
+    <form name="contactform" method="POST" netlify id="form">
       <div class="field">
         <label class="label">お名前</label>
         <div class="control has-icons-left has-icons-right">
@@ -49,7 +53,7 @@
       <li>コミュニティーづくり・運営</li>
       <li>オンラインの業務改善</li>
     </ol>
-    <h3>実績・パートナー</h3>
+    <h3 id="works">実績・パートナー</h3>
     <ul>
       <li>
         NPO greenz　<a href="https://greenz.jp/" title="" target="_blank">https://greenz.jp</a><br>
@@ -59,8 +63,12 @@
         Developersjp　<a href="https://www.developersjp.online/" title="" target="_blank">https://www.developersjp.online</a><br>
         <small>エンジニア Slack コミュニティー運営</small>
       </li>
+      <li>
+        その他 nD inc. 所属　<a href="http://ndinc.jp/" title="" target="_blank">http://ndinc.jp</a><br>
+        <small>~ 2018 年３月まで </small>
+      </li>
     </ul>
-    <h3>詳細スキル</h3>
+    <h3 id="skill">詳細スキル</h3>
     <table>
       <thead>
         <tr>
@@ -143,7 +151,37 @@
 <style lang="stylus" scoped>
 @import '~assets/style/settings'
 @import '~assets/style/plugins/form'
-.blend
+
+.box
+  // padding 1rem
+  // background rgba(#fff, .5)
+  margin-top $section-gap
+  margin-bottom $section-gap
+  border-radius .25rem
+  h3
+    margin-top 0
+    font-size $fontsize-medium
+    margin-bottom .5rem
+    border-left none
+    padding-bottom 0
+    line-height 1
+  ul
+    margin 0
+    padding 0
+    li
+      // display inline-block
+      background rgba(#fff, .9)
+      border-left .5rem solid $color-bg-contact1
+      margin-left 0
+      list-style-type none
+      & + li
+        // margin-left .5rem
+        margin-top .5rem
+      a
+        padding .5rem 1rem
+        display block
+form
+  margin-top 2rem
   // mix-blend-mode: multiply
   // background-blend-mode: multiply;
 

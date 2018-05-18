@@ -25,10 +25,10 @@
           </span>
         </p>
       </header>
-      <section v-html="article.content" class="article-main section" v-if="['contact', 'dream', 'thankyou'].indexOf(postType) === -1 "/>
-      <Contact v-if="postType === 'contact'" />
-      <Dream v-if="postType === 'dream'" />
-      <Thankyou v-if="postType === 'thankyou'" />
+      <section v-html="article.content" class="article-main section" v-if="['contact', 'dream', 'thankyou'].indexOf(article.slug) === -1 "/>
+      <Contact v-if="article.slug === 'contact'" />
+      <Dream v-if="article.slug === 'dream'" />
+      <Thankyou v-if="article.slug === 'thankyou'" />
       <footer class="section article-footer" v-if="article.title">
         <h4>シェアボタンでシェアできるよ。</h4>
         <p>
@@ -50,6 +50,60 @@
   </article>
 </template>
 
+<style lang="stylus">
+@import '~assets/style/settings'
+.comment
+  clearfix()
+  $w = 3.5rem
+  position relative
+  min-height $w + .5rem
+  > span
+    border-radius .5rem
+    padding .5rem .75rem
+    display block
+    margin-left $w + .75rem
+    ul
+      margin .5rem 0 0
+      padding 0
+    &:after
+      content: ''
+      border .1rem solid rgba($color-white, .9)
+      background rgba($color-white, .5)
+      background-size cover
+      width $w
+      height $w
+      border-radius 50%
+      margin-bottom 0rem
+      display block
+      position absolute
+      left 0
+      top .5rem
+    &:before
+      position absolute
+      top $w + .25rem
+      left $w * 0.5
+      transform translate(-50%, 0)
+      font-size $fontsize-xsmall
+      font-weight bold
+  &.rio
+    span
+      background rgba($color-white, .7)
+      &:after
+        background-image url('~assets/images/dream/rio.png')
+      &:before
+          content: '宮本さん'
+  &.aya
+    span
+      background rgba($color-white, .7)
+      &:after
+        background-image url('~assets/images/dream/aya.png')
+      &:before
+        content: 'あやかさん'
+  & + h2,
+  & + h3
+    margin-top $section-gap * 1.5
+    display inline-block
+</style>
 <style lang="stylus" scoped>
 @import '~assets/style/settings'
 
@@ -138,13 +192,16 @@
   transform translate(-50%, -50%)
 
 .article-header
-  .post &
-    min-height 70vh
+  min-height 70vh
   padding-top $section-gap * 2
+  padding-bottom $section-gap * 2
   .article-title
     padding-bottom $section-gap * 2
     margin 0
     color $color-white
+    .page &
+      font-family $fontfamily-sansserif-ja
+
     // font-weight 500
     // font-family "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif
     // letter-spacing -.075rem

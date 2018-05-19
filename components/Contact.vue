@@ -24,24 +24,24 @@
     </p>
 
     <no-ssr>
-      <form name="form-test2" method="post" netlify action="/thankyou">
-        <input type='hidden' name='form-name' value='form-test2' />
+      <form name="contactform" method="post" netlify action="/thankyou">
+        <input type='hidden' name='form-name' value='contactform' />
         <div class="field">
           <label class="label">お名前</label>
           <div class="control has-icons-left has-icons-right">
-            <input v-model="contact.name" name="name" type="text" class="input is-success" placeholder="新垣結衣">
+            <input v-model="contact.name" name="name" type="text" class="input is-success" placeholder="戸田恵梨香">
           </div>
         </div>
         <div class="field">
           <label class="label">メールアドレス</label>
           <div class="control has-icons-left has-icons-right">
-            <input v-model="contact.email" type="email" name="email" class="input is-success"  placeholder="love@aragaki.com">
+            <input v-model="contact.email" type="email" name="email" class="input is-success"  placeholder="erika@toda.love">
           </div>
         </div>
         <div class="field">
           <label class="label">ご相談内容</label>
           <div class="control">
-            <textarea v-model="contact.message" name="message" class="textarea" placeholder="新垣結衣のホームページをつくりたいです。など"></textarea>
+            <textarea v-model="contact.message" name="message" class="textarea" placeholder="ex.) 戸田恵梨香のオフィシャルホームページをつくりたいです。"></textarea>
           </div>
         </div>
         <div class="field is-grouped">

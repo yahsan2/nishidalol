@@ -4,11 +4,12 @@
     >
     <div class="bg"
       :style="{'background-image': `url(${featuredImage.source_url})`}"
+      v-if="featuredImage && featuredImage.source_url"
     ></div>
     <div class="article-body typeset"
       :class="{'is-loaded': loadingStatus == 'loaded' }"
     >
-      <header class="article-header" v-if="article.title">
+      <header class="article-header" v-if="article.title" :class="{'has-image': featuredImage && featuredImage.source_url}">
         <h1 class="article-title" v-html="article.title"></h1>
         <ArticleFeaturedImage
           v-if="featuredImage"
@@ -192,11 +193,13 @@
   transform translate(-50%, -50%)
 
 .article-header
-  min-height 70vh
   padding-top $section-gap * 2
   padding-bottom $section-gap * 2
+  &.has-image
+    min-height 70vh
+    .article-title
+      padding-bottom $section-gap * 2
   .article-title
-    padding-bottom $section-gap * 2
     margin 0
     color $color-white
     .page &

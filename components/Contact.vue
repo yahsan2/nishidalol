@@ -1,8 +1,8 @@
 <template>
   <section class="article-main contact typeset">
-      <p>こんにちは！</p>
-      <p>お仕事依頼ページを見ていただき、ありがとうございます。</p>
-      <p>にしだけ夫婦はこれまでの２人の経験を活かして、<strong>WEB のクリエイティブ</strong>や、<strong>コミュニティー運営・組織づくり</strong>、<strong>オンラインの業務改善</strong>など、幅広くお仕事をしています。</p>
+    <p>こんにちは！</p>
+    <p>お仕事依頼ページを見ていただき、ありがとうございます。</p>
+    <p>にしだけ夫婦はこれまでの２人の経験を活かして、<strong>WEB のクリエイティブ</strong>や、<strong>コミュニティー運営・組織づくり</strong>、<strong>オンラインの業務改善</strong>など、幅広くお仕事をしています。</p>
     <div class="box">
       <ul>
         <li><a href="#form">お問い合わせフォーム</a></li>
@@ -20,7 +20,7 @@
     <p>個人・法人に関わらず、お気軽にお問合せくださいね :D</p>
 
 
-    <form name="contactform" method="POST" netlify action="thankyou" id="form">
+    <form name="contactform" method="POST" netlify action="/thankyou" id="form">
       <div class="field">
         <label class="label">お名前</label>
         <div class="control has-icons-left has-icons-right">

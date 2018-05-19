@@ -19,33 +19,32 @@
     <p>そんな時、<strong>にしだけ夫婦</strong> は力を貸せるかもしれません！</p>
     <p>個人・法人に関わらず、お気軽にお問合せくださいね :D</p>
 
-    <no-ssr>
-      <form name="contactform" method="POST" netlify action="/thankyou" id="form">
-        <div class="field">
-          <label class="label">お名前</label>
-          <div class="control has-icons-left has-icons-right">
-            <input name="name" type="text" class="input is-success" placeholder="新垣結衣">
-          </div>
+    <form name="contactform" method="post" netlify action="/thankyou" @submit.prevent="submit">
+      <div class="field">
+        <label class="label">お名前</label>
+        <div class="control has-icons-left has-icons-right">
+          <input v-model="contact.name" name="name" type="text" class="input is-success" placeholder="新垣結衣">
         </div>
-        <div class="field">
-          <label class="label">メールアドレス</label>
-          <div class="control has-icons-left has-icons-right">
-            <input type="email" name="email" class="input is-success"  placeholder="love@aragaki.com">
-          </div>
+      </div>
+      <div class="field">
+        <label class="label">メールアドレス</label>
+        <div class="control has-icons-left has-icons-right">
+          <input v-model="contact.email" type="email" name="email" class="input is-success"  placeholder="love@aragaki.com">
         </div>
-        <div class="field">
-          <label class="label">ご相談内容</label>
-          <div class="control">
-            <textarea name="message" class="textarea" placeholder="新垣結衣のホームページをつくりたいです。など"></textarea>
-          </div>
+      </div>
+      <div class="field">
+        <label class="label">ご相談内容</label>
+        <div class="control">
+          <textarea v-model="contact.message" name="message" class="textarea" placeholder="新垣結衣のホームページをつくりたいです。など"></textarea>
         </div>
-        <div class="field is-grouped">
-          <div class="control">
-            <button type="submit" class="button is-link">送信</button>
-          </div>
+      </div>
+      <div class="field is-grouped">
+        <div class="control">
+          <button type="submit" class="button is-link">送信</button>
         </div>
-      </form>
-    </no-ssr>
+      </div>
+    </form>
+
     <h2>にしだけのできること</h2>
     <p>にしだけは、大きくわけて３つの得意なコトがあります。</p>
     <ol>
@@ -135,6 +134,8 @@
 <style lang="stylus" scoped>
 @import '~assets/style/settings'
 @import '~assets/style/plugins/form'
+.is-error
+  color $color-red
 
 .box
   // padding 1rem
@@ -171,3 +172,20 @@ form
   // background-blend-mode: multiply;
 
 </style>
+
+<script>
+export default {
+  data () {
+    return {
+      contact: {}
+    }
+  },
+  methods: {
+    async submit (e) {
+      if (this.errorLength > 0) return false
+      const res = await this.$axios.post(e.target.getAttribute('action'), this.contact)
+      console.log(res)
+    }
+  }
+}
+</script>

@@ -183,7 +183,9 @@ export default {
   methods: {
     async submit (e) {
       if (this.errorLength > 0) return false
-      const res = await this.$axios.post(e.target.getAttribute('action'), this.contact)
+      console.log(this.contact)
+      console.log(e.target.getAttribute('action'))
+      const res = await this.$axios.post(e.target.getAttribute('action'), JSON.stringify(this.contact))
       console.log(res)
     }
   }

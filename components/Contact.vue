@@ -5,7 +5,7 @@
     <p>にしだけ夫婦はこれまでの２人の経験を活かして、<strong>WEB のクリエイティブ</strong>や、<strong>コミュニティー運営・組織づくり</strong>、<strong>オンラインの業務改善</strong>など、幅広くお仕事をしています。</p>
     <div class="box">
       <ul>
-        <li><a href="#form">お問い合わせフォーム</a></li>
+        <!-- <li><a href="#form">お問い合わせフォーム</a></li> -->
         <li><a href="#works">実績</a></li>
         <li><a href="#skill">スキル</a></li>
       </ul>
@@ -16,34 +16,41 @@
       <li>実現の仕方がわからない。。？</li>
       <li>つくれる人がいない。。？</li>
     </ul>
-    <p>そんな時、<strong>にしだけ夫婦</strong> は力を貸せるかもしれません！</p>
-    <p>個人・法人に関わらず、お気軽にお問合せくださいね :D</p>
+    <p>そんな時、<strong>にしだけ夫婦</strong> は力になることができます。</p>
+    <p>個人・法人に関わらず、お気軽にお問合せください :D</p>
+    <p>
+      メール：<a href="mailto:family@nishida.lol">family@nishida.lol</a>  <br>
+      Twitter DM：<a href="https://twitter.com/nishidalol" target="_blank">https://twitter.com/nishidalol</a>
+    </p>
 
-    <form name="contactform" method="post" netlify action="/thankyou" @submit.prevent="submit">
-      <div class="field">
-        <label class="label">お名前</label>
-        <div class="control has-icons-left has-icons-right">
-          <input v-model="contact.name" name="name" type="text" class="input is-success" placeholder="新垣結衣">
+    <no-ssr>
+      <form name="form-test2" method="post" netlify action="/thankyou" @submit.prevent="submit">
+        <input type='hidden' name='form-name' value='form-test2' />
+        <div class="field">
+          <label class="label">お名前</label>
+          <div class="control has-icons-left has-icons-right">
+            <input v-model="contact.name" name="name" type="text" class="input is-success" placeholder="新垣結衣">
+          </div>
         </div>
-      </div>
-      <div class="field">
-        <label class="label">メールアドレス</label>
-        <div class="control has-icons-left has-icons-right">
-          <input v-model="contact.email" type="email" name="email" class="input is-success"  placeholder="love@aragaki.com">
+        <div class="field">
+          <label class="label">メールアドレス</label>
+          <div class="control has-icons-left has-icons-right">
+            <input v-model="contact.email" type="email" name="email" class="input is-success"  placeholder="love@aragaki.com">
+          </div>
         </div>
-      </div>
-      <div class="field">
-        <label class="label">ご相談内容</label>
-        <div class="control">
-          <textarea v-model="contact.message" name="message" class="textarea" placeholder="新垣結衣のホームページをつくりたいです。など"></textarea>
+        <div class="field">
+          <label class="label">ご相談内容</label>
+          <div class="control">
+            <textarea v-model="contact.message" name="message" class="textarea" placeholder="新垣結衣のホームページをつくりたいです。など"></textarea>
+          </div>
         </div>
-      </div>
-      <div class="field is-grouped">
-        <div class="control">
-          <button type="submit" class="button is-link">送信</button>
+        <div class="field is-grouped">
+          <div class="control">
+            <button type="submit" class="button is-link">送信</button>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </no-ssr>
 
     <h2>にしだけのできること</h2>
     <p>にしだけは、大きくわけて３つの得意なコトがあります。</p>
@@ -184,8 +191,9 @@ export default {
     async submit (e) {
       if (this.errorLength > 0) return false
       console.log(this.contact)
-      console.log(e.target.getAttribute('action'))
-      const res = await this.$axios.post(e.target.getAttribute('action'), JSON.stringify(this.contact))
+      const url = `${window.location.protocol}//${window.location.host}${e.target.getAttribute('action')}`
+      console.log(url)
+      const res = await this.$axios.post(url, JSON.stringify(this.contact))
       console.log(res)
     }
   }

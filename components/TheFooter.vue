@@ -94,7 +94,8 @@ export default {
 
 .f-nav
   position relative
-  overflow auto
+  overflow-x auto
+  overflow-y hidden
   -webkit-overflow-scrolling touch
   .f-nav-ul
     display flex

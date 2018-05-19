@@ -1,5 +1,5 @@
 const axios = require('axios')
-const apiUrl = 'https://nishida.lol'
+const apiUrl = 'https://admin.nishida.lol'
 
 module.exports = {
   /*

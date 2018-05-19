@@ -106,15 +106,17 @@ ol()
   list-style-type none
   li
     counter-increment top-level
+    position relative
     &:before
       content counter(top-level) '.'
+      right 100%
+      top 0
       font-feature-settings 'lnum', 'tnum'
-      margin-left -1 * $column-gap
-      padding-right ($column-gap / 4)
+      padding-right ($column-gap * 1.5 / 4)
       position absolute
       text-align right
-      width $column-gap
       box-sizing: border-box
+      font-weight bold
     ul
       li
         &:before

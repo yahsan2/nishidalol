@@ -160,7 +160,7 @@
     <p class="comment rio">
       <span>
       <ul>
-        <li><a href="">宮本さんの、人生のやりたいこと100のリスト</a></li>
+        <li><nuxt-link to="/rio-dream/" exact>宮本さんの、人生のやりたいこと100のリスト</nuxt-link></li>
         <li>あやかさんの、人生のやりたいこと100のリスト</li>
       </ul>
       </span>

@@ -24,19 +24,19 @@
       <div class="field">
         <label class="label">お名前</label>
         <div class="control has-icons-left has-icons-right">
-          <input name="name" type="text" class="input is-success" placeholder="お名前">
+          <input name="name" type="text" class="input is-success" placeholder="新垣結衣">
         </div>
       </div>
       <div class="field">
         <label class="label">メールアドレス</label>
         <div class="control has-icons-left has-icons-right">
-          <input type="email" name="email" class="input is-success"  placeholder="yahsan2@gmail.com">
+          <input type="email" name="email" class="input is-success"  placeholder="love@aragaki.com">
         </div>
       </div>
       <div class="field">
         <label class="label">ご相談内容</label>
         <div class="control">
-          <textarea name="message" class="textarea" placeholder=""></textarea>
+          <textarea name="message" class="textarea" placeholder="新垣結衣のホームページをつくりたいです。など"></textarea>
         </div>
       </div>
       <div class="field is-grouped">
@@ -94,7 +94,7 @@
           </td>
         </tr>
         <tr>
-          <td>WEB デザイン<br>WEB 制作<br>WEB サービス</td>
+          <td>制作系</td>
           <td>
             <ul>
               <li>コーディング</li>
@@ -107,23 +107,8 @@
             <ul>
               <li>Photoshop</li>
               <li>Sketch</li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td>WEB 運用・改善</td>
-          <td>
-            <ul>
-              <li>Google Analytics</li>
-              <li>SEO</li>
-            </ul>
-          </td>
-          <td>
-            <ul>
-              <li>イベントレポート</li>
               <li>写真撮影</li>
               <li>インタビュー記事作成</li>
-              <li>画像・バナー作成</li>
             </ul>
           </td>
         </tr>
@@ -131,13 +116,12 @@
           <td>コミュニティー運営<br>組織づくり</td>
           <td>
             <ul>
-              <li>Slack の運用</li>
-              <li>Facebook Group の運用</li>
+              <li>オンラインサービス導入</li>
             </ul>
           </td>
           <td>
             <ul>
-              <li>オンラインコミュニティ<br>オンラインサロン運営</li>
+              <li>コミュニティマネージャー</li>
               <li>イベント運営サポート</li>
               <li>秘書業務</li>
             </ul>
@@ -170,6 +154,7 @@
     padding 0
     li
       // display inline-block
+      border-radius .25rem
       background rgba(#fff, .9)
       border-left .5rem solid $color-bg-contact1
       margin-left 0

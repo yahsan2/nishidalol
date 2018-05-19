@@ -225,10 +225,15 @@
     cursor pointer
     display inline-block
     transition all .25s
+    background rgba(#fff, .5)
+    padding 0.75rem
+    border-radius 50%
+    svg
+      display block
     &:hover
-      transform scale(1.2)
+      transform scale(1.1)
     & + .share-icon
-      margin-left .75rem
+      margin-left 1rem
 
   svg
     width 25px
@@ -276,7 +281,10 @@ export default {
 
   computed: {
     permalink () {
-      return `https://nishida.lol/${this.article.type}/${this.article.slug}`
+      let permalink = [`https://nishida.lol`]
+      if (this.article.type) permalink.push(this.article.type)
+      if (this.article.slug) permalink.push(this.article.slug)
+      return permalink.join('/')
     },
     encodePermalink () {
       return encodeURIComponent(this.permalink)

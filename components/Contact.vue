@@ -24,7 +24,7 @@
     </p>
 
     <no-ssr>
-      <form name="form-test2" method="post" netlify action="/thankyou" @submit.prevent="submit">
+      <form name="form-test2" method="post" netlify action="/thankyou">
         <input type='hidden' name='form-name' value='form-test2' />
         <div class="field">
           <label class="label">お名前</label>

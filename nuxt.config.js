@@ -6,7 +6,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: '家族でどう楽しく生きるか模索する、にしだけ夫婦ブログ',
+    title: '家族でどう楽しく生きるか模索する、旅する夫婦のブログ',
     titleTemplate: '%s - にしだけ夫婦ブログ',
     htmlAttrs: {
       lang: 'ja',
@@ -34,7 +34,7 @@ module.exports = {
       // { property: 'fb:app_id', content: '' },
       {
         property: 'og:title',
-        content: '家族でどう楽しく生きるか模索する、にしだけ夫婦ブログ',
+        content: '家族でどう楽しく生きるか模索する、旅する夫婦のブログ',
         hid: 'ogTitle'
       },
       { property: 'og:site_name', content: 'にしだけ夫婦ブログ' },

@@ -5,7 +5,6 @@
     <p>にしだけ夫婦はこれまでの２人の経験を活かして、<strong>WEB のクリエイティブ</strong>や、<strong>コミュニティー運営・組織づくり</strong>、<strong>オンラインの業務改善</strong>など、幅広くお仕事をしています。</p>
     <div class="box">
       <ul>
-        <!-- <li><a href="#form">お問い合わせフォーム</a></li> -->
         <li><a href="#works">実績</a></li>
         <li><a href="#skill">スキル</a></li>
       </ul>

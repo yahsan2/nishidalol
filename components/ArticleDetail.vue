@@ -196,7 +196,10 @@
   padding-top $section-gap * 2
   padding-bottom $section-gap * 2
   &.has-image
-    min-height 70vh
+    +tablet()
+      min-height 70vh
+    +mobile()
+      min-height 50vh
     .article-title
       padding-bottom $section-gap * 2
   .article-title

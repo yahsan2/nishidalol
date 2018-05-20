@@ -1,7 +1,7 @@
 <template>
   <section class="category-container main-container" :class="`category-container-${category.slug}`">
     <ArticleList
-      :title="category.name"
+      :title="category.slug"
       :articles="articles"
       :query="$store.state.currentQuery"
     />
@@ -80,7 +80,7 @@ export default {
 
   head () {
     return {
-      title: `Home | ${this.$store.state.meta.name}`,
+      title: `${this.category.name} | ${this.$store.state.meta.name}`,
       meta: [
         { description: this.$store.state.meta.description }
       ]

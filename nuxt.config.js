@@ -1,6 +1,16 @@
 const axios = require('axios')
 const apiUrl = 'https://admin.nishida.lol'
 
+let cacheData = null
+
+const getApiData = () => {
+  return cacheData ? Promise(cacheData) : Promise.all([
+    axios.get(`${apiUrl}/wp-json/wp/v2/posts?per_page=100&page=1&_embed=1`),
+    axios.get(`${apiUrl}/wp-json/wp/v2/pages?per_page=100&page=1&_embed=1`),
+    axios.get(`${apiUrl}/wp-json/wp/v2/categories?per_page=100`)
+  ])
+}
+
 module.exports = {
   /*
   ** Headers of the page
@@ -137,22 +147,18 @@ module.exports = {
   generate: {
     interval: 1000,
     routes () {
-      return Promise.all([
-        axios.get(`${apiUrl}/wp-json/wp/v2/posts?per_page=100&page=1&_embed=1`),
-        axios.get(`${apiUrl}/wp-json/wp/v2/pages?per_page=100&page=1&_embed=1`),
-        axios.get(`${apiUrl}/wp-json/wp/v2/categories?per_page=100`)
-      ]).then((data) => {
+      return getApiData().then((data) => {
         const posts = data[0]
         const pages = data[1]
         const categories = data[2]
         return posts.data.map((post) => {
           return {
-            route: '/post/' + post.slug,
+            route: `/post/${post.slug}`,
             payload: post
           }
         }).concat(pages.data.map((page) => {
           return {
-            route: page.slug,
+            route: `${page.slug}`,
             payload: page
           }
         })).concat(categories.data.map((category) => {
@@ -164,12 +170,38 @@ module.exports = {
       })
     }
   },
+  sitemap: {
+    path: '/sitemap.xml',
+    hostname: 'https://nishida.lol',
+    cacheTime: 1000 * 60 * 15,
+    gzip: true,
+    generate: true, // Enable me when using nuxt generate
+    exclude: [
+      '/secret',
+      '/admin/**'
+    ],
+    routes () {
+      return getApiData().then((data) => {
+        const posts = data[0]
+        const pages = data[1]
+        const categories = data[2]
+        return posts.data.map((post) => {
+          return `/post/${post.slug}`
+        }).concat(pages.data.map((page) => {
+          return `${page.slug}`
+        })).concat(categories.data.map((category) => {
+          return `/category/${category.slug}`
+        }))
+      })
+    }
+  },
   plugins: [
     { src: '~plugins/vue-lazyload', ssr: false },
     { src: '~plugins/mixins' }
   ],
   modules: [
     '@nuxtjs/axios',
+    '@nuxtjs/sitemap',
     ['@nuxtjs/google-analytics', {
       id: 'UA-91570631-1'
     }],

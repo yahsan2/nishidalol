@@ -21,7 +21,7 @@
           class="article"
         />
       </div>
-      <div class="scroll-block":style="{'min-height': (articles.length + .905) * this.scrollSpeed + 'px'}"></div>
+      <div class="scroll-block":style="{'min-height': minHeight}"></div>
     </div>
     <Loader class="page-loader" />
   </div>
@@ -194,6 +194,10 @@ export default {
       return `
         translate(0, ${-1 * this.scrollTop / this.scrollSpeed}px)
       `
+    },
+    minHeight () {
+      const h = process.browser ? (this.articles.length) * this.scrollSpeed + (window.innerHeight / 2) : 0
+      return h + 'px'
     },
     rotate () {
       return {

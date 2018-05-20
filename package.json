@@ -14,6 +14,7 @@
     "@nuxtjs/axios": "^5.3.1",
     "@nuxtjs/google-analytics": "^2.0.2",
     "@nuxtjs/pwa": "^2.0.8",
+    "@nuxtjs/sitemap": "^0.1.1",
     "global": "^4.3.2",
     "nuxt": "^1.0.0",
     "vue-infinite-loading": "^2.3.1",

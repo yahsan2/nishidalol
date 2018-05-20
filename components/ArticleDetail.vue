@@ -338,6 +338,11 @@ export default {
           hid: 'ogTitle'
         },
         {
+          property: 'og:url',
+          content: this.permalink,
+          hid: 'ogTitle'
+        },
+        {
           property: 'og:description',
           content: this.stripDesc,
           hid: 'ogDesc'
@@ -346,6 +351,10 @@ export default {
           property: 'og:image',
           content: this.article.images[0] && this.article.images[0].sizes.full.source_url,
           hid: 'ogImage'
+        },
+        {
+          property: 'twitter:image',
+          content: this.article.images[0] && this.article.images[0].sizes.full.source_url
         },
         { property: 'og:type', content: 'article' }
       ]

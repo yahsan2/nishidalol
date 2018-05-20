@@ -99,8 +99,7 @@ module.exports = {
       { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/icon-16x16.png' },
       { rel: 'icon', type: 'image/png', sizes: '24x24', href: '/icon-24x24.png' },
       { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/icon-32x32.png' },
-      { rel: 'alternate', type: 'application/rss+xml', href: '/feed.xml' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css' }
+      { rel: 'alternate', type: 'application/rss+xml', href: '/feed.xml' }
     ]
   },
 
@@ -197,6 +196,7 @@ module.exports = {
   },
   plugins: [
     { src: '~plugins/vue-lazyload', ssr: false },
+    { src: '~plugins/web-font-loader', ssr: false },
     { src: '~plugins/mixins' }
   ],
   modules: [

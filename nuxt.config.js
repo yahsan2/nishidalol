@@ -41,7 +41,7 @@ module.exports = {
       { property: 'og:type', content: 'website' },
       { property: 'og:url', content: 'https://nishida.lol', hid: 'ogUrl' },
       { property: 'og:locale', content: 'ja_JP' },
-      { property: 'og:image', content: 'https://nishida.lol/ogp.jpg', hid: 'ogImage' },
+      { property: 'og:image', content: 'https://nishida.lol/ogp.gif', hid: 'ogImage' },
       {
         property: 'og:description',
         content: 'にしだけ夫婦がオーストラリアでのバンライフ（車中泊）生活や、旅やリモートワークなどを通じて、楽しく生きるためのいろんな価値観を模索していくブログです。',

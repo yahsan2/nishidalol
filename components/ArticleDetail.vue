@@ -338,6 +338,11 @@ export default {
           hid: 'ogTitle'
         },
         {
+          property: 'og:url',
+          content: this.permalink,
+          hid: 'ogTitle'
+        },
+        {
           property: 'og:description',
           content: this.stripDesc,
           hid: 'ogDesc'

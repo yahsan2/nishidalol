@@ -71,6 +71,14 @@ module.exports = {
     ]
   },
 
+  manifest: {
+    name: '家族でどう楽しく生きるか模索する、にしだけ夫婦ブログ',
+    short_name: 'にしだけ夫婦ブログ',
+    description: 'にしだけ夫婦がオーストラリアでのバンライフ（車中泊）生活や、旅やリモートワークなどを通じて、楽しく生きるためのいろんな価値観を模索していくブログです。',
+    lang: 'ja',
+    theme_color: '#fff200'
+  },
+
   css: [
     'normalize.css/normalize.css',
     '~/assets/style/app.styl'

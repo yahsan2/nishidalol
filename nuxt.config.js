@@ -201,6 +201,7 @@ module.exports = {
   ],
   modules: [
     '@nuxtjs/axios',
+    '@nuxtjs/pwa',
     '@nuxtjs/sitemap',
     ['@nuxtjs/google-analytics', {
       id: 'UA-91570631-1'

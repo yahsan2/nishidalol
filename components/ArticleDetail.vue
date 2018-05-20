@@ -295,6 +295,12 @@ export default {
     encodePermalink () {
       return encodeURIComponent(this.permalink)
     },
+    stripTitle () {
+      return this.article.title && this.article.title.replace(/<(?:.|\n)*?>/gm, '')
+    },
+    stripDesc () {
+      return this.article.excerpt && this.article.excerpt.replace(/<(?:.|\n)*?>/gm, '')
+    },
     author () {
       return this.article.author || {}
     },
@@ -319,9 +325,29 @@ export default {
 
   head () {
     return {
-      title: `${this.article.title} | ${this.$store.state.meta.name}`,
+      title: this.stripTitle,
       meta: [
-        { description: this.article.excerpt }
+        {
+          name: 'description',
+          content: this.stripDesc,
+          hid: 'description'
+        },
+        {
+          property: 'og:title',
+          content: this.stripTitle,
+          hid: 'ogTitle'
+        },
+        {
+          property: 'og:description',
+          content: this.stripDesc,
+          hid: 'ogDesc'
+        },
+        {
+          property: 'og:image',
+          content: this.article.images[0] && this.article.images[0].sizes.full.source_url,
+          hid: 'ogImage'
+        },
+        { property: 'og:type', content: 'article' }
       ]
     }
   },

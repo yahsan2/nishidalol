@@ -47,15 +47,6 @@ export default {
       const slug = page.slugs ? page.slugs[0] : null
       return this.$store.state.cachePosts[slug] || {}
     }
-  },
-
-  head () {
-    return {
-      title: `${this.article.title} | ${this.$store.state.meta.name}`,
-      meta: [
-        { description: this.article.excerpt }
-      ]
-    }
   }
 }
 </script>

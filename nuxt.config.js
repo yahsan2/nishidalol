@@ -38,7 +38,7 @@ module.exports = {
         hid: 'ogTitle'
       },
       { property: 'og:site_name', content: 'にしだけ夫婦ブログ' },
-      { property: 'og:type', content: 'article' },
+      { property: 'og:type', content: 'website' },
       { property: 'og:url', content: 'https://nishida.lol', hid: 'ogUrl' },
       { property: 'og:locale', content: 'ja_JP' },
       { property: 'og:image', content: 'https://nishida.lol/ogp.jpg', hid: 'ogImage' },

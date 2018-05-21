@@ -42,7 +42,7 @@ module.exports = {
       { name: 'twitter:image', content: 'https://nishida.lol/ogp.jpg' },
 
       // Facebook
-      // { property: 'fb:app_id', content: '' },
+      { property: 'fb:app_id', content: '' },
       {
         property: 'og:title',
         content: '家族でどう楽しく生きるか模索する、旅する夫婦のブログ',

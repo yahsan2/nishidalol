@@ -34,13 +34,13 @@
         <div class="field">
           <label class="label">メールアドレス</label>
           <div class="control has-icons-left has-icons-right">
-            <input v-model="contact.email" type="email" name="email" class="input is-success"  placeholder="erika@toda.love">
+            <input v-model="contact.email" type="email" name="email" class="input is-success"  placeholder="todaerika@example.com">
           </div>
         </div>
         <div class="field">
           <label class="label">ご相談内容</label>
           <div class="control">
-            <textarea v-model="contact.message" name="message" class="textarea" placeholder="ex.) 戸田恵梨香のオフィシャルホームページをつくりたいです。"></textarea>
+            <textarea v-model="contact.message" name="message" class="textarea" placeholder="ex.) 戸田恵梨香のオフィシャルホームページをつくりたいです。 / お金はないけど、3000kg の白米なら送りたいです。/ podcast ってどうはじめるんですか？ / 旅人になりたいです。 / リモートワークでの業務改善を教えてください。 / 夫婦仲良い秘訣をインタビューさせてください。 / greenz.jp のようなWEBマガジン作りたいです。 / WEB サービスつくりたいです。 など、お気軽になんでもお問い合わせください。"></textarea>
           </div>
         </div>
         <div class="field is-grouped">

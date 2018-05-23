@@ -340,7 +340,7 @@ export default {
         {
           property: 'og:url',
           content: this.permalink,
-          hid: 'ogTitle'
+          hid: 'ogUrl'
         },
         {
           property: 'og:description',

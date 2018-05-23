@@ -349,12 +349,12 @@ export default {
         },
         {
           property: 'og:image',
-          content: this.article.images[0] && this.article.images[0].sizes.full.source_url,
+          content: this.featuredImage.source_url,
           hid: 'ogImage'
         },
         {
           property: 'twitter:image',
-          content: this.article.images[0] && this.article.images[0].sizes.full.source_url
+          content: this.featuredImage.source_url
         },
         { property: 'og:type', content: 'article' }
       ]

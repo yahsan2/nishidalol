@@ -143,32 +143,32 @@ module.exports = {
       }
     }
   },
-  generate: {
-    interval: 1000,
-    routes () {
-      return getApiData().then((data) => {
-        const posts = data[0]
-        const pages = data[1]
-        const categories = data[2]
-        return posts.data.map((post) => {
-          return {
-            route: `/post/${post.slug}`,
-            payload: post
-          }
-        }).concat(pages.data.map((page) => {
-          return {
-            route: `${page.slug}`,
-            payload: page
-          }
-        })).concat(categories.data.map((category) => {
-          return {
-            route: `/category/${category.slug}`,
-            payload: categories
-          }
-        }))
-      })
-    }
-  },
+  // generate: {
+  //   interval: 1000,
+  //   routes () {
+  //     return getApiData().then((data) => {
+  //       const posts = data[0]
+  //       const pages = data[1]
+  //       const categories = data[2]
+  //       return posts.data.map((post) => {
+  //         return {
+  //           route: `/post/${post.slug}`,
+  //           payload: post
+  //         }
+  //       }).concat(pages.data.map((page) => {
+  //         return {
+  //           route: `${page.slug}`,
+  //           payload: page
+  //         }
+  //       })).concat(categories.data.map((category) => {
+  //         return {
+  //           route: `/category/${category.slug}`,
+  //           payload: categories
+  //         }
+  //       }))
+  //     })
+  //   }
+  // },
   sitemap: {
     path: '/sitemap.xml',
     hostname: 'https://nishida.lol',

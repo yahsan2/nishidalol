@@ -1,5 +1,5 @@
 const axios = require('axios')
-const apiUrl = 'https://admin.nishida.lol'
+const apiUrl = 'https://lifesaving.heteml.net'
 
 let cacheData = null
 

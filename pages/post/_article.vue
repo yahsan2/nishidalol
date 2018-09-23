@@ -47,6 +47,11 @@ export default {
       const slug = page.slugs ? page.slugs[0] : null
       return this.$store.state.cachePosts[slug] || {}
     }
+  },
+  mounted () {
+    if (twttr in window) {
+      twttr.widgets.load()
+    }
   }
 }
 </script>

@@ -49,7 +49,7 @@ export default {
     }
   },
   mounted () {
-    if (twttr in window) {
+    if ('twttr' in window) {
       twttr.widgets.load()
     }
   }

@@ -1,6 +1,6 @@
 <template>
   <section class="category-container main-container" :class="`category-container-${category.slug}`">
-    <ArticleList :title="category.slug" :articles="articles" :query="$store.state.currentQuery" />
+    <ArticleList :title="category.slug" :articles="articles" :query="$store.state.currentQuery"/>
   </section>
 </template>
 
@@ -30,7 +30,7 @@ export default {
         statusCode: 404,
         message: 'ページが見つかりません'
       })
-      return
+      return false
     }
 
     const query = {

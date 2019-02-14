@@ -2,12 +2,10 @@
   <section class="category-container main-container container section">
     <header>
       <h1>{{ category.name }}</h1>
-      <p v-if="category.description">
-        {{ category.description }}
-      </p>
+      <p v-if="category.description">{{ category.description }}</p>
     </header>
     <main class="section">
-      <ArticleList :articles="articles" :query="$store.state.currentQuery" />
+      <ArticleList :articles="articles" :query="$store.state.currentQuery"/>
     </main>
   </section>
 </template>
@@ -37,7 +35,7 @@ export default {
         statusCode: 404,
         message: 'ページが見つかりません'
       })
-      return
+      return false
     }
 
     const query = {

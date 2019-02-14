@@ -3,80 +3,103 @@
     <main>
       <nuxt />
     </main>
-    <TheFooter/>
+    <TheFooter />
   </div>
 </template>
 
 <style lang="stylus">
-@import '~assets/style/settings'
+@import '~assets/style/settings';
 
-.font-light
-  font-weight: $font-weight-light
+.font-light {
+  font-weight: $font-weight-light;
+}
 
-.font-regular
-  font-weight: $font-weight-regular
+.font-regular {
+  font-weight: $font-weight-regular;
+}
 
-.font-heavy
-  font-weight: $font-weight-heavy
-
+.font-heavy {
+  font-weight: $font-weight-heavy;
+}
 
 // utility
-.text-left
-  text-align: left
+.text-left {
+  text-align: left;
+}
 
-.text-right
-  text-align: right
+.text-right {
+  text-align: right;
+}
 
-.text-center
-  text-align: center
+.text-center {
+  text-align: center;
+}
 
-.text-justify
-  text-align: justify
+.text-justify {
+  text-align: justify;
+}
 
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
 
-.center
-  margin-left: auto
-  margin-right: auto
+.right {
+  float: right;
+}
 
-.right
-  float: right
+.left {
+  float: left;
+}
 
-.left
-  float: left
+.cf {
+  clearfix();
+}
 
-.cf
-  clearfix()
+.hide {
+  display: none;
+}
 
-.hide
-  display: none
++media('small-only') {
+  .hide-small-only {
+    display: none;
+  }
+}
 
-+media("small-only")
-  .hide-small-only
-    display: none
-
-.nuxt-progress
-  position fixed
+.nuxt-progress {
+  position: fixed;
   // max-width 80%
-  height .8rem !important
-  bottom 0%
-  top auto
-  left 50%
-  transform translate(-50%, 0%)
+  height: 0.8rem !important;
+  bottom: 0%;
+  top: auto;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
 </style>
 
 <script>
 import TheFooter from '../components/TheFooter'
-import Loader from '~/components/Loader'
 
 export default {
-  data () {
+  components: {
+    TheFooter
+  },
+  data() {
     return {
       clipped: false,
       drawer: true,
       fixed: false,
       items: [
-        { icon: 'apps', title: 'Welcome', to: '/' },
-        { icon: 'bubble_chart', title: 'Inspire', to: '/inspire' }
+        {
+          icon: 'apps',
+          title: 'Welcome',
+          to: '/'
+        },
+        {
+          icon: 'bubble_chart',
+          title: 'Inspire',
+          to: '/inspire'
+        }
       ],
       miniVariant: false,
       right: true,
@@ -84,12 +107,12 @@ export default {
       title: 'Vuetify.js'
     }
   },
-  components: {
-    TheFooter,
-    Loader
+  mounted() {
+    this.defaultPostCache()
+    this.defaultCategoryCache()
   },
   methods: {
-    async defaultPostCache () {
+    async defaultPostCache() {
       const query = {
         orderby: 'date',
         per_page: 100,
@@ -105,7 +128,7 @@ export default {
         this.$store.commit('setCachePosts', posts.data)
       }
     },
-    async defaultCategoryCache () {
+    async defaultCategoryCache() {
       if (this.$store.state.cacheCategories.length > 0) {
         const categories = await this.$api.get('/categories', {
           per_page: 100
@@ -113,10 +136,6 @@ export default {
         this.$store.commit('setCacheCategories', categories.data)
       }
     }
-  },
-  mounted () {
-    this.defaultPostCache()
-    this.defaultCategoryCache()
   }
 }
 </script>

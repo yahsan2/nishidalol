@@ -1,5 +1,7 @@
 <template>
-  <canvas class="bubbly" id="bubbly">a</canvas>
+  <canvas id="bubbly" class="bubbly">
+    a
+  </canvas>
 </template>
 
 <style lang="stylus" scoped>
@@ -11,17 +13,13 @@
   left 0
   width 100%
   height 100%
-
 </style>
 
 <script>
-
 export default {
-  components: {
-  },
-  props: {
-  },
-  data () {
+  components: {},
+  props: {},
+  data() {
     return {
       config: {
         animate: true, // default is true
@@ -39,12 +37,17 @@ export default {
       }
     }
   },
-  computed: {
+  computed: {},
+  mounted() {
+    this.init()
   },
+  beforeDestroy() {},
   methods: {
-    init () {
+    init() {
       const r = () => Math.random()
-      this.canvas = this.config.canvas ? document.querySelector(this.config.canvasId) : document.getElementById('bubbly')
+      this.canvas = this.config.canvas
+        ? document.querySelector(this.config.canvasId)
+        : document.getElementById('bubbly')
       this.width = this.canvas.width
       this.height = this.canvas.height
       if (this.canvas.parentNode === null) {
@@ -68,14 +71,14 @@ export default {
           // y: -5 + 0.5 * this.height, // y-position
           x: r() * this.width, // x-position
           y: r() * this.height, // y-position
-          r: (this.config.radiusFunc || (() => 4 + r() * this.width / 25)).call(), // radius
+          r: (this.config.radiusFunc || (() => 4 + (r() * this.width) / 25)).call(), // radius
           a: (this.config.angleFunc || (() => r() * Math.PI * 2)).call(), // angle
           v: (this.config.velocityFunc || (() => 0.1 + r() * 0.5)).call() // velocity
         })
       }
       this.draw()
     },
-    draw () {
+    draw() {
       if (this.canvas.parentNode === null) {
         return cancelAnimationFrame(this.draw)
       }
@@ -109,11 +112,6 @@ export default {
         }
       })
     }
-  },
-  mounted () {
-    this.init()
-  },
-  beforeDestroy () {
   }
 }
 </script>

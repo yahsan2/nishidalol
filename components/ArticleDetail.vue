@@ -1,49 +1,74 @@
 <template>
-  <article class="single article-container section"
-    :class="categorySlugs"
-    >
-    <div class="bg"
-      :style="{'background-image': `url(${featuredImage.source_url})`}"
+  <article class="single article-container section" :class="categorySlugs">
+    <div
       v-if="featuredImage && featuredImage.source_url"
-    ></div>
-    <div class="article-body typeset"
-      :class="{'is-loaded': loadingStatus == 'loaded' }"
+      class="bg"
+      :style="{
+        'background-image': `url(${featuredImage.source_url})`
+      }"
+    />
+    <div
+      class="article-body typeset"
+      :class="{
+        'is-loaded': loadingStatus == 'loaded'
+      }"
     >
-      <header class="article-header" v-if="article.title" :class="{'has-image': featuredImage && featuredImage.source_url}">
-        <h1 class="article-title" v-html="article.title"></h1>
-        <ArticleFeaturedImage
-          v-if="featuredImage"
-          :featured-image="featuredImage"
-        />
-        <p class="article-meta" v-if="['page','contact', 'dream', 'thankyou'].indexOf(article.slug) === -1 ">
+      <header
+        v-if="article.title"
+        class="article-header"
+        :class="{
+          'has-image': featuredImage && featuredImage.source_url
+        }"
+      >
+        <h1 class="article-title" v-html="article.title" />
+        <ArticleFeaturedImage v-if="featuredImage" :featured-image="featuredImage" />
+        <p v-if="['page', 'contact', 'dream', 'thankyou'].indexOf(article.slug) === -1" class="article-meta">
           <span>{{ longTimestamp(article.date) }}</span>
-          <span class="separator">|</span>
+          <span class="separator">
+            |
+          </span>
           <!-- <nuxt-link class="author fancy" :to="`/authors/${author.slug}`"></nuxt-link> -->
           <span>{{ author.name }}</span>
-          <span class="separator">|</span>
-          <span class="categories" v-if="article.terms && article.terms[0]">
-            <nuxt-link class="term" v-for="term in article.terms[0]" :to="`/category/${term.slug}`" :key="term.id" v-html="term.name"></nuxt-link>
+          <span class="separator">
+            |
+          </span>
+          <span v-if="article.terms && article.terms[0]" class="categories">
+            <nuxt-link
+              v-for="term in article.terms[0]"
+              :key="term.id"
+              class="term"
+              :to="`/category/${term.slug}`"
+              v-html="term.name"
+            />
           </span>
         </p>
       </header>
-      <section v-html="article.content" class="article-main section" v-if="['contact', 'dream', 'thankyou'].indexOf(article.slug) === -1 "/>
+      <section
+        v-if="['contact', 'dream', 'thankyou'].indexOf(article.slug) === -1"
+        class="article-main section"
+        v-html="article.content"
+      />
       <Contact v-if="article.slug === 'contact'" />
       <Dream v-if="article.slug === 'dream'" />
       <Thankyou v-if="article.slug === 'thankyou'" />
-      <footer class="section article-footer" v-if="article.title">
-        <h4>シェアボタンでシェアできるよ。</h4>
+      <footer v-if="article.title" class="section article-footer">
+        <h4>
+          シェアボタンでシェアできるよ。
+        </h4>
         <p>
           <a class="share-icon" @click.prevent="popupWindow('twitter')">
-              <Twitter/>
+            <Twitter />
           </a>
           <a class="share-icon" @click.prevent="popupWindow('facebook')">
-              <Facebook/>
+            <Facebook />
           </a>
           <a class="share-icon" @click.prevent="copyPermalink()">
-              <LinkIcon/>
+            <LinkIcon />
           </a>
         </p>
-        <p><small>シェアしてくれたら、嬉しすぎてバビっちゃうYO</small></p>
+        <p>
+          <small>シェアしてくれたら、嬉しすぎてバビっちゃうYO</small>
+        </p>
       </footer>
       <!-- <ArticleComments :article="article"/> -->
     </div>
@@ -264,16 +289,6 @@ import Facebook from '~/assets/svg/facebook'
 import Twitter from '~/assets/svg/twitter'
 
 export default {
-  props: {
-    article: Object,
-    content: String,
-    postType: String
-  },
-
-  mixins: {
-    longTimestamp: Function
-  },
-
   components: {
     ArticleFeaturedImage,
     Contact,
@@ -284,31 +299,42 @@ export default {
     Twitter,
     LinkIcon
   },
+  mixins: {
+    longTimestamp: Function
+  },
+  props: {
+    article: Object,
+    content: String,
+    postType: String
+  },
 
   computed: {
-    permalink () {
+    permalink() {
       let permalink = [`https://nishida.lol`]
       if (this.article.type) permalink.push(this.article.type)
       if (this.article.slug) permalink.push(this.article.slug)
       return permalink.join('/')
     },
-    encodePermalink () {
+    encodePermalink() {
       return encodeURIComponent(this.permalink)
     },
-    stripTitle () {
+    stripTitle() {
       return this.article.title && this.article.title.replace(/<(?:.|\n)*?>/gm, '')
     },
-    stripDesc () {
+    stripDesc() {
       return this.article.excerpt && this.article.excerpt.replace(/<(?:.|\n)*?>/gm, '')
     },
-    author () {
+    author() {
       return this.article.author || {}
     },
-    categorySlugs () {
+    categorySlugs() {
       const terms = this.article.terms && this.article.terms[0] ? this.article.terms[0].map(cat => cat.slug) : []
-      return terms.concat(this.article.slug).concat(this.postType).join(' ')
+      return terms
+        .concat(this.article.slug)
+        .concat(this.postType)
+        .join(' ')
     },
-    featuredImage () {
+    featuredImage() {
       if (this.article && this.article.images && this.article.images[0]) {
         const featuredImage = this.article.images[0]
         return featuredImage.sizes.large || featuredImage.sizes.full || false
@@ -316,14 +342,10 @@ export default {
         return { height: 0, width: 0 }
       }
     },
-    ...mapState([
-      'currentPath',
-      'cachePages',
-      'loadingStatus'
-    ])
+    ...mapState(['currentPath', 'cachePages', 'loadingStatus'])
   },
 
-  head () {
+  head() {
     return {
       title: this.stripTitle,
       meta: [
@@ -356,13 +378,24 @@ export default {
           property: 'twitter:image',
           content: this.featuredImage.source_url
         },
-        { property: 'og:type', content: 'article' }
+        {
+          property: 'og:type',
+          content: 'article'
+        }
       ]
     }
   },
 
+  watch: {},
+
+  mounted() {
+    setTimeout(() => {
+      this.$store.commit('setLoadingStatus', 'loaded')
+    }, 100)
+  },
+
   methods: {
-    execCopy (string) {
+    execCopy(string) {
       const temp = document.createElement('div')
 
       temp.appendChild(document.createElement('pre')).textContent = string
@@ -378,14 +411,14 @@ export default {
       document.body.removeChild(temp)
       return result
     },
-    copyPermalink () {
+    copyPermalink() {
       if (this.execCopy(this.permalink)) {
         window.alert(`${this.permalink} をクリッピボードにコピーしました`)
       } else {
         window.alert('このブラウザでは対応していません')
       }
     },
-    popupWindow (sns) {
+    popupWindow(sns) {
       if (process.browser) {
         const w = 650
         const h = 450
@@ -393,11 +426,19 @@ export default {
         const dualScreenLeft = window.screenLeft !== undefined ? window.screenLeft : screen.left
         const dualScreenTop = window.screenTop !== undefined ? window.screenTop : screen.top
 
-        const width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width
-        const height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height
+        const width = window.innerWidth
+          ? window.innerWidth
+          : document.documentElement.clientWidth
+          ? document.documentElement.clientWidth
+          : screen.width
+        const height = window.innerHeight
+          ? window.innerHeight
+          : document.documentElement.clientHeight
+          ? document.documentElement.clientHeight
+          : screen.height
 
-        const left = ((width / 2) - (w / 2)) + dualScreenLeft
-        const top = ((height / 2) - (h / 2)) + dualScreenTop
+        const left = width / 2 - w / 2 + dualScreenLeft
+        const top = height / 2 - h / 2 + dualScreenTop
 
         let permalink
         switch (sns) {
@@ -405,28 +446,24 @@ export default {
             permalink = `https://www.facebook.com/sharer/sharer.php?u=${this.encodePermalink}&v=3`
             break
           case 'twitter':
-            permalink = `https://twitter.com/intent/tweet?text=${encodeURIComponent(this.article.title) + '%20@nishidalol'}%20${this.encodePermalink}`
+            permalink = `https://twitter.com/intent/tweet?text=${encodeURIComponent(this.article.title) +
+              '%20@nishidalol'}%20${this.encodePermalink}`
             break
           default:
             break
         }
 
-        const newWindow = window.open(permalink, sns, 'scrollbars=yes, menubar=no, toolbar=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left)
+        const newWindow = window.open(
+          permalink,
+          sns,
+          'scrollbars=yes, menubar=no, toolbar=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left
+        )
 
         if (window.focus) {
           newWindow.focus()
         }
       }
     }
-  },
-
-  mounted () {
-    setTimeout(() => {
-      this.$store.commit('setLoadingStatus', 'loaded')
-    }, 100)
-  },
-
-  watch: {
   }
 }
 </script>

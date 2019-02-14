@@ -1,25 +1,25 @@
 <template>
   <transition name="slide-fade">
-    <ArticleDetail
-      :article="article"
-      :postType="'page'"
-    />
+    <ArticleDetail :article="article" :postType="'page'" />
   </transition>
 </template>
-
 
 <script>
 import ArticleDetail from '~/components/ArticleDetail'
 
 export default {
-  async asyncData ({ app, store, params, route, payload }) {
+  async asyncData({ app, store, params, route, payload }) {
     const query = {
       slug: params.page,
       _embed: 1
     }
 
     if (!store.state.cachePosts[params.page]) {
-      const pages = payload ? {data: [app.$api.mapProparty(payload, 'post')]} : await app.$api.get(`/pages`, query)
+      const pages = payload
+        ? {
+            data: [app.$api.mapProparty(payload, 'post')]
+          }
+        : await app.$api.get(`/pages`, query)
       store.commit('setCachePages', {
         path: route.path,
         posts: pages.data
@@ -45,18 +45,20 @@ export default {
   },
 
   computed: {
-    article () {
+    article() {
       const page = this.$store.state.cachePages[this.$store.state.currentPath] || {}
       const slug = page.slugs ? page.slugs[0] : null
       return this.$store.state.cachePosts[slug] || {}
     }
   },
 
-  head () {
+  head() {
     return {
       title: `${this.article.title} | ${this.$store.state.meta.name}`,
       meta: [
-        { description: this.article.excerpt }
+        {
+          description: this.article.excerpt
+        }
       ]
     }
   }

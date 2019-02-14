@@ -10,7 +10,7 @@ Vue.mixin({
      * @param {String} date
      * @return {String} formatted date
      */
-    shortTimestamp (date) {
+    shortTimestamp(date) {
       let article = moment(date)
       let today = moment(new Date())
 
@@ -25,7 +25,7 @@ Vue.mixin({
      * @param {String} date
      * @return {String} formatted date
      */
-    longTimestamp (date) {
+    longTimestamp(date) {
       return moment(date).format('MMM D, YYYY')
     }
   }

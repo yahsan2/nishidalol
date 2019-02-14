@@ -1,8 +1,8 @@
 <template>
   <div class="spinner">
     <div class="spinner-container">
-      <div class="dot1"></div>
-      <div class="dot2"></div>
+      <div class="dot1" />
+      <div class="dot2" />
     </div>
   </div>
 </template>
@@ -78,6 +78,4 @@
    50%
     transform scale(1.0)
     -webkit-transform scale(1.0)
-
-
 </style>

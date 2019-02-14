@@ -1,24 +1,19 @@
 <template>
   <section class="home-container main-container">
-    <ArticleList
-      :title="'NISHIDAKE'"
-      :articles="articles"
-      :query="$store.state.currentQuery"
-    />
+    <ArticleList :title="'NISHIDAKE'" :articles="articles" :query="$store.state.currentQuery" />
   </section>
 </template>
 
 <style lang="stylus" scoped>
-@import '~assets/style/settings'
+@import '~assets/style/settings';
 </style>
-
 
 <script>
 import { mapGetters, mapState } from 'vuex'
 import ArticleList from '~/components/ArticleList'
 
 export default {
-  async asyncData ({ app, store, params, route }) {
+  async asyncData({ app, store, route }) {
     const query = {
       orderby: 'date',
       per_page: 100,
@@ -41,24 +36,21 @@ export default {
   },
 
   computed: {
-    articles () {
+    articles() {
       // const page = this.$store.state.cachePages[this.$store.state.currentPath] || {}
-      return this.$store.state.currentPosts.map((postSlug) => {
+      return this.$store.state.currentPosts.map(postSlug => {
         return this.$store.state.cachePosts[postSlug] || {}
       })
     },
-    ...mapState([
-    ]),
-    ...mapGetters([
-      'currentPage'
-    ])
+    ...mapState([]),
+    ...mapGetters(['currentPage'])
   },
 
   components: {
     ArticleList
   },
 
-  head () {
+  head() {
     return {
       title: `${this.$store.state.meta.name}`
     }

@@ -2,11 +2,13 @@
   <div class="featured-image-container">
     <div
       class="featured-image lazy"
-      :class="{ 'expanded': expanded }"
-      :style="{ paddingTop: featuredImageAspectRatio}"
+      :class="{ expanded: expanded }"
+      :style="{
+        paddingTop: featuredImageAspectRatio
+      }"
     >
-      <img v-lazy="featuredImage.source_url">
-      <Loader/>
+      <img v-lazy="featuredImage.source_url" />
+      <Loader />
     </div>
   </div>
 </template>
@@ -25,8 +27,8 @@ export default {
   },
 
   computed: {
-    featuredImageAspectRatio () {
-      return this.featuredImage.height / this.featuredImage.width * 100 + '%'
+    featuredImageAspectRatio() {
+      return (this.featuredImage.height / this.featuredImage.width) * 100 + '%'
     }
   }
 }

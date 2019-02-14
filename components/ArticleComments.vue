@@ -1,17 +1,13 @@
 <template>
   <div class="comments">
-    <div class="loading" v-if="!disqusReady">
-      <Loader/>
+    <div v-if="!disqusReady" class="loading">
+      <Loader />
       <span>Loading comments</span>
     </div>
     <div class="disqus" :class="{ ready: disqusReady }">
       <no-ssr>
         <lazy-component>
-          <VueDisqus
-            shortname="nuepress-kmr-io"
-            :identifier="article.slug"
-            @ready="disqusReady = true"
-          />
+          <VueDisqus shortname="nuepress-kmr-io" :identifier="article.slug" @ready="disqusReady = true" />
         </lazy-component>
       </no-ssr>
     </div>
@@ -23,14 +19,14 @@ import Loader from '~/components/Loader'
 import VueDisqus from 'vue-disqus/VueDisqus.vue'
 
 export default {
-  props: {
-    article: Object
-  },
   components: {
     Loader,
     VueDisqus
   },
-  data () {
+  props: {
+    article: Object
+  },
+  data() {
     return {
       disqusReady: false
     }

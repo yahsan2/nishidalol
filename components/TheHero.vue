@@ -2,23 +2,18 @@
   <article class="hero">
     <nuxt-link :to="`/${this.heroArticle.slug}`">
       <div class="date">
-        <span v-html="shortTimestamp(heroArticle.date)"></span>
+        <span v-html="shortTimestamp(heroArticle.date)" />
         &nbsp–&nbsp
-        <span
-          v-for="topic in topics"
-          class="topic fancy"
-          :key="topic.id"
-          v-html="topic.name"
-        ></span>
+        <span v-for="topic in topics" class="topic fancy" :key="topic.id" v-html="topic.name" />
       </div>
       <div class="meta">
-        <h2 v-html="this.heroArticle.title"></h2>
-        <div v-html="this.heroArticle.excerpt"></div>
+        <h2 v-html="this.heroArticle.title" />
+        <div v-html="this.heroArticle.excerpt" />
       </div>
-      <div class="featured-image lazy" v-if="featuredImage">
-        <div class="image-height" :style="paddingTop"></div>
-        <div class="image" v-lazy:backgroundImage="featuredImage.source_url"></div>
-        <Loader/>
+      <div v-if="featuredImage" class="featured-image lazy">
+        <div class="image-height" :style="paddingTop" />
+        <div v-lazy:backgroundImage="featuredImage.source_url" class="image" />
+        <Loader />
       </div>
     </nuxt-link>
   </article>
@@ -31,22 +26,22 @@ export default {
   components: {
     Loader
   },
-  props: {
-    heroArticle: Object
-  },
   mixins: {
     shortTimestamp: Function
   },
+  props: {
+    heroArticle: Object
+  },
   computed: {
-    paddingTop () {
+    paddingTop() {
       return {
-        paddingTop: this.featuredImage.height / this.featuredImage.width * 100 + '%'
+        paddingTop: (this.featuredImage.height / this.featuredImage.width) * 100 + '%'
       }
     },
-    topics () {
+    topics() {
       return this.heroArticle.terms ? this.heroArticle.terms[0] : []
     },
-    featuredImage () {
+    featuredImage() {
       let featuredImage = this.heroArticle.images
 
       if (featuredImage && featuredImage[0]) {

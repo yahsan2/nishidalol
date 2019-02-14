@@ -1,23 +1,23 @@
 <template>
-  <ArticleDetail
-    :article="article"
-    :postType="'post'"
-  />
+  <ArticleDetail :article="article" :postType="'post'" />
 </template>
-
 
 <script>
 import ArticleDetail from '~/components/ArticleDetail'
 
 export default {
-  async asyncData ({ app, store, params, route, payload }) {
+  async asyncData({ app, store, params, route, payload }) {
     const query = {
       slug: params.article,
       _embed: 1
     }
 
     if (!store.state.cachePosts[params.article]) {
-      const posts = payload ? {data: [app.$api.mapProparty(payload, 'post')]} : await app.$api.get(`/posts`, query)
+      const posts = payload
+        ? {
+            data: [app.$api.mapProparty(payload, 'post')]
+          }
+        : await app.$api.get(`/posts`, query)
       store.commit('setCachePages', {
         path: route.path,
         posts: posts.data
@@ -42,15 +42,15 @@ export default {
   },
 
   computed: {
-    article () {
+    article() {
       const page = this.$store.state.cachePages[this.$store.state.currentPath] || {}
       const slug = page.slugs ? page.slugs[0] : null
       return this.$store.state.cachePosts[slug] || {}
     }
   },
-  mounted () {
+  mounted() {
     if ('twttr' in window) {
-      twttr.widgets.load()
+      window.twttr.widgets.load()
     }
   }
 }

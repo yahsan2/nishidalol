@@ -78,6 +78,34 @@
         <p>
           <small>シェアしてくれたら、嬉しすぎてバビっちゃうYO</small>
         </p>
+        <h4>
+          このブログは<a
+            href="https://www.instagram.com/boso_c_burger/"
+            target="_blank"
+            >チキンバーガー屋さん</a
+          >のスポンサーによって成り立っています。
+        </h4>
+        <iframe
+          src="https://poiit.me/nishidalol/embed/supporters"
+          frameborder="0"
+          height="140px"
+          width="100%"
+          class="suppoters"
+        ></iframe>
+        <h4>
+          <a href="https://poiit.me" target="_blank">poiit.me</a
+          >で誰でも簡単にスポンサーになれます :D
+        </h4>
+        <p>
+          <a
+            href="https://poiit.me/nishidalol/?utm_source=poiit&utm_medium=referral&utm_campaign=v1.0&utm_content=embed-banner"
+            target="_blank"
+            rel="noopener"
+            ><img
+              style="display: block;"
+              src="https://assets.poiit.me/nishidalol/ogp.jpeg"
+          /></a>
+        </p>
       </footer>
       <!-- <ArticleComments :article="article"/> -->
     </div>
@@ -87,6 +115,10 @@
 
 <style lang="stylus">
 @import '~assets/style/settings'
+.suppoters
+  background #fff
+  padding 15px 20px 20px
+
 .comment
   clearfix()
   $w = 3.5rem

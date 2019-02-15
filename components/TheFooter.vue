@@ -1,14 +1,15 @@
 <template>
-  <footer class="c-footer" :class="{
+  <footer
+    class="c-footer"
+    :class="{
       'is-loaded': loadingStatus === 'loaded'
-    }">
+    }"
+  >
     <nav id="f-nav" class="f-nav">
       <ul class="f-nav-ul">
         <li class="f-nav-li top">
           <nuxt-link to="/" exact>
-            <span>トップ
-              <br>ボタン
-            </span>
+            <span>トップ <br />ボタン </span>
           </nuxt-link>
         </li>
         <li class="f-nav-li contact">
@@ -18,52 +19,37 @@
         </li>
         <li class="f-nav-li dream">
           <nuxt-link to="/dream" exact>
-            <span>助けて
-              <br>ほしい夢
-            </span>
+            <span>助けて <br />ほしい夢 </span>
           </nuxt-link>
         </li>
         <li class="f-nav-li remote">
           <nuxt-link to="/category/remote" exact>
-            <span>リモート
-              <br>ワーク
-            </span>
+            <span>リモート <br />ワーク </span>
           </nuxt-link>
         </li>
         <li class="f-nav-li family">
           <nuxt-link to="/category/family" exact>
-            <span>家族の
-              <br>価値観
-            </span>
+            <span>家族の <br />価値観 </span>
           </nuxt-link>
         </li>
         <li class="f-nav-li travel">
           <nuxt-link to="/category/travel" exact>
-            <span>旅人
-              <br>お役立ち
-            </span>
+            <span>旅人 <br />お役立ち </span>
           </nuxt-link>
         </li>
         <li class="f-nav-li lifestyle">
           <nuxt-link to="/category/lifestyle" exact>
-            <span>暮らし
-              <br>の実験
-            </span>
+            <span>暮らし <br />の実験 </span>
           </nuxt-link>
         </li>
         <li class="f-nav-li lifelog">
           <nuxt-link to="/category/lifelog" exact>
-            <span>にしだけ
-              <br>日記
-            </span>
+            <span>にしだけ <br />日記 </span>
           </nuxt-link>
         </li>
         <li class="f-nav-li sns">
           <a href="https://pomu.me/nishidalol" title target="_blank">
-            <span>SNS
-              <br>フォロー
-              <br>してや
-            </span>
+            <span>SNS <br />フォロー <br />してや </span>
           </a>
         </li>
       </ul>

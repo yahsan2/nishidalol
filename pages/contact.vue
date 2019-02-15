@@ -15,7 +15,8 @@ export default {
       article: {
         title: 'お仕事依頼',
         slug: 'contact',
-        excerpt: 'WEB クリエイティブ / コミュニティーづくり・運営 / オンラインの業務改善',
+        excerpt:
+          'WEB クリエイティブ / コミュニティーづくり・運営 / オンラインの業務改善',
         images: [
           {
             sizes: {

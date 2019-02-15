@@ -24,7 +24,8 @@ export default {
       config: {
         animate: true, // default is true
         blur: 2, // default is 4
-        bubbleFunc: () => `hsla(${Math.random() * 360}, 100%, 50%, ${Math.random() * 0.25})`, // default is () => `hsla(0, 0%, 100%, ${r() * 0.1})`)
+        bubbleFunc: () =>
+          `hsla(${Math.random() * 360}, 100%, 50%, ${Math.random() * 0.25})`, // default is () => `hsla(0, 0%, 100%, ${r() * 0.1})`)
         bubbles: 20, // default is Math.floor((canvas.width + canvas.height) * 0.02);
         canvas: document.querySelector('#background'), // default is created and attached
         colorStart: 'yellow', // default is blue-ish
@@ -51,7 +52,10 @@ export default {
       this.width = this.canvas.width
       this.height = this.canvas.height
       if (this.canvas.parentNode === null) {
-        this.canvas.setAttribute('style', 'position:fixedz-index:-1left:0top:0min-width:100vwmin-height:100vh')
+        this.canvas.setAttribute(
+          'style',
+          'position:fixedz-index:-1left:0top:0min-width:100vwmin-height:100vh'
+        )
         this.width = this.canvas.width = window.innerWidth
         this.height = this.canvas.height = window.innerHeight
         document.body.appendChild(this.canvas)
@@ -62,16 +66,21 @@ export default {
       this.gradient = this.context.createLinearGradient(0, 0, 0, this.height)
       this.gradient.addColorStop(0, this.config.colorStart || 'yellow')
       this.gradient.addColorStop(1, this.config.colorStop || 'cyan')
-      const nrBubbles = this.config.bubbles || Math.floor((this.width + this.height) * 0.02)
+      const nrBubbles =
+        this.config.bubbles || Math.floor((this.width + this.height) * 0.02)
       this.bubbles = []
       for (let i = 0; i < nrBubbles; i++) {
         this.bubbles.push({
-          f: (this.config.bubbleFunc || (() => `hsla(0, 0%, 100%, ${r() * 0.1})`)).call(), // fillStyle
+          f: (
+            this.config.bubbleFunc || (() => `hsla(0, 0%, 100%, ${r() * 0.1})`)
+          ).call(), // fillStyle
           // x: 35 + 0.5 * this.width, // x-position
           // y: -5 + 0.5 * this.height, // y-position
           x: r() * this.width, // x-position
           y: r() * this.height, // y-position
-          r: (this.config.radiusFunc || (() => 4 + (r() * this.width) / 25)).call(), // radius
+          r: (
+            this.config.radiusFunc || (() => 4 + (r() * this.width) / 25)
+          ).call(), // radius
           a: (this.config.angleFunc || (() => r() * Math.PI * 2)).call(), // angle
           v: (this.config.velocityFunc || (() => 0.1 + r() * 0.5)).call() // velocity
         })

@@ -1,10 +1,17 @@
 <template>
   <article class="c-list-article" :class="{ 'is-active': isActive }">
     <h2 class="article-title">
-      <nuxt-link :to="`/${article.type}/${article.slug}`" v-html="article.title" />
+      <nuxt-link
+        :to="`/${article.type}/${article.slug}`"
+        v-html="article.title"
+      />
     </h2>
     <div class="article-body-container" :style="positionStyle">
-      <nuxt-link :to="`/${article.type}/${article.slug}`" class="article-body" :class="categorySlugs">
+      <nuxt-link
+        :to="`/${article.type}/${article.slug}`"
+        class="article-body"
+        :class="categorySlugs"
+      >
         <div
           v-if="featuredImage && featuredImage.source_url"
           :style="{
@@ -195,15 +202,22 @@ export default {
   computed: {
     isActive() {
       // -12.9819rem, -4.21808rem
-      return this.position.x < -9 && this.position.y < -1 && this.position.scale > 0
+      return (
+        this.position.x < -9 && this.position.y < -1 && this.position.scale > 0
+      )
     },
     categorySlugs() {
-      return this.article.terms && this.article.terms[0] ? this.article.terms[0].map(cat => cat.slug).join(' ') : ''
+      return this.article.terms && this.article.terms[0]
+        ? this.article.terms[0].map(cat => cat.slug).join(' ')
+        : ''
     },
     positionStyle() {
       return {
-        transform: `scale(${this.position.scale}) translate3d(${this.position.x}rem, ${this.position.y}rem, 0)`,
-        display: this.position.scale > 0 && this.position.y < 20 ? 'block' : 'none'
+        transform: `scale(${this.position.scale}) translate3d(${
+          this.position.x
+        }rem, ${this.position.y}rem, 0)`,
+        display:
+          this.position.scale > 0 && this.position.y < 20 ? 'block' : 'none'
       }
     },
     position() {
@@ -223,16 +237,28 @@ export default {
       const scalePow = 0.95
       const stepScroll = this.scrollTop / this.scrollSpeed
 
-      const index = stepScroll < this.offsetIndex + this.index ? this.offsetIndex + this.index - stepScroll : 0
+      const index =
+        stepScroll < this.offsetIndex + this.index
+          ? this.offsetIndex + this.index - stepScroll
+          : 0
 
       const scrollScale = 0
-      let scale = originScale - Math.pow(index, scalePow) * stepScale + scrollScale
+      let scale =
+        originScale - Math.pow(index, scalePow) * stepScale + scrollScale
       scale = scale < 0 ? 0 : scale
 
-      const rad = (2 * Math.PI * originDeg) / 360 - Math.pow(index, radPow) * ((2 * Math.PI * stepDeg) / 360)
+      const rad =
+        (2 * Math.PI * originDeg) / 360 -
+        Math.pow(index, radPow) * ((2 * Math.PI * stepDeg) / 360)
 
-      const x = (originRadius - Math.pow(index, radiusPow) * stepRadius) * Math.cos(rad) * 0.5
-      const y = (originRadius - Math.pow(index, radiusPow) * stepRadius) * Math.sin(rad) * 0.6
+      const x =
+        (originRadius - Math.pow(index, radiusPow) * stepRadius) *
+        Math.cos(rad) *
+        0.5
+      const y =
+        (originRadius - Math.pow(index, radiusPow) * stepRadius) *
+        Math.sin(rad) *
+        0.6
 
       return {
         x: x,

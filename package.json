@@ -9,11 +9,11 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "format": "prettier --check \"**/*.+(js|vue)\" --config .prettierrc --with-node-modules",
-    "formatfix": "prettier --write \"**/*.+(js|vue)\" --config .prettierrc --with-node-modules",
-    "f": "prettier --write \"./components/TheFooter.vue\" --config .prettierrc --with-node-modules",
+    "format": "prettier --check \"**/*.+(js|vue)\" --with-node-modules",
+    "formatfix": "prettier --write \"**/*.+(js|vue)\" --with-node-modules",
+    "f": "eslint --write \"./components/TheFooter.vue\" --with-node-modules",
     "lint": "eslint --ext .js,.vue --ignore-path .prettierignore .",
-    "lintfix": "eslint --fix --ext .js,.vue --ignore-path .prettierignore ."
+    "lintfix": "eslint --fix --ext .js,.vue --ignore-path .prettierignore  ."
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
@@ -28,6 +28,8 @@
     "vuetify": "^1.5.1"
   },
   "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.4.0",
+    "@vue/cli-plugin-eslint": "^3.4.0",
     "@vue/eslint-config-prettier": "^4.0.1",
     "babel-eslint": "^10.0.1",
     "babel-plugin-transform-imports": "^1.5.1",

@@ -2,10 +2,12 @@
   <section class="category-container main-container container section">
     <header>
       <h1>{{ category.name }}</h1>
-      <p v-if="category.description">{{ category.description }}</p>
+      <p v-if="category.description">
+        {{ category.description }}
+      </p>
     </header>
     <main class="section">
-      <ArticleList :articles="articles" :query="$store.state.currentQuery"/>
+      <ArticleList :articles="articles" :query="$store.state.currentQuery" />
     </main>
   </section>
 </template>
@@ -63,7 +65,9 @@ export default {
       })
     },
     category() {
-      return this.$store.state.cacheCategories[this.$route.params.category] || {}
+      return (
+        this.$store.state.cacheCategories[this.$route.params.category] || {}
+      )
     },
     ...mapState(['currentPath', 'cachePages']),
     ...mapGetters(['posts', 'currentPage'])

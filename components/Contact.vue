@@ -5,7 +5,8 @@
       お仕事依頼ページを見ていただき、ありがとうございます。
     </p>
     <p>
-      にしだけ夫婦はこれまでの２人の経験を活かして、<strong>WEB のクリエイティブ</strong
+      にしだけ夫婦はこれまでの２人の経験を活かして、<strong
+        >WEB のクリエイティブ</strong
       >や、<strong>コミュニティー運営・組織づくり</strong>、<strong>オンラインの業務改善</strong>など、幅広くお仕事をしています。
     </p>
     <div class="box">
@@ -59,7 +60,13 @@
             お名前
           </label>
           <div class="control has-icons-left has-icons-right">
-            <input v-model="contact.name" name="name" type="text" class="input is-success" placeholder="戸田恵梨香" />
+            <input
+              v-model="contact.name"
+              name="name"
+              type="text"
+              class="input is-success"
+              placeholder="戸田恵梨香"
+            />
           </div>
         </div>
         <div class="field">
@@ -116,17 +123,22 @@
     <ul>
       <li>
         NPO greenz
-        <a href="https://greenz.jp/" title="" target="_blank"> https://greenz.jp </a><br />
+        <a href="https://greenz.jp/" title="" target="_blank">
+          https://greenz.jp </a
+        ><br />
         <small>WEBサイト構築・運用・改善</small>
       </li>
       <li>
         Developersjp
-        <a href="https://www.developersjp.online/" title="" target="_blank"> https://www.developersjp.online </a><br />
+        <a href="https://www.developersjp.online/" title="" target="_blank">
+          https://www.developersjp.online </a
+        ><br />
         <small>エンジニア Slack コミュニティー運営</small>
       </li>
       <li>
         その他 nD inc. 所属
-        <a href="http://ndinc.jp/" title="" target="_blank"> http://ndinc.jp </a><br />
+        <a href="http://ndinc.jp/" title="" target="_blank"> http://ndinc.jp </a
+        ><br />
         <small>~ 2018 年３月まで </small>
       </li>
     </ul>
@@ -258,7 +270,9 @@ export default {
     async submit(e) {
       if (this.errorLength > 0) return false
       console.log(this.contact)
-      const url = `${window.location.protocol}//${window.location.host}${e.target.getAttribute('action')}`
+      const url = `${window.location.protocol}//${
+        window.location.host
+      }${e.target.getAttribute('action')}`
       console.log(url)
       const res = await this.$axios.post(url, JSON.stringify(this.contact))
       console.log(res)

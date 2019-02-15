@@ -21,8 +21,17 @@
         }"
       >
         <h1 class="article-title" v-html="article.title" />
-        <ArticleFeaturedImage v-if="featuredImage" :featured-image="featuredImage" />
-        <p v-if="['page', 'contact', 'dream', 'thankyou'].indexOf(article.slug) === -1" class="article-meta">
+        <ArticleFeaturedImage
+          v-if="featuredImage"
+          :featured-image="featuredImage"
+        />
+        <p
+          v-if="
+            ['page', 'contact', 'dream', 'thankyou'].indexOf(article.slug) ===
+              -1
+          "
+          class="article-meta"
+        >
           <span>{{ longTimestamp(article.date) }}</span>
           <span class="separator">
             |
@@ -319,16 +328,24 @@ export default {
       return encodeURIComponent(this.permalink)
     },
     stripTitle() {
-      return this.article.title && this.article.title.replace(/<(?:.|\n)*?>/gm, '')
+      return (
+        this.article.title && this.article.title.replace(/<(?:.|\n)*?>/gm, '')
+      )
     },
     stripDesc() {
-      return this.article.excerpt && this.article.excerpt.replace(/<(?:.|\n)*?>/gm, '')
+      return (
+        this.article.excerpt &&
+        this.article.excerpt.replace(/<(?:.|\n)*?>/gm, '')
+      )
     },
     author() {
       return this.article.author || {}
     },
     categorySlugs() {
-      const terms = this.article.terms && this.article.terms[0] ? this.article.terms[0].map(cat => cat.slug) : []
+      const terms =
+        this.article.terms && this.article.terms[0]
+          ? this.article.terms[0].map(cat => cat.slug)
+          : []
       return terms
         .concat(this.article.slug)
         .concat(this.postType)
@@ -423,8 +440,10 @@ export default {
         const w = 650
         const h = 450
 
-        const dualScreenLeft = window.screenLeft !== undefined ? window.screenLeft : screen.left
-        const dualScreenTop = window.screenTop !== undefined ? window.screenTop : screen.top
+        const dualScreenLeft =
+          window.screenLeft !== undefined ? window.screenLeft : screen.left
+        const dualScreenTop =
+          window.screenTop !== undefined ? window.screenTop : screen.top
 
         const width = window.innerWidth
           ? window.innerWidth
@@ -443,11 +462,14 @@ export default {
         let permalink
         switch (sns) {
           case 'facebook':
-            permalink = `https://www.facebook.com/sharer/sharer.php?u=${this.encodePermalink}&v=3`
+            permalink = `https://www.facebook.com/sharer/sharer.php?u=${
+              this.encodePermalink
+            }&v=3`
             break
           case 'twitter':
-            permalink = `https://twitter.com/intent/tweet?text=${encodeURIComponent(this.article.title) +
-              '%20@nishidalol'}%20${this.encodePermalink}`
+            permalink = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+              this.article.title
+            ) + '%20@nishidalol'}%20${this.encodePermalink}`
             break
           default:
             break
@@ -456,7 +478,14 @@ export default {
         const newWindow = window.open(
           permalink,
           sns,
-          'scrollbars=yes, menubar=no, toolbar=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left
+          'scrollbars=yes, menubar=no, toolbar=no, width=' +
+            w +
+            ', height=' +
+            h +
+            ', top=' +
+            top +
+            ', left=' +
+            left
         )
 
         if (window.focus) {

@@ -354,11 +354,10 @@ module.exports = {
    */
   build: {
     babel: {},
-    extractCSS: true,
+    extractCSS: true
     /*
      ** Run ESLint on save
      */
-    extend(config, ctx) {}
   },
   generate: {
     interval: 1000,

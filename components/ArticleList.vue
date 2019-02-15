@@ -6,11 +6,14 @@
         'is-loaded': loadingStatus == 'loaded'
       }"
     >
-      <h1 class="site-title" :style="{
+      <h1
+        class="site-title"
+        :style="{
           transform: titleTransform
-        }">
+        }"
+      >
         <span class="site-title-inner">
-          <span v-html="title"/>
+          <span v-html="title" />
         </span>
       </h1>
       <div class="articles">
@@ -26,11 +29,14 @@
           class="article"
         />
       </div>
-      <div class="scroll-block" :style="{
+      <div
+        class="scroll-block"
+        :style="{
           'min-height': minHeight
-        }"/>
+        }"
+      />
     </div>
-    <Loader class="page-loader"/>
+    <Loader class="page-loader" />
   </div>
 </template>
 
@@ -245,7 +251,9 @@ export default {
       `
     },
     minHeight() {
-      const h = process.browser ? this.articles.length * this.scrollSpeed + window.innerHeight / 2 : 0
+      const h = process.browser
+        ? this.articles.length * this.scrollSpeed + window.innerHeight / 2
+        : 0
       return h + 'px'
     },
     rotate() {

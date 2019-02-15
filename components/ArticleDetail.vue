@@ -21,8 +21,17 @@
         }"
       >
         <h1 class="article-title" v-html="article.title" />
-        <ArticleFeaturedImage v-if="featuredImage" :featured-image="featuredImage" />
-        <p v-if="['page', 'contact', 'dream', 'thankyou'].indexOf(article.slug) === -1" class="article-meta">
+        <ArticleFeaturedImage
+          v-if="featuredImage"
+          :featured-image="featuredImage"
+        />
+        <p
+          v-if="
+            ['page', 'contact', 'dream', 'thankyou'].indexOf(article.slug) ===
+              -1
+          "
+          class="article-meta"
+        >
           <span>{{ longTimestamp(article.date) }}</span>
           <span class="separator">
             |
@@ -69,6 +78,34 @@
         <p>
           <small>シェアしてくれたら、嬉しすぎてバビっちゃうYO</small>
         </p>
+        <h4>
+          このブログは<a
+            href="https://www.instagram.com/boso_c_burger/"
+            target="_blank"
+            >チキンバーガー屋さん</a
+          >のスポンサーによって成り立っています。
+        </h4>
+        <iframe
+          src="https://poiit.me/nishidalol/embed/supporters"
+          frameborder="0"
+          height="140px"
+          width="100%"
+          class="suppoters"
+        ></iframe>
+        <h4>
+          <a href="https://poiit.me" target="_blank">poiit.me</a
+          >で誰でも簡単にスポンサーになれます :D
+        </h4>
+        <p>
+          <a
+            href="https://poiit.me/nishidalol/?utm_source=poiit&utm_medium=referral&utm_campaign=v1.0&utm_content=embed-banner"
+            target="_blank"
+            rel="noopener"
+            ><img
+              style="display: block;"
+              src="https://assets.poiit.me/nishidalol/ogp.jpeg"
+          /></a>
+        </p>
       </footer>
       <!-- <ArticleComments :article="article"/> -->
     </div>
@@ -78,6 +115,10 @@
 
 <style lang="stylus">
 @import '~assets/style/settings'
+.suppoters
+  background #fff
+  padding 15px 20px 20px
+
 .comment
   clearfix()
   $w = 3.5rem
@@ -319,16 +360,24 @@ export default {
       return encodeURIComponent(this.permalink)
     },
     stripTitle() {
-      return this.article.title && this.article.title.replace(/<(?:.|\n)*?>/gm, '')
+      return (
+        this.article.title && this.article.title.replace(/<(?:.|\n)*?>/gm, '')
+      )
     },
     stripDesc() {
-      return this.article.excerpt && this.article.excerpt.replace(/<(?:.|\n)*?>/gm, '')
+      return (
+        this.article.excerpt &&
+        this.article.excerpt.replace(/<(?:.|\n)*?>/gm, '')
+      )
     },
     author() {
       return this.article.author || {}
     },
     categorySlugs() {
-      const terms = this.article.terms && this.article.terms[0] ? this.article.terms[0].map(cat => cat.slug) : []
+      const terms =
+        this.article.terms && this.article.terms[0]
+          ? this.article.terms[0].map(cat => cat.slug)
+          : []
       return terms
         .concat(this.article.slug)
         .concat(this.postType)
@@ -423,8 +472,10 @@ export default {
         const w = 650
         const h = 450
 
-        const dualScreenLeft = window.screenLeft !== undefined ? window.screenLeft : screen.left
-        const dualScreenTop = window.screenTop !== undefined ? window.screenTop : screen.top
+        const dualScreenLeft =
+          window.screenLeft !== undefined ? window.screenLeft : screen.left
+        const dualScreenTop =
+          window.screenTop !== undefined ? window.screenTop : screen.top
 
         const width = window.innerWidth
           ? window.innerWidth
@@ -443,11 +494,14 @@ export default {
         let permalink
         switch (sns) {
           case 'facebook':
-            permalink = `https://www.facebook.com/sharer/sharer.php?u=${this.encodePermalink}&v=3`
+            permalink = `https://www.facebook.com/sharer/sharer.php?u=${
+              this.encodePermalink
+            }&v=3`
             break
           case 'twitter':
-            permalink = `https://twitter.com/intent/tweet?text=${encodeURIComponent(this.article.title) +
-              '%20@nishidalol'}%20${this.encodePermalink}`
+            permalink = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+              this.article.title
+            ) + '%20@nishidalol'}%20${this.encodePermalink}`
             break
           default:
             break
@@ -456,7 +510,14 @@ export default {
         const newWindow = window.open(
           permalink,
           sns,
-          'scrollbars=yes, menubar=no, toolbar=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left
+          'scrollbars=yes, menubar=no, toolbar=no, width=' +
+            w +
+            ', height=' +
+            h +
+            ', top=' +
+            top +
+            ', left=' +
+            left
         )
 
         if (window.focus) {

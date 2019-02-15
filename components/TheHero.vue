@@ -3,8 +3,12 @@
     <nuxt-link :to="`/${this.heroArticle.slug}`">
       <div class="date">
         <span v-html="shortTimestamp(heroArticle.date)" />
-        &nbsp–&nbsp
-        <span v-for="topic in topics" class="topic fancy" :key="topic.id" v-html="topic.name" />
+        <span
+          v-for="topic in topics"
+          class="topic fancy"
+          :key="topic.id"
+          v-html="topic.name"
+        />
       </div>
       <div class="meta">
         <h2 v-html="this.heroArticle.title" />
@@ -35,7 +39,8 @@ export default {
   computed: {
     paddingTop() {
       return {
-        paddingTop: (this.featuredImage.height / this.featuredImage.width) * 100 + '%'
+        paddingTop:
+          (this.featuredImage.height / this.featuredImage.width) * 100 + '%'
       }
     },
     topics() {
@@ -45,7 +50,11 @@ export default {
       let featuredImage = this.heroArticle.images
 
       if (featuredImage && featuredImage[0]) {
-        return featuredImage[0].sizes.large || featuredImage[0].sizes.full || false
+        return (
+          featuredImage[0].sizes.large || featuredImage[0].sizes.full || false
+        )
+      } else {
+        return false
       }
     }
   }

@@ -1,6 +1,13 @@
 <template>
-  <section class="category-container main-container" :class="`category-container-${category.slug}`">
-    <ArticleList :title="category.slug" :articles="articles" :query="$store.state.currentQuery"/>
+  <section
+    class="category-container main-container"
+    :class="`category-container-${category.slug}`"
+  >
+    <article-list
+      :title="category.slug"
+      :articles="articles"
+      :query="$store.state.currentQuery"
+    />
   </section>
 </template>
 
@@ -61,7 +68,9 @@ export default {
       })
     },
     category() {
-      return this.$store.state.cacheCategories[this.$route.params.category] || {}
+      return (
+        this.$store.state.cacheCategories[this.$route.params.category] || {}
+      )
     },
     ...mapState(['currentPath', 'cachePages']),
     ...mapGetters(['posts', 'currentPage'])

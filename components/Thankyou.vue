@@ -7,7 +7,10 @@
       数日以内には、返信いたいします。
     </p>
     <p>
-      返信がない場合は、<a href="family@nishida.lol" mailto="family@nishida.lol">
+      返信がない場合は、<a
+        href="family@nishida.lol"
+        mailto="family@nishida.lol"
+      >
         family@nishida.lol
       </a>
       に再度メールをいただくか、

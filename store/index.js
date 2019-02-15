@@ -1,7 +1,8 @@
 export default {
   actions: {
     async nuxtServerInit({ commit }, { app }) {
-      const description = app.head.meta && app.head.meta.find(meta => meta.name === 'description')
+      const description =
+        app.head.meta && app.head.meta.find(meta => meta.name === 'description')
       commit('setMeta', {
         name: app.head.title,
         description: description ? description.content : ''
@@ -74,7 +75,9 @@ export default {
       }
     },
     setCurrentPosts(state) {
-      state.currentPosts = state.cachePages[state.currentPath] ? state.cachePages[state.currentPath].slugs : []
+      state.currentPosts = state.cachePages[state.currentPath]
+        ? state.cachePages[state.currentPath].slugs
+        : []
     },
     setArticle(state, data) {
       state.article = data

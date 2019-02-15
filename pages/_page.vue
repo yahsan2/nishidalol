@@ -46,7 +46,8 @@ export default {
 
   computed: {
     article() {
-      const page = this.$store.state.cachePages[this.$store.state.currentPath] || {}
+      const page =
+        this.$store.state.cachePages[this.$store.state.currentPath] || {}
       const slug = page.slugs ? page.slugs[0] : null
       return this.$store.state.cachePosts[slug] || {}
     }

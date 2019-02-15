@@ -1,5 +1,10 @@
 <template>
-  <svg xmlns="http://www.w3.org/2000/svg" width="615.25" height="500" viewBox="0 0 615.25 500">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="615.25"
+    height="500"
+    viewBox="0 0 615.25 500"
+  >
     <defs>
       <style>
         .twitter {

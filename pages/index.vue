@@ -1,6 +1,10 @@
 <template>
   <section class="home-container main-container">
-    <ArticleList :title="'NISHIDAKE'" :articles="articles" :query="$store.state.currentQuery" />
+    <ArticleList
+      :title="'NISHIDAKE'"
+      :articles="articles"
+      :query="$store.state.currentQuery"
+    />
   </section>
 </template>
 

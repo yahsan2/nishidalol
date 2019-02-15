@@ -34,12 +34,16 @@
     <h3>これまでの人生を振り返ると</h3>
 
     <p class="comment aya">
-      <span>死ぬ時に走馬灯のように蘇る！っていうシーンって、今までだとどんなのがある？</span>
+      <span
+        >死ぬ時に走馬灯のように蘇る！っていうシーンって、今までだとどんなのがある？</span
+      >
     </p>
     <p class="comment rio">
       <span>
-        たのしかった、うんどうかい！ ＼うんどうかい！／ <br />うれしかった、 <b>アウトドアウエディング</b>！
-        ＼アウトドアウエディング！／ <br />みんなでキャンプした、 <b>にいじま</b>！ ＼にいじま！／
+        たのしかった、うんどうかい！ ＼うんどうかい！／
+        <br />うれしかった、 <b>アウトドアウエディング</b>！
+        ＼アウトドアウエディング！／ <br />みんなでキャンプした、
+        <b>にいじま</b>！ ＼にいじま！／
       </span>
     </p>
     <p class="comment aya">
@@ -60,16 +64,22 @@
     <p class="comment rio">
       <span>
         あとは、受験勉強とか目標に向かって何か達成した時もそうだし、新卒のときに未経験からエンジニアになるために、「
-        <b>肉食ったら２倍働け、寿司食ったら２倍速で働け！」って社長に言われて、がむしゃらに頑張ってたとき</b
+        <b
+          >肉食ったら２倍働け、寿司食ったら２倍速で働け！」って社長に言われて、がむしゃらに頑張ってたとき</b
         >も、走馬灯に出てきそう。
       </span>
     </p>
 
     <p class="comment aya">
-      <span>うんうん。たのしかった！ハッピーだった！じゃなくても印象に残ってるシーンって多い。</span>
+      <span
+        >うんうん。たのしかった！ハッピーだった！じゃなくても印象に残ってるシーンって多い。</span
+      >
     </p>
     <p class="comment rio">
-      <span> <b>脳みそポップコーン！カーニバル！になるくらい印象的な出来事</b>。伝わる？ </span>
+      <span>
+        <b>脳みそポップコーン！カーニバル！になるくらい印象的な出来事</b
+        >。伝わる？
+      </span>
     </p>
     <p class="comment aya">
       <span>弾ける感じ？私には伝わってるよ！</span>
@@ -81,12 +91,17 @@
       <span>でも、まだまだ知らない価値観って多いよね。</span>
     </p>
     <p class="comment aya">
-      <span>どういうこと？・・・あ、出会ってきた価値観の、全てを理解できたわけではないってことかな。</span>
+      <span
+        >どういうこと？・・・あ、出会ってきた価値観の、全てを理解できたわけではないってことかな。</span
+      >
     </p>
     <p class="comment aya">
       <span>
-        宮本さんは「 <b>価値観を理解できなくてもいい、価値観を知ることが大切</b>」ってよく
-        <a href="https://anchor.fm/yahsan2" target="_blank"> にしだけ夫婦podcast </a>で言っているよね。
+        宮本さんは「
+        <b>価値観を理解できなくてもいい、価値観を知ることが大切</b>」ってよく
+        <a href="https://anchor.fm/yahsan2" target="_blank">
+          にしだけ夫婦podcast </a
+        >で言っているよね。
       </span>
     </p>
     <p class="comment rio">
@@ -95,10 +110,14 @@
       </span>
     </p>
     <p class="comment aya">
-      <span>うん、それめっちゃわかる。そういう意味では虫を食べるとか、私は絶対ムリかも。。</span>
+      <span
+        >うん、それめっちゃわかる。そういう意味では虫を食べるとか、私は絶対ムリかも。。</span
+      >
     </p>
     <p class="comment rio">
-      <span>あ、ひらめいちゃった。「 <b>価値観コレクター</b>」ってよくない？ </span>
+      <span
+        >あ、ひらめいちゃった。「 <b>価値観コレクター</b>」ってよくない？
+      </span>
     </p>
     <p class="comment aya">
       <span>
@@ -113,24 +132,30 @@
       <span>価値観コレクターとしてどんなことしてったらいいのかな</span>
     </p>
     <p class="comment rio">
-      <span> <b>旅が好きなのは、新しい価値観に出会いやすいから</b>ってのもあるよね。 </span>
+      <span>
+        <b>旅が好きなのは、新しい価値観に出会いやすいから</b>ってのもあるよね。
+      </span>
     </p>
     <p class="comment aya">
       <span>
-        うん、そうだね。 <b>環境を変えることで、新しい価値観を収集している</b>、みたいな。環境を変えなくても、
+        うん、そうだね。
+        <b>環境を変えることで、新しい価値観を収集している</b
+        >、みたいな。環境を変えなくても、
         <b>人と出会うことで新しい価値観に触れることができる</b>よね。
       </span>
     </p>
     <p class="comment rio">
       <span>
-        そうねー。いつでもいろんな人に会いに行けるよう、 <b>身軽にしていたい</b>。
+        そうねー。いつでもいろんな人に会いに行けるよう、
+        <b>身軽にしていたい</b>。
         <br />いまあるコミュニティも大事にしていきたいし。そういう大事なコミュニティがたくさんある多拠点生活とか。
       </span>
     </p>
 
     <p class="comment aya">
       <span>
-        多拠点したい！好きなコミュニティは増やしていきたいね。 <br />他にも、記事とか本とか、最近だと voicy や podcast
+        多拠点したい！好きなコミュニティは増やしていきたいね。
+        <br />他にも、記事とか本とか、最近だと voicy や podcast
         みたいな音声メディアから新たな価値観に出会うこともあるよね？
       </span>
     </p>
@@ -165,8 +190,8 @@
     <p class="comment rio">
       <span>
         そうそれで、僕はパートナーでもある
-        <a href="greenz.jp" target="_blank"> greenz.jp </a>の「 >の「 >の「 >の「
-        <b>ほしい未来は、つくろう。</b>」のタグラインが、すごい好きで。
+        <a href="greenz.jp" target="_blank"> greenz.jp </a>の「 >の「 >の「
+        >の「 <b>ほしい未来は、つくろう。</b>」のタグラインが、すごい好きで。
         <br />やっぱり僕たちも、ほしい未来をつくる担い手になりたいなと。
       </span>
     </p>
@@ -175,7 +200,8 @@
     </p>
     <p class="comment rio">
       <span>
-        モバイルハウス作りっしょ。日本帰ったらこれはやる。 <br />あと僕の目標でいくと、「
+        モバイルハウス作りっしょ。日本帰ったらこれはやる。
+        <br />あと僕の目標でいくと、「
         <b>テクノロジーを使って、ハッピーな人を増やす</b>」かな。
       </span>
     </p>
@@ -188,14 +214,22 @@
     </p>
     <p class="comment rio">
       <span>
-        夫婦での目標だとなにかな？ <br />モテる夫婦！あ、これよくない？ <b>ポジティブワードに囲まれた、モテる夫婦</b>！
+        夫婦での目標だとなにかな？
+        <br />モテる夫婦！あ、これよくない？
+        <b>ポジティブワードに囲まれた、モテる夫婦</b>！
       </span>
     </p>
     <p class="comment aya">
-      <span>いいね！ ポジティブワードが思わず出ちゃうような、ハッピーなモテる夫婦。</span>
+      <span
+        >いいね！
+        ポジティブワードが思わず出ちゃうような、ハッピーなモテる夫婦。</span
+      >
     </p>
     <p class="comment rio">
-      <span>あとね、やりたいこととしては、 <b>固定概念に気づくきっかけをつくる</b>的な何かはやりたい。 </span>
+      <span
+        >あとね、やりたいこととしては、
+        <b>固定概念に気づくきっかけをつくる</b>的な何かはやりたい。
+      </span>
     </p>
     <p class="comment aya">
       <span>
@@ -215,7 +249,10 @@
       </span>
     </p>
     <p class="comment aya">
-      <span>ほんとそれ！これまでの人生が楽しかったのも、 <b>たくさんの方に助けがあってこそ</b>だね！ </span>
+      <span
+        >ほんとそれ！これまでの人生が楽しかったのも、
+        <b>たくさんの方に助けがあってこそ</b>だね！
+      </span>
     </p>
     <p class="comment rio">
       <span>
@@ -241,7 +278,9 @@
       </span>
     </p>
     <p class="comment aya">
-      <span>なんか一緒に面白いことできそう！って思ったら、気軽に連絡くださいね！</span>
+      <span
+        >なんか一緒に面白いことできそう！って思ったら、気軽に連絡くださいね！</span
+      >
     </p>
     <p class="comment rio">
       <span>もちろん、僕らが手伝えることもお気軽がるがるー！</span>
@@ -284,17 +323,25 @@
         さんからご支援が…！感謝しかない…)
         <br />
         <br />Voice message や、
-        <a href="https://twitter.com/hashtag/nishidakefm?src=hash&amp;ref_src=twsrc%5Etfw">
+        <a
+          href="https://twitter.com/hashtag/nishidakefm?src=hash&amp;ref_src=twsrc%5Etfw"
+        >
           #nishidakefm
         </a>
         での感想もお待ちしてます！いつもほんとーにありがとうございます😊
       </p>
       &mdash; にしだけ podcast ＠AUS/夫婦Vanlife (@nishidalol)
-      <a href="https://twitter.com/nishidalol/status/992007155308904448?ref_src=twsrc%5Etfw">
+      <a
+        href="https://twitter.com/nishidalol/status/992007155308904448?ref_src=twsrc%5Etfw"
+      >
         May 3, 2018
       </a>
     </blockquote>
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8" />
+    <script
+      async
+      src="https://platform.twitter.com/widgets.js"
+      charset="utf-8"
+    />
 
     <p>
       フォローや応援おねがいします！いろんな価値観集めていきましょう〜！

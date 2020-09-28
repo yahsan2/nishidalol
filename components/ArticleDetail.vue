@@ -97,14 +97,7 @@
           >で誰でも簡単にスポンサーになれます :D
         </h4>
         <p>
-          <a
-            href="https://poiit.me/nishidalol/?utm_source=poiit&utm_medium=referral&utm_campaign=v1.0&utm_content=embed-banner"
-            target="_blank"
-            rel="noopener"
-            ><img
-              style="display: block;"
-              src="https://assets.poiit.me/nishidalol/ogp.jpeg"
-          /></a>
+          <a href="https://poiit.me/yahsan2/?utm_source=poiit&utm_medium=referral&utm_campaign=v1.0&utm_content=embed-banner" target="_blank" rel="noopener"><img style="display: block;" src="https://ogp.poiit.me/yahsan2/ogp.jpeg"></a>
         </p>
       </footer>
       <!-- <ArticleComments :article="article"/> -->

@@ -85,19 +85,21 @@
             >チキンバーガー屋さん</a
           >のスポンサーによって成り立っています。
         </h4>
-        <iframe
-          src="https://poiit.me/nishidalol/embed/supporters"
-          frameborder="0"
-          height="140px"
-          width="100%"
-          class="suppoters"
-        ></iframe>
         <h4>
           <a href="https://poiit.me" target="_blank">poiit.me</a
           >で誰でも簡単にスポンサーになれます :D
         </h4>
+        <div id="poiit-button" class="poiit-embed" data-type="button"></div>
+        <script src="https://cdn.poiit.me/dist/embed/main.js" defer></script>
         <p>
-          <a href="https://poiit.me/yahsan2/?utm_source=poiit&utm_medium=referral&utm_campaign=v1.0&utm_content=embed-banner" target="_blank" rel="noopener"><img style="display: block;" src="https://ogp.poiit.me/yahsan2/ogp.jpeg"></a>
+          <a
+            href="https://poiit.me/yahsan2/?utm_source=poiit&utm_medium=referral&utm_campaign=v1.0&utm_content=embed-banner"
+            target="_blank"
+            rel="noopener"
+            ><img
+              style="display: block;"
+              src="https://ogp.poiit.me/yahsan2/ogp.jpeg"
+          /></a>
         </p>
       </footer>
       <!-- <ArticleComments :article="article"/> -->
@@ -434,6 +436,21 @@ export default {
     setTimeout(() => {
       this.$store.commit('setLoadingStatus', 'loaded')
     }, 100)
+    window.pDataLayer = window.pDataLayer || []
+    function ptag() {
+      pDataLayer.push(arguments)
+    }
+
+    ptag('push', {
+      id: 'poiit-button',
+      type: 'button',
+      dataset: {
+        user: 'nishidalol',
+        amount: '100'
+      }
+    })
+
+    window.poiit && window.poiit.render()
   },
 
   methods: {

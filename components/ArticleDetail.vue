@@ -446,7 +446,7 @@ export default {
       type: 'button',
       dataset: {
         user: 'nishidalol',
-        amount: '100'
+        amount: '500'
       }
     })
 

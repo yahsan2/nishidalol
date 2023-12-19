@@ -17,11 +17,6 @@
             <span>お仕事依頼</span>
           </nuxt-link>
         </li>
-        <li class="f-nav-li dream">
-          <nuxt-link to="/dream" exact>
-            <span>助けて <br />ほしい夢 </span>
-          </nuxt-link>
-        </li>
         <li class="f-nav-li remote">
           <nuxt-link to="/category/remote" exact>
             <span>リモート <br />ワーク </span>

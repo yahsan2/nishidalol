@@ -78,29 +78,6 @@
         <p>
           <small>シェアしてくれたら、嬉しすぎてバビっちゃうYO</small>
         </p>
-        <h4>
-          このブログは<a
-            href="https://www.instagram.com/boso_c_burger/"
-            target="_blank"
-            >チキンバーガー屋さん</a
-          >のスポンサーによって成り立っています。
-        </h4>
-        <h4>
-          <a href="https://poiit.me" target="_blank">poiit.me</a
-          >で誰でも簡単にスポンサーになれます :D
-        </h4>
-        <div id="poiit-button" class="poiit-embed" data-type="button"></div>
-        <script src="https://cdn.poiit.me/dist/embed/main.js" defer></script>
-        <p>
-          <a
-            href="https://poiit.me/yahsan2/?utm_source=poiit&utm_medium=referral&utm_campaign=v1.0&utm_content=embed-banner"
-            target="_blank"
-            rel="noopener"
-            ><img
-              style="display: block;"
-              src="https://ogp.poiit.me/yahsan2/ogp.jpeg"
-          /></a>
-        </p>
       </footer>
       <!-- <ArticleComments :article="article"/> -->
     </div>
